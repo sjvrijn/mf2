@@ -13,7 +13,7 @@ from .HM import *
 from .SC import *
 
 u"""
-MultiFidelityFunctions
+multifidelityfunctions
 
 A collection of analytical functions with 2 or more available fidelities.
 """

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import math
 
-from MultiFidelityFunctions.multiFidelityFunction import BiFidelityFunction
+from multifidelityfunctions.multiFidelityFunction import BiFidelityFunction
 
 """
 borehole.py:

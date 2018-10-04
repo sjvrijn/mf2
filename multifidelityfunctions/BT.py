@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from MultiFidelityFunctions import BiFidelityFunction
+from multifidelityfunctions import BiFidelityFunction
 
 """
 BT.py:

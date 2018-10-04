@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import math
 
-from MultiFidelityFunctions import BiFidelityFunction
+from multifidelityfunctions import BiFidelityFunction
 
 """
 OD.py:
