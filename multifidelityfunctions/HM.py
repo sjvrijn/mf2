@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from multifidelityfunctions import BiFidelityFunction
+from .multiFidelityFunction import BiFidelityFunction, row_vectorize
 
 """
 HM.py:
@@ -59,4 +59,8 @@ def himmelblau_lf(xx):
 l_bound = [-5, -5]
 u_bound = [ 5,  5]
 
-himmelblau = BiFidelityFunction(u_bound, l_bound, himmelblau_hf, himmelblau_lf)
+himmelblau = BiFidelityFunction(
+    u_bound, l_bound,
+    row_vectorize(himmelblau_hf),
+    row_vectorize(himmelblau_lf),
+)

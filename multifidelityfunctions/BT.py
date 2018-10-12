@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from multifidelityfunctions import BiFidelityFunction
+from .multiFidelityFunction import BiFidelityFunction, row_vectorize
 
 """
 BT.py:
@@ -59,4 +59,8 @@ def booth_lf(xx):
 l_bound = [-10, -10]
 u_bound = [ 10,  10]
 
-booth = BiFidelityFunction(u_bound, l_bound, booth_hf, booth_lf)
+booth = BiFidelityFunction(
+    u_bound, l_bound,
+    row_vectorize(booth_hf),
+    row_vectorize(booth_lf),
+)

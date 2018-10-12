@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import math
 
-from multifidelityfunctions import BiFidelityFunction
+from .multiFidelityFunction import BiFidelityFunction, row_vectorize
 
 """
 curretal88exp.py:
@@ -71,4 +71,8 @@ def curretal88exp_lf(xx):
 l_bound = [0, 0]
 u_bound = [1, 1]
 
-curretal88exp = BiFidelityFunction(u_bound, l_bound, curretal88exp_hf, curretal88exp_lf)
+curretal88exp = BiFidelityFunction(
+    u_bound, l_bound,
+    row_vectorize(curretal88exp_hf),
+    row_vectorize(curretal88exp_lf),
+)
