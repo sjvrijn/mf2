@@ -23,6 +23,7 @@ General Public License for more details.
 """
 
 
+@row_vectorize
 def himmelblau_hf(xx):
     """
     HIMMELBLAU FUNCTION
@@ -38,6 +39,7 @@ def himmelblau_hf(xx):
     return term1 + term2
 
 
+@row_vectorize
 def himmelblau_lf(xx):
     """
     HIMMELBLAU FUNCTION, LOWER FIDELITY CODE
@@ -61,6 +63,6 @@ u_bound = [ 5,  5]
 
 himmelblau = BiFidelityFunction(
     u_bound, l_bound,
-    row_vectorize(himmelblau_hf),
-    row_vectorize(himmelblau_lf),
+    himmelblau_hf,
+    himmelblau_lf,
 )

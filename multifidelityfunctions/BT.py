@@ -23,6 +23,7 @@ General Public License for more details.
 """
 
 
+@row_vectorize
 def booth_hf(xx):
     """
     BOOTH FUNCTION
@@ -38,6 +39,7 @@ def booth_hf(xx):
     return term1 + term2
 
 
+@row_vectorize
 def booth_lf(xx):
     """
     BOOTH FUNCTION, LOWER FIDELITY CODE
@@ -61,6 +63,6 @@ u_bound = [ 10,  10]
 
 booth = BiFidelityFunction(
     u_bound, l_bound,
-    row_vectorize(booth_hf),
-    row_vectorize(booth_lf),
+    booth_hf,
+    booth_lf,
 )

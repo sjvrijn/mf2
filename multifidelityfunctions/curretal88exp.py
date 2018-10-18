@@ -31,6 +31,7 @@ http://www.sfu.ca/~ssurjano/
 """
 
 
+@row_vectorize
 def curretal88exp_hf(xx):
     """
     CURRIN ET AL. (1988) EXPONENTIAL FUNCTION
@@ -47,6 +48,7 @@ def curretal88exp_hf(xx):
     return fact1 * fact2 / fact3
 
 
+@row_vectorize
 def curretal88exp_lf(xx):
     """
     CURRIN ET AL. (1988) EXPONENTIAL FUNCTION, LOWER FIDELITY CODE
@@ -73,6 +75,6 @@ u_bound = [1, 1]
 
 curretal88exp = BiFidelityFunction(
     u_bound, l_bound,
-    row_vectorize(curretal88exp_hf),
-    row_vectorize(curretal88exp_lf),
+    curretal88exp_hf,
+    curretal88exp_lf,
 )

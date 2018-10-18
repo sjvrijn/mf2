@@ -31,6 +31,7 @@ http://www.sfu.ca/~ssurjano/
 """
 
 
+@row_vectorize
 def borehole_hf(xx):
     """
         BOREHOLE FUNCTION
@@ -50,6 +51,7 @@ def borehole_hf(xx):
     return -(frac1 / frac2)
 
 
+@row_vectorize
 def borehole_lf(xx):
     """
         BOREHOLE FUNCTION, LOWER FIDELITY CODE
@@ -76,6 +78,6 @@ u_bound = [0.15, 50000, 115600, 1110,  116, 820, 1680, 12045]
 
 borehole = BiFidelityFunction(
     u_bound, l_bound,
-    row_vectorize(borehole_hf),
-    row_vectorize(borehole_lf),
+    borehole_hf,
+    borehole_lf,
 )

@@ -31,6 +31,7 @@ http://www.sfu.ca/~ssurjano/
 """
 
 
+@row_vectorize
 def park91b_hf(xx):
     """
     PARK (1991) FUNCTION 2
@@ -48,6 +49,7 @@ def park91b_hf(xx):
     return term1 + term2 + term3
 
 
+@row_vectorize
 def park91b_lf(xxx):
     """
     PARK (1991) FUNCTION 2, LOWER FIDELITY CODE
@@ -68,6 +70,6 @@ u_bound = [1, 1, 1, 1]
 
 park91b = BiFidelityFunction(
     u_bound, l_bound,
-    row_vectorize(park91b_hf),
-    row_vectorize(park91b_lf),
+    park91b_hf,
+    park91b_lf,
 )

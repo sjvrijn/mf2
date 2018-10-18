@@ -24,6 +24,7 @@ General Public License for more details.
 """
 
 
+@row_vectorize
 def bohachevsky_hf(xx):
     """
     BOHACHEVSKY FUNCTION
@@ -40,6 +41,7 @@ def bohachevsky_hf(xx):
     return term1 - term2 - term3 + 0.7
 
 
+@row_vectorize
 def bohachevsky_lf(xx):
     """
     BOHACHEVSKY FUNCTION, LOWER FIDELITY CODE
@@ -63,6 +65,6 @@ u_bound = [ 5,  5]
 
 bohachevsky = BiFidelityFunction(
     u_bound, l_bound,
-    row_vectorize(bohachevsky_hf),
-    row_vectorize(bohachevsky_lf),
+    bohachevsky_hf,
+    bohachevsky_lf,
 )

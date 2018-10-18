@@ -23,6 +23,7 @@ General Public License for more details.
 """
 
 
+@row_vectorize
 def sixHumpCamelBack_hf(xx):
     """
     SIX-HUMP CAMEL-BACK FUNCTION
@@ -39,6 +40,7 @@ def sixHumpCamelBack_hf(xx):
     return term1 + term2 + term3
 
 
+@row_vectorize
 def sixHumpCamelBack_lf(xx):
     """
     SIX-HUMP CAMEL-BACK FUNCTION, LOWER FIDELITY CODE
@@ -62,6 +64,6 @@ u_bound = [ 3,  3]
 
 sixHumpCamelBack = BiFidelityFunction(
     u_bound, l_bound,
-    row_vectorize(sixHumpCamelBack_hf),
-    row_vectorize(sixHumpCamelBack_lf),
+    sixHumpCamelBack_hf,
+    sixHumpCamelBack_lf,
 )

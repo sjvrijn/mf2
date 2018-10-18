@@ -24,6 +24,7 @@ General Public License for more details.
 """
 
 
+@row_vectorize
 def oneDimensional_hf(xx):
     """
     ONE DIMENSIONAL FUNCTION
@@ -38,6 +39,7 @@ def oneDimensional_hf(xx):
     return term1 * term2
 
 
+@row_vectorize
 def oneDimensional_lf(xx):
     """
     ONE DIMENSIONAL FUNCTION, LOWER FIDELITY CODE
@@ -59,6 +61,6 @@ u_bound = [1]
 
 oneDimensional = BiFidelityFunction(
     u_bound, l_bound,
-    row_vectorize(oneDimensional_hf),
-    row_vectorize(oneDimensional_lf),
+    oneDimensional_hf,
+    oneDimensional_lf,
 )

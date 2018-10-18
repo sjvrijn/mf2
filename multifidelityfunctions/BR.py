@@ -24,6 +24,7 @@ General Public License for more details.
 """
 
 
+@row_vectorize
 def branin_hf(xx):
     """
     BRANIN FUNCTION
@@ -42,6 +43,7 @@ def branin_hf(xx):
     return 10 + term1**2 + term2 - 22.5*x2
 
 
+@row_vectorize
 def branin_lf(xx):
     """
     BRANIN FUNCTION, LOWER FIDELITY CODE
@@ -65,6 +67,6 @@ u_bound = [ 0, 15]
 
 branin = BiFidelityFunction(
     u_bound, l_bound,
-    row_vectorize(branin_hf),
-    row_vectorize(branin_lf),
+    branin_hf,
+    branin_lf,
 )
