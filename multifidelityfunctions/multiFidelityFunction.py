@@ -7,6 +7,15 @@ BiFidelityFunction = namedtuple('BiFidelityFunction', ['u_bound', 'l_bound', 'hi
 TriFidelityFunction = namedtuple('TriFidelityFunction', ['u_bound', 'l_bound', 'high', 'medium', 'low'])
 
 
+@property
+def _ndim(self):
+    return len(self.u_bound)
+
+
+BiFidelityFunction.ndim = _ndim
+TriFidelityFunction.ndim = _ndim
+
+
 def row_vectorize(func):
     def new_func(X):
         try:
