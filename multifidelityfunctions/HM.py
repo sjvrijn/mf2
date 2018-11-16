@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from .multiFidelityFunction import BiFidelityFunction, row_vectorize
+from .multiFidelityFunction import TriFidelityFunction, row_vectorize
 
 """
 HM.py:
@@ -40,6 +40,32 @@ def himmelblau_hf(xx):
 
 
 @row_vectorize
+def himmelblau_mf(xx):
+    """
+    HIMMELBLAU FUNCTION, MEDIUM FIDELITY CODE
+
+    INPUT:
+    xx = [x1, x2]
+    """
+    x1, x2 = xx
+
+    x1 *= .75
+    x2 *= .9
+
+    term1 = (x1**2 + x2 - 11)**2              # A -- E
+    # term2 = 7*x2                              # A
+    # term2 = 0                                 # B
+    # term2 = (x2**2 - 7)**2                    # C
+    # term2 = (x2**2 - 7)**2 + 5*x2**2 - 28     # D
+    term2 = (x2**2 - 7)**2 + 10*x2**2 - 45    # E
+
+    # term1 = himmelblau_hf([x1, x2])             # F
+    # term2 = x2**3 - (x1 + 1)**2                 # F
+
+    return term1 + term2
+
+
+@row_vectorize
 def himmelblau_lf(xx):
     """
     HIMMELBLAU FUNCTION, LOWER FIDELITY CODE
@@ -58,11 +84,12 @@ def himmelblau_lf(xx):
     return term1 + term2
 
 
-l_bound = [-5, -5]
-u_bound = [ 5,  5]
+l_bound = [-4, -4]
+u_bound = [ 4,  4]
 
-himmelblau = BiFidelityFunction(
+himmelblau = TriFidelityFunction(
     u_bound, l_bound,
     himmelblau_hf,
+    himmelblau_mf,
     himmelblau_lf,
 )
