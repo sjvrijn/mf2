@@ -12,8 +12,18 @@ def _ndim(self):
     return len(self.u_bound)
 
 
+@property
+def _fidelity_names(self):
+    for field in self._fields:
+        if 'bound' not in field:
+            yield field
+
+
 BiFidelityFunction.ndim = _ndim
 TriFidelityFunction.ndim = _ndim
+
+BiFidelityFunction.fidelity_names = _fidelity_names
+TriFidelityFunction.fidelity_names = _fidelity_names
 
 
 def row_vectorize(func):
