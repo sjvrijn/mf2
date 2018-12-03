@@ -48,7 +48,7 @@ def himmelblau_seb_mf(xx):
     xx = [x1, x2]
     """
     x1, x2 = xx
-    return himmelblau_seb_hf(0.75 * x1, 0.9 * x2) + (0.9 * 0.75 * x1 * x2) ** 2 - 1
+    return himmelblau_seb_hf([0.75 * x1, 0.9 * x2]) + (0.9 * 0.75 * x1 * x2) ** 2 - 1
 
 
 
@@ -66,7 +66,7 @@ def himmelblau_seb_lf(xx):
     xx = [x1, x2]
     """
     x1, x2 = xx
-    return himmelblau_seb_hf(0.7 * x1, 0.8 * x2) + (x1 * x2) ** 2 - 1
+    return himmelblau_seb_hf([0.7 * x1, 0.8 * x2]) + (x1 * x2) ** 2 - 1
 
 
 l_bound = [-4, -4]
