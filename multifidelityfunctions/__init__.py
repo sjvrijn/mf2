@@ -10,6 +10,7 @@ from .BC import *
 from .BR import *
 from .BT import *
 from .HM import *
+from .HMseb import *
 from .SC import *
 
 u"""
@@ -18,8 +19,8 @@ multifidelityfunctions
 A collection of analytical functions with 2 or more available fidelities.
 """
 
-__author__ = u'Sander van Rijn'
-__email__ = u's.j.van.rijn@liacs.leidenuniv.nl'
+__author__ = 'Sander van Rijn'
+__email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 bi_fidelity = [
     'borehole',
@@ -30,8 +31,12 @@ bi_fidelity = [
     'bohachevsky',
     'branin',
     'booth',
-    'himmelblau',
     'sixHumpCamelBack',
+]
+
+tri_fidelity = [
+    'himmelblau',
+    'himmelblau_seb',
 ]
 
 six_fidelity = [
@@ -39,4 +44,4 @@ six_fidelity = [
 ]
 
 
-__all__ = bi_fidelity + six_fidelity
+__all__ = bi_fidelity + tri_fidelity + six_fidelity
