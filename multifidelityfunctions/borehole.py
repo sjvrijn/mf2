@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import math
 
-from .multiFidelityFunction import BiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
 borehole.py:
@@ -76,8 +76,8 @@ def borehole_lf(xx):
 l_bound = [0.05,   100,  63070,  990, 63.1, 700, 1120,  9855]
 u_bound = [0.15, 50000, 115600, 1110,  116, 820, 1680, 12045]
 
-borehole = BiFidelityFunction(
+borehole = MultiFidelityFunction(
     u_bound, l_bound,
-    borehole_hf,
-    borehole_lf,
+    [borehole_hf, borehole_lf],
+    fidelity_names=['high', 'low']
 )

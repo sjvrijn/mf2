@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import math
 
-from .multiFidelityFunction import BiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
 BR.py:
@@ -90,8 +90,8 @@ def branin_lf(xx):
 l_bound = [-5,  0]
 u_bound = [10, 15]
 
-branin = BiFidelityFunction(
+branin = MultiFidelityFunction(
     u_bound, l_bound,
-    branin_hf,
-    branin_lf,
+    [branin_hf, branin_lf],
+    fidelity_names=['high', 'low']
 )

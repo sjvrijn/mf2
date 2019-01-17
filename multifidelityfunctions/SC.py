@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from .multiFidelityFunction import BiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
 SC.py:
@@ -62,8 +62,8 @@ def sixHumpCamelBack_lf(xx):
 l_bound = [-2, -2]
 u_bound = [ 2,  2]
 
-sixHumpCamelBack = BiFidelityFunction(
+sixHumpCamelBack = MultiFidelityFunction(
     u_bound, l_bound,
-    sixHumpCamelBack_hf,
-    sixHumpCamelBack_lf,
+    [sixHumpCamelBack_hf, sixHumpCamelBack_lf],
+    fidelity_names=['high', 'low']
 )

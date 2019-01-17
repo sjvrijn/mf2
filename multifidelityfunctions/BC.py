@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import math
 
-from .multiFidelityFunction import BiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
 BC.py:
@@ -63,8 +63,8 @@ def bohachevsky_lf(xx):
 l_bound = [-5, -5]
 u_bound = [ 5,  5]
 
-bohachevsky = BiFidelityFunction(
+bohachevsky = MultiFidelityFunction(
     u_bound, l_bound,
-    bohachevsky_hf,
-    bohachevsky_lf,
+    [bohachevsky_hf, bohachevsky_lf],
+    fidelity_names=['high', 'low']
 )

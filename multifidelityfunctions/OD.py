@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import math
 
-from .multiFidelityFunction import BiFidelityFunction, row_vectorize
+from .multiFidelityFunction import row_vectorize, MultiFidelityFunction
 
 """
 OD.py:
@@ -59,8 +59,8 @@ def oneDimensional_lf(xx):
 l_bound = [0]
 u_bound = [1]
 
-oneDimensional = BiFidelityFunction(
+oneDimensional = MultiFidelityFunction(
     u_bound, l_bound,
-    oneDimensional_hf,
-    oneDimensional_lf,
+    [oneDimensional_hf, oneDimensional_lf],
+    fidelity_names=['high', 'low']
 )

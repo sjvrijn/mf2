@@ -1,30 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-from collections import namedtuple
 from numbers import Integral
 import numpy as np
-
-BiFidelityFunction = namedtuple('BiFidelityFunction', ['u_bound', 'l_bound', 'high', 'low'])
-TriFidelityFunction = namedtuple('TriFidelityFunction', ['u_bound', 'l_bound', 'high', 'medium', 'low'])
-
-
-@property
-def _ndim(self):
-    return len(self.u_bound)
-
-
-@property
-def _fidelity_names(self):
-    for field in self._fields:
-        if 'bound' not in field:
-            yield field
-
-
-BiFidelityFunction.ndim = _ndim
-TriFidelityFunction.ndim = _ndim
-
-BiFidelityFunction.fidelity_names = _fidelity_names
-TriFidelityFunction.fidelity_names = _fidelity_names
 
 
 def row_vectorize(func):
@@ -38,8 +15,7 @@ def row_vectorize(func):
 
 class MultiFidelityFunction:
 
-
-    def __init(self, u_bound, l_bound, functions, fidelity_names=None):
+    def __init__(self, u_bound, l_bound, functions, fidelity_names=None):
         self.u_bound = u_bound
         self.l_bound = l_bound
 
@@ -54,8 +30,6 @@ class MultiFidelityFunction:
         else:
             self.fidelity_dict = None
             self.fidelity_names = None
-
-
 
 
     @property

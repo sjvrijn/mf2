@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-from .multiFidelityFunction import TriFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
 HM.py:
@@ -72,9 +72,8 @@ def himmelblau_seb_lf(xx):
 l_bound = [-4, -4]
 u_bound = [ 4,  4]
 
-himmelblau_seb = TriFidelityFunction(
+himmelblau_seb = MultiFidelityFunction(
     u_bound, l_bound,
-    himmelblau_seb_hf,
-    himmelblau_seb_mf,
-    himmelblau_seb_lf,
+    [himmelblau_seb_hf, himmelblau_seb_mf, himmelblau_seb_lf],
+    fidelity_names=['high', 'medium', 'low']
 )

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import math
 
-from .multiFidelityFunction import BiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
 park91b.py:
@@ -68,8 +68,8 @@ def park91b_lf(xxx):
 l_bound = [0, 0, 0, 0]
 u_bound = [1, 1, 1, 1]
 
-park91b = BiFidelityFunction(
+park91b = MultiFidelityFunction(
     u_bound, l_bound,
-    park91b_hf,
-    park91b_lf,
+    [park91b_hf, park91b_lf],
+    fidelity_names=['high', 'low']
 )
