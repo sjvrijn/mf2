@@ -9,6 +9,7 @@ from .OD import *
 from .BC import *
 from .BR import *
 from .BT import *
+from .FR import *
 from .HM import *
 from .HMseb import *
 from .SC import *
@@ -43,5 +44,9 @@ six_fidelity = [
     'artificial_multifidelity',
 ]
 
+arbitrary_fidelity = [
+    'forrester',
+]
 
-__all__ = bi_fidelity + tri_fidelity + six_fidelity
+
+__all__ = bi_fidelity + tri_fidelity + six_fidelity + arbitrary_fidelity
