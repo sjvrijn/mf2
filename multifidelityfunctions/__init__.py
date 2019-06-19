@@ -28,6 +28,7 @@ bi_fidelity = [
     'curretal88exp',
     'park91a',
     'park91b',
+    'forrester',
     'oneDimensional',
     'bohachevsky',
     'branin',
@@ -45,7 +46,6 @@ six_fidelity = [
 ]
 
 arbitrary_fidelity = [
-    'forrester',
 ]
 
 
