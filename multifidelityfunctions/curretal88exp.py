@@ -32,7 +32,7 @@ http://www.sfu.ca/~ssurjano/
 
 
 @row_vectorize
-def curretal88exp_hf(xx):
+def currin_hf(xx):
     """
     CURRIN ET AL. (1988) EXPONENTIAL FUNCTION
 
@@ -40,32 +40,35 @@ def curretal88exp_hf(xx):
     xx = [x1, x2]
     """
     x1, x2 = xx
+    if abs(x2) <= 1e-8:  # Assumes x2 approaches 0 from positive
+        fact1 = 1
+    else:        # Prevents division by 0 error/warning
+        fact1 = 1 - math.exp(-1 / (2*x2))
 
-    fact1 = 1 - math.exp(-1 / (2 * x2))
-    fact2 = 2300 * (x1 ** 3) + 1900 * (x1 ** 2) + 2092 * x1 + 60
-    fact3 = 100 * (x1 ** 3) + 500 * (x1 ** 2) + 4 * x1 + 20
+    fact2 = 2300*(x1 ** 3) + 1900*(x1 ** 2) + 2092*x1 + 60
+    fact3 = 100*(x1 ** 3) + 500*(x1 ** 2) + 4*x1 + 20
 
     return fact1 * fact2 / fact3
 
 
 @row_vectorize
-def curretal88exp_lf(xx):
+def currin_lf(xx):
     """
     CURRIN ET AL. (1988) EXPONENTIAL FUNCTION, LOWER FIDELITY CODE
-    Calls: curretal88exp_hf
+    Calls: currin_hf
     This function, from Xiong et al. (2013), is used as the "low-accuracy
-    code" version of the function curretal88exp_hf.
+    code" version of the function currin_hf.
 
     INPUT:
     xx = [x1, x2]
     """
     x1, x2 = xx
-    maxarg = max(0.001, x2 - 1 / 20)  # TODO: '0.001' was originally '0', but caused divide by zero errors
+    maxarg = max(0, x2 - .05)
 
-    yh1 = curretal88exp_hf( [x1+1 / 20, x2+1 / 20] )
-    yh2 = curretal88exp_hf( [x1+1 / 20, maxarg] )
-    yh3 = curretal88exp_hf( [x1-1 / 20, x2+1 / 20] )
-    yh4 = curretal88exp_hf( [x1-1 / 20, maxarg] )
+    yh1 = currin_hf([x1 + .05, x2 + .05])
+    yh2 = currin_hf([x1 + .05, maxarg])
+    yh3 = currin_hf([x1 - .05, x2 + .05])
+    yh4 = currin_hf([x1 - .05, maxarg])
 
     return (yh1 + yh2 + yh3 + yh4) / 4
 
@@ -73,8 +76,8 @@ def curretal88exp_lf(xx):
 l_bound = [0, 0]
 u_bound = [1, 1]
 
-curretal88exp = MultiFidelityFunction(
+currin = MultiFidelityFunction(
     u_bound, l_bound,
-    [curretal88exp_hf, curretal88exp_lf],
+    [currin_hf, currin_lf],
     fidelity_names=['high', 'low']
 )
