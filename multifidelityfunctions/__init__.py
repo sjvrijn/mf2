@@ -13,6 +13,7 @@ from .FR import *
 from .HM import *
 from .HMseb import *
 from .SC import *
+from .Hartmann import *
 
 u"""
 multifidelityfunctions
