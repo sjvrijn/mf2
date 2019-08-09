@@ -36,30 +36,27 @@ def hartmann6_hf(xx):
     xx = np.array(xx)
     alpha = np.array([1, 1.2, 3, 3.2])
 
-    outer_sum = 2.58
-    for alpha_i, A_i, P_i in zip(alpha, _A, _P):
-        inner_sum = -np.sum((xx - P_i)**2 * A_i)
-        outer_sum += alpha_i * np.exp(inner_sum)
+    tmp1 = (xx - _P)**2 * _A
+    tmp2 = np.exp(-np.sum(tmp1, axis=1))
+    tmp3 = alpha.dot(tmp2) + 2.58
 
-    return -(1/1.94) * outer_sum
+    return -(1/1.94) * tmp3
 
 
 @row_vectorize
 def hartmann6_lf(xx):
     alpha = np.array([0.5, 0.5, 2, 4])
 
-    outer_sum = 2.58
-    for alpha_i, A_i, P_i in zip(alpha, _A, _P):
+    tmp1 = (xx - _P)**2 * _A
+    tmp2 = f_exp(-np.sum(tmp1, axis=1))
+    tmp3 = alpha.dot(tmp2) + 2.58
 
-        inner_sum = -np.sum((xx - P_i)**2 * A_i)
-        outer_sum += alpha_i * f_exp(inner_sum)
-
-    return -(1/1.94) * outer_sum
+    return -(1/1.94) * tmp3
 
 
-def f_exp(x):
+def f_exp(xx):
 
-    return (_four_nine_exp + _four_nine_exp * (np.exp((x + 4) / 9))) ** 9
+    return (_four_nine_exp + _four_nine_exp * (np.exp((xx + 4) / 9))) ** 9
 
 
 l_bound = [0.1] * 6
