@@ -5,7 +5,6 @@ from .borehole import *
 from .curretal88exp import *
 from .park91a import *
 from .park91b import *
-from .OD import *
 from .BC import *
 from .BR import *
 from .BT import *
@@ -30,7 +29,7 @@ bi_fidelity = [
     'park91a',
     'park91b',
     'forrester',
-    'oneDimensional',
+    'hartmann',
     'bohachevsky',
     'branin',
     'booth',
