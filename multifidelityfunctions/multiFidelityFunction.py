@@ -43,4 +43,4 @@ class MultiFidelityFunction:
         elif isinstance(item, str) and self.fidelity_dict:
             return self.fidelity_dict[item]
         else:
-            raise ValueError(f'Invalid index')
+            raise IndexError(f"Invalid index '{item}'")
