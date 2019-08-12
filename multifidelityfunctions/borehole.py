@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import math
+import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
@@ -31,6 +31,9 @@ http://www.sfu.ca/~ssurjano/
 """
 
 
+_tau = 2*np.pi
+
+
 @row_vectorize
 def borehole_hf(xx):
     """
@@ -42,11 +45,11 @@ def borehole_hf(xx):
     """
     rw, r, Tu, Hu, Tl, Hl, L, Kw = xx
 
-    frac1 = 2 * math.pi * Tu * (Hu-Hl)
+    frac1 = _tau * Tu * (Hu-Hl)
 
-    frac2a = 2*L*Tu / (math.log(r/rw)*(rw**2)*Kw)
+    frac2a = 2*L*Tu / (np.log(r/rw)*(rw**2)*Kw)
     frac2b = Tu / Tl
-    frac2 = math.log(r/rw) * (1+frac2a+frac2b)
+    frac2 = np.log(r/rw) * (1+frac2a+frac2b)
 
     return -(frac1 / frac2)
 
@@ -66,9 +69,9 @@ def borehole_lf(xx):
 
     frac1 = 5 * Tu * (Hu-Hl)
 
-    frac2a = 2*L*Tu / (math.log(r/rw) * (rw**2) * Kw)
+    frac2a = 2*L*Tu / (np.log(r/rw) * (rw**2) * Kw)
     frac2b = Tu/Tl
-    frac2 = math.log(r/rw) * (1.5+frac2a+frac2b)
+    frac2 = np.log(r/rw) * (1.5+frac2a+frac2b)
 
     return -(frac1 / frac2)
 
