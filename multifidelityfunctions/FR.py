@@ -25,6 +25,7 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 l_bound = [0]
 u_bound = [1]
 
+@row_vectorize
 def forrester_high(X):
     ndim = X.shape[1]
     term1 = (6*X - 2)**2
@@ -32,6 +33,7 @@ def forrester_high(X):
     return np.sum(22 - (term1 * term2 + 6.03), axis=1) / ndim
 
 
+@row_vectorize
 def forrester_low(X):
     ndim = X.shape[1]
     term1 = 0.5*forrester_high(X)

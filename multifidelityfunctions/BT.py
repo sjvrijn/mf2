@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import numpy as np
+
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
@@ -31,7 +33,7 @@ def booth_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
     term1 = (x1 + 2*x2 - 7)**2
     term2 = (2*x1 + x2 - 5)**2
@@ -50,9 +52,9 @@ def booth_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
-    term1 = booth_hf([0.4*x1, x2])
+    term1 = booth_hf(np.array([0.4*x1, x2]))
     term2 = 1.7*x1*x2 - x1 + 2*x2
 
     return term1 + term2

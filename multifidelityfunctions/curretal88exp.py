@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import math
+import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
@@ -39,11 +40,17 @@ def currin_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
-    if abs(x2) <= 1e-8:  # Assumes x2 approaches 0 from positive
-        fact1 = 1
-    else:        # Prevents division by 0 error/warning
-        fact1 = 1 - math.exp(-1 / (2*x2))
+    x1, x2 = xx.T
+
+    are_zero = x2 <= 1e-8
+    fact1 = np.ones(x2.shape)
+
+    fact1[~are_zero] -= np.exp(-1 / (2*x2[~are_zero]))
+
+    # if abs(x2) <= 1e-8:  # Assumes x2 approaches 0 from positive
+    #     fact1 = 1
+    # else:        # Prevents division by 0 error/warning
+    #     fact1 = 1 - np.exp(-1 / (2*x2))
 
     fact2 = 2300*(x1 ** 3) + 1900*(x1 ** 2) + 2092*x1 + 60
     fact3 = 100*(x1 ** 3) + 500*(x1 ** 2) + 4*x1 + 20
@@ -62,8 +69,8 @@ def currin_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
-    maxarg = max(0, x2 - .05)
+    x1, x2 = xx.T
+    maxarg = np.max(0, x2 - .05)
 
     yh1 = currin_hf([x1 + .05, x2 + .05])
     yh2 = currin_hf([x1 + .05, maxarg])

@@ -1,5 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+from .multiFidelityFunction import *
 from .artificialMultifidelity import *
 from .borehole import *
 from .curretal88exp import *
@@ -14,7 +15,7 @@ from .HMseb import *
 from .SC import *
 from .Hartmann import *
 
-u"""
+"""
 multifidelityfunctions
 
 A collection of analytical functions with 2 or more available fidelities.

@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import numpy as np
+
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
@@ -31,7 +33,7 @@ def sixHumpCamelBack_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
     term1 = 4*x1**2 - 2.1*x1**4 + x1**6/3
     term2 = x1*x2
@@ -51,9 +53,9 @@ def sixHumpCamelBack_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
-    term1 = sixHumpCamelBack_hf([0.7*x1, 0.7*x2])
+    term1 = sixHumpCamelBack_hf(np.array([0.7*x1, 0.7*x2]))
     term2 = x1*x2 - 15
 
     return term1 + term2

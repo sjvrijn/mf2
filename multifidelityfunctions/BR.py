@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import math
+import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
@@ -23,6 +24,11 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 General Public License for more details.
 """
 
+
+_four_pi_square = 4*np.pi**2
+_eight_pi = 8*np.pi
+
+
 @row_vectorize
 def branin_base(xx):
     """
@@ -31,7 +37,7 @@ def branin_base(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
     # t = 1 / (8 * math.pi**2)
     # s = 10
@@ -45,8 +51,8 @@ def branin_base(xx):
     #
     # return term1 + term2 + s
 
-    term1 = x2 - (5.1 * (x1**2 / (4*math.pi**2))) + ((5*x1) / math.pi) - 6
-    term2 = (10 * math.cos(x1)) * (1 - (1/(8*math.pi)))
+    term1 = x2 - (5.1 * (x1**2 / _four_pi_square)) + ((5*x1) / np.pi) - 6
+    term2 = (10 * np.cos(x1)) * (1 - (1/_eight_pi))
 
     return term1**2 + term2 + 10
 
@@ -62,7 +68,7 @@ def branin_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
     return branin_base(xx) - 2.25*x2  # 22.5
 
 
@@ -77,7 +83,7 @@ def branin_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
     term1 = branin_base([0.7*x1, 0.7*x2])
     term2 = 1.575*x2  # 15.75

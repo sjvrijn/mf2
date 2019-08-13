@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import math
+import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
@@ -32,11 +32,11 @@ def bohachevsky_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
     term1 = x1**2 + 2*x2**2
-    term2 = 0.3*math.cos(3*math.pi*x1)
-    term3 = 0.4*math.cos(4*math.pi*x2)
+    term2 = 0.3*np.cos(3*np.pi*x1)
+    term3 = 0.4*np.cos(4*np.pi*x2)
 
     return term1 - term2 - term3 + 0.7
 
@@ -52,9 +52,9 @@ def bohachevsky_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
-    term1 = bohachevsky_hf([0.7*x1, x2])
+    term1 = bohachevsky_hf(np.array([0.7*x1, x2]))
     term2 = x1*x2 - 12
 
     return term1 + term2

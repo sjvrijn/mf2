@@ -44,6 +44,8 @@ def himmelblau_seb_mf(xx):
     """
     HIMMELBLAU FUNCTION, MEDIUM FIDELITY CODE
 
+    Proposed by Sebastian Schmitt, Honda Research Institute Europe (2019)
+
     INPUT:
     xx = [x1, x2]
     """

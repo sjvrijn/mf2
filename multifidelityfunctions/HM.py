@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import numpy as np
+
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
@@ -31,7 +33,7 @@ def himmelblau_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
     term1 = (x1**2 + x2 - 11)**2
     term2 = (x2**2 + x1 - 7)**2
@@ -47,7 +49,7 @@ def himmelblau_mf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
     x1 *= .75
     x2 *= .9
@@ -76,9 +78,9 @@ def himmelblau_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx
+    x1, x2 = xx.T
 
-    term1 = himmelblau_hf([0.5*x1, 0.8*x2])
+    term1 = himmelblau_hf(np.array([0.5*x1, 0.8*x2]))
     term2 = x2**3 - (x1 + 1)**2
 
     return term1 + term2

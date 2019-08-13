@@ -43,7 +43,7 @@ def borehole_hf(xx):
         inputs = [rw, r, Tu, Hu, Tl, Hl, L, Kw]
         output = water flow rate
     """
-    rw, r, Tu, Hu, Tl, Hl, L, Kw = xx
+    rw, r, Tu, Hu, Tl, Hl, L, Kw = xx.T
 
     frac1 = _tau * Tu * (Hu-Hl)
 
@@ -65,7 +65,7 @@ def borehole_lf(xx):
         inputs = [rw, r, Tu, Hu, Tl, Hl, L, Kw]
         output = water flow rate
     """
-    rw, r, Tu, Hu, Tl, Hl, L, Kw = xx
+    rw, r, Tu, Hu, Tl, Hl, L, Kw = xx.T
 
     frac1 = 5 * Tu * (Hu-Hl)
 
