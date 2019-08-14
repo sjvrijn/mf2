@@ -31,9 +31,12 @@ _P = np.array([
 ])
 _four_nine_exp = np.exp(-4 / 9)
 
+
 @row_vectorize
 def hartmann6_hf(xx):
-    xx = np.array(xx)
+    if xx.ndim == 2:
+        return np.array([hartmann6_hf(x) for x in xx])
+
     alpha = np.array([1, 1.2, 3, 3.2])
 
     tmp1 = (xx - _P)**2 * _A
@@ -45,6 +48,8 @@ def hartmann6_hf(xx):
 
 @row_vectorize
 def hartmann6_lf(xx):
+    if xx.ndim == 2:
+        return np.array([hartmann6_lf(x) for x in xx])
     alpha = np.array([0.5, 0.5, 2, 4])
 
     tmp1 = (xx - _P)**2 * _A
