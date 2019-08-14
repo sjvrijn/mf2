@@ -72,7 +72,7 @@ def park91a_lf(xx):
     return term1 + term2 + 0.5
 
 
-l_bound = [0, 0, 0, 0]
+l_bound = [1e-8, 0, 0, 0]
 u_bound = [1, 1, 1, 1]
 
 park91a = MultiFidelityFunction(
