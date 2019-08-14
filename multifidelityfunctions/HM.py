@@ -80,7 +80,7 @@ def himmelblau_lf(xx):
     """
     x1, x2 = xx.T
 
-    term1 = himmelblau_hf(np.array([0.5*x1, 0.8*x2]))
+    term1 = himmelblau_hf(np.hstack([0.5*x1.reshape(-1,1), 0.8*x2.reshape(-1,1)]))
     term2 = x2**3 - (x1 + 1)**2
 
     return term1 + term2

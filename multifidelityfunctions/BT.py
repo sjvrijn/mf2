@@ -54,7 +54,7 @@ def booth_lf(xx):
     """
     x1, x2 = xx.T
 
-    term1 = booth_hf(np.array([0.4*x1, x2]))
+    term1 = booth_hf(np.hstack([.4*x1.reshape(-1,1), x2.reshape(-1,1)]))
     term2 = 1.7*x1*x2 - x1 + 2*x2
 
     return term1 + term2

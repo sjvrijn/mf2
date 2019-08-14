@@ -85,7 +85,7 @@ def branin_lf(xx):
     """
     x1, x2 = xx.T
 
-    term1 = branin_base([0.7*x1, 0.7*x2])
+    term1 = branin_base(np.hstack([0.7*x1.reshape(-1,1), 0.7*x2.reshape(-1,1)]))
     term2 = 1.575*x2  # 15.75
     term3 = 2*(.9+x1**2)
     term4 = 50

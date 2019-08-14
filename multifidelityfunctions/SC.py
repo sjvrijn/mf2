@@ -55,7 +55,7 @@ def sixHumpCamelBack_lf(xx):
     """
     x1, x2 = xx.T
 
-    term1 = sixHumpCamelBack_hf(np.array([0.7*x1, 0.7*x2]))
+    term1 = sixHumpCamelBack_hf(np.hstack([0.7*x1.reshape(-1,1), 0.7*x2.reshape(-1,1)]))
     term2 = x1*x2 - 15
 
     return term1 + term2

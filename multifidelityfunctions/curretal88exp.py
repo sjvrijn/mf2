@@ -70,12 +70,17 @@ def currin_lf(xx):
     xx = [x1, x2]
     """
     x1, x2 = xx.T
-    maxarg = np.max(0, x2 - .05)
 
-    yh1 = currin_hf([x1 + .05, x2 + .05])
-    yh2 = currin_hf([x1 + .05, maxarg])
-    yh3 = currin_hf([x1 - .05, x2 + .05])
-    yh4 = currin_hf([x1 - .05, maxarg])
+    x1_plus = (x1 + .05).reshape(-1,1)
+    x1_minus = (x1 - .05).reshape(-1,1)
+    x2_plus = (x2 + .05).reshape(-1,1)
+    x2_minus = (x2 - .05).reshape(-1,1)
+    x2_minus[x2_minus < 0] = 0
+
+    yh1 = currin_hf(np.hstack([x1_plus, x2_plus]))
+    yh2 = currin_hf(np.hstack([x1_plus, x2_minus]))
+    yh3 = currin_hf(np.hstack([x1_minus, x2_plus]))
+    yh4 = currin_hf(np.hstack([x1_minus, x2_minus]))
 
     return (yh1 + yh2 + yh3 + yh4) / 4
 
