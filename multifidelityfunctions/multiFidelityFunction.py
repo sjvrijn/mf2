@@ -4,31 +4,17 @@ from numbers import Integral
 import numpy as np
 
 
-# def new_vectorize(func):
 def row_vectorize(func):
     def new_func(X):
         X = np.array(X)
         try:
-            # print("try:", X)
             res = func(X)
-            # print("tried:", res)
             return res
         except (np.AxisError, AttributeError, IndexError):
-            # print("except:", X, X.reshape((1, -1)))
             res = func(X.reshape((1, -1)))
-            # print("excepted", res)
             return res
 
     return new_func
-
-
-# def row_vectorize(func):
-#     def new_func(X):
-#         try:
-#             return np.array([func(row) for row in X])
-#         except TypeError:
-#             return func(X)
-#     return new_func
 
 
 class MultiFidelityFunction:
