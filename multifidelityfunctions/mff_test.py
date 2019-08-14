@@ -17,11 +17,9 @@ from .multiFidelityFunction import row_vectorize, MultiFidelityFunction
 from multifidelityfunctions import bohachevsky, booth, borehole, branin, currin, \
                                    forrester, hartmann, himmelblau, park91a, park91b, sixHumpCamelBack
 
-
-
-
 from collections import namedtuple
 ValueRange = namedtuple('ValueRange', ['min', 'max'])
+
 
 def determinerange(values):
     """Determine the range of values in each dimension"""
@@ -52,63 +50,60 @@ def rescale(values, *, range_in=None, range_out=ValueRange(0, 1), scale_only=Fal
 
 
 
-
 @row_vectorize
-def simple_square_high(xx):
+def quadratic(xx):
     return np.sqrt(np.sum(xx**2, axis=1))
 
 
-simple_square = MultiFidelityFunction([-1e8], [1e8], [simple_square_high], ['high'])
+simple_square = MultiFidelityFunction([-1e8], [1e8], [quadratic], ['high'])
+
+# TEST HELPERS -----------------------------------------------------------------
+
+def rectangle_lists(n):
+    return lists(lists(floats(min_value=0, max_value=1),
+                       min_size=n, max_size=n), min_size=1)
 
 
 def _list_input(func, x):
-    # x = [3, 4]
     y = func(x)
 
-    # assert y[0] == 5
     assert isinstance(y, np.ndarray)
     assert y.ndim == 1
 
 
 def _double_list_input(func, x):
-    # x = [[3, 4]]
     y = func(x)
 
-    # assert y[0] == 5
     assert isinstance(y, np.ndarray)
     assert y.ndim == 1
 
 
-def _1d_array_input(func):
-    x = np.array([3, 4])
+def _1d_array_input(func, x):
     y = func(x)
 
-    # assert y[0] == 5
     assert isinstance(y, np.ndarray)
     assert y.ndim == 1
 
 
 def _2d_array_input(func, x):
-    # x = [[3, 4],
-    #      [5, 12],
-    #      [8, 15]]
     y = func(x)
 
-    # assert y[0] == 5
-    # assert y[1] == 13
-    # assert y[2] == 17
     assert isinstance(y, np.ndarray)
     assert y.ndim == 1
 
 
-# def test_simple_square():
-#     _list_input(simple_square)
-#     _double_list_input(simple_square)
-#     _1d_array_input(simple_square)
-#     _2d_array_input(simple_square)
+def _iterate_over_functions(functions, x):
+    for f, name in functions:
+        X = rescale(np.array(x), range_in=ValueRange(0, 1),
+                    range_out=ValueRange(np.array(f.l_bound), np.array(f.u_bound)))
+        _double_list_input(f.high, X.tolist())
+        _2d_array_input(f.high, X)
 
 
-@given(lists(lists(floats(min_value=0, max_value=1), min_size=2, max_size=2), min_size=1))
+# TESTS ------------------------------------------------------------------------
+
+
+@given(rectangle_lists(n=2))
 def test_2d_functions(x):
     functions = [
         (bohachevsky, 'bohachevsky'),
@@ -119,61 +114,42 @@ def test_2d_functions(x):
         (sixHumpCamelBack, 'sixhumpcamelback'),
     ]
 
-    for f, name in functions:
-        X = rescale(np.array(x), range_in=ValueRange(0,1), range_out=ValueRange(np.array(f.l_bound), np.array(f.u_bound)))
-        # print(name)
-        # _list_input(f.high)
-        _double_list_input(f.high, X.tolist())
-        # _1d_array_input(f.high)
-        _2d_array_input(f.high, X)
+    _iterate_over_functions(functions, x)
 
 
-@given(lists(lists(floats(min_value=0, max_value=1), min_size=4, max_size=4), min_size=1))
+@given(rectangle_lists(n=4))
 def test_4d_functions(x):
-    pass
+    functions = [
+        (park91a, 'park91a'),
+        (park91b, 'park91b'),
+    ]
+
+    _iterate_over_functions(functions, x)
 
 
-@given(lists(lists(floats(min_value=0, max_value=1), min_size=6, max_size=6), min_size=1))
+@given(rectangle_lists(n=6))
 def test_6d_functions(x):
     functions = [
         (hartmann, 'hartmann'),
     ]
 
-    for f, name in functions:
-        X = rescale(np.array(x), range_in=ValueRange(0,1), range_out=ValueRange(np.array(f.l_bound), np.array(f.u_bound)))
-        # print(name)
-        # _list_input(f.high)
-        _double_list_input(f.high, X.tolist())
-        # _1d_array_input(f.high)
-        _2d_array_input(f.high, X)
+    _iterate_over_functions(functions, x)
 
 
-@given(lists(lists(floats(min_value=0, max_value=1), min_size=8, max_size=8), min_size=1))
+@given(rectangle_lists(n=8))
 def test_8d_functions(x):
     functions = [
         (borehole, 'borehole'),
     ]
 
-    for f, name in functions:
-        X = rescale(np.array(x), range_in=ValueRange(0,1), range_out=ValueRange(np.array(f.l_bound), np.array(f.u_bound)))
-        # print(name)
-        # _list_input(f.high)
-        _double_list_input(f.high, X.tolist())
-        # _1d_array_input(f.high)
-        _2d_array_input(f.high, X)
+    _iterate_over_functions(functions, x)
 
 
-@given(integers(min_value=1, max_value=100).flatmap(lambda n: lists(lists(floats(min_value=0, max_value=1), min_size=n, max_size=n), min_size=1)))
+@given(integers(min_value=1, max_value=100).flatmap(rectangle_lists))
 def test_nd_functions(x):
     functions = [
         (simple_square, 'simple square'),
         (forrester, 'forrester'),
     ]
 
-    for f, name in functions:
-        X = rescale(np.array(x), range_in=ValueRange(0,1), range_out=ValueRange(np.array(f.l_bound), np.array(f.u_bound)))
-        # print(name)
-        # _list_input(f.high)
-        _double_list_input(f.high, X.tolist())
-        # _1d_array_input(f.high)
-        _2d_array_input(f.high, X)
+    _iterate_over_functions(functions, x)
