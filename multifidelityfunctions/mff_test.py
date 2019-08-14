@@ -64,20 +64,6 @@ def rectangle_lists(n):
                        min_size=n, max_size=n), min_size=1)
 
 
-def _list_input(func, x):
-    y = func(x)
-
-    assert isinstance(y, np.ndarray)
-    assert y.ndim == 1
-
-
-def _double_list_input(func, x):
-    y = func(x)
-
-    assert isinstance(y, np.ndarray)
-    assert y.ndim == 1
-
-
 def _1d_array_input(func, x):
     y = func(x)
 
@@ -90,6 +76,7 @@ def _2d_array_input(func, x):
 
     assert isinstance(y, np.ndarray)
     assert y.ndim == 1
+    assert np.all(np.isfinite(y))
 
 
 def _iterate_over_functions(functions, x):
@@ -97,10 +84,9 @@ def _iterate_over_functions(functions, x):
         X = rescale(np.array(x), range_in=ValueRange(0, 1),
                     range_out=ValueRange(np.array(f.l_bound), np.array(f.u_bound)))
 
-        _double_list_input(f.high, X.tolist())
-        _double_list_input(f.low, X.tolist())
-        _2d_array_input(f.high, X)
-        _2d_array_input(f.low, X)
+        for fidelity in f.functions:
+            _2d_array_input(fidelity, X.tolist())  # list input TODO: make separate test for @row_vectorize decorator instead
+            _2d_array_input(fidelity, X)           # direct numpy input
 
 
 # TESTS ------------------------------------------------------------------------
