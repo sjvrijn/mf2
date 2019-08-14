@@ -55,7 +55,7 @@ def quadratic(xx):
     return np.sqrt(np.sum(xx**2, axis=1))
 
 
-simple_square = MultiFidelityFunction([-1e8], [1e8], [quadratic], ['high'])
+simple_square = MultiFidelityFunction([-1e8], [1e8], [quadratic, quadratic], ['high', 'low'])
 
 # TEST HELPERS -----------------------------------------------------------------
 
@@ -96,8 +96,11 @@ def _iterate_over_functions(functions, x):
     for f, name in functions:
         X = rescale(np.array(x), range_in=ValueRange(0, 1),
                     range_out=ValueRange(np.array(f.l_bound), np.array(f.u_bound)))
+
         _double_list_input(f.high, X.tolist())
+        _double_list_input(f.low, X.tolist())
         _2d_array_input(f.high, X)
+        _2d_array_input(f.low, X)
 
 
 # TESTS ------------------------------------------------------------------------
