@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import math
+import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
@@ -39,14 +39,14 @@ def park91a_hf(xx):
     INPUT:
     xx = [x1, x2, x3, x4]
     """
-    x1, x2, x3, x4 = xx
+    x1, x2, x3, x4 = xx.T
 
     term1a = x1 / 2
-    term1b = math.sqrt(1 + (x2 + x3 ** 2) * x4 / (x1 ** 2)) - 1
+    term1b = np.sqrt(1 + (x2 + x3 ** 2) * x4 / (x1 ** 2)) - 1
     term1 = term1a * term1b
 
     term2a = x1 + 3 * x4
-    term2b = math.exp(1 + math.sin(x3))
+    term2b = np.exp(1 + np.sin(x3))
     term2 = term2a * term2b
 
     return term1 + term2
@@ -63,10 +63,10 @@ def park91a_lf(xx):
     INPUT:
     xx = [x1, x2, x3, x4]
     """
-    x1, x2, x3, x4 = xx
+    x1, x2, x3, x4 = xx.T
     yh = park91a_hf(xx)
 
-    term1 = (1 + math.sin(x1) / 10) * yh
+    term1 = (1 + np.sin(x1) / 10) * yh
     term2 = -2 * x1 + x2 ** 2 + x3 ** 2
 
     return term1 + term2 + 0.5

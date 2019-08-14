@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import math
+import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
@@ -40,17 +40,17 @@ def park91b_hf(xx):
     xx = [x1, x2, x3, x4]
     """
 
-    x1, x2, x3, x4 = xx
+    x1, x2, x3, x4 = xx.T
 
-    term1 = (2 / 3) * math.exp(x1 + x2)
-    term2 = -x4 * math.sin(x3)
+    term1 = (2 / 3) * np.exp(x1 + x2)
+    term2 = -x4 * np.sin(x3)
     term3 = x3
 
     return term1 + term2 + term3
 
 
 @row_vectorize
-def park91b_lf(xxx):
+def park91b_lf(xx):
     """
     PARK (1991) FUNCTION 2, LOWER FIDELITY CODE
     Calls: park91b_hf
@@ -61,7 +61,7 @@ def park91b_lf(xxx):
     xx = [x1, x2, x3, x4]
     """
 
-    yh = park91b_hf(xxx)
+    yh = park91b_hf(xx)
     return 1.2 * yh - 1
 
 
