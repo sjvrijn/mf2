@@ -42,12 +42,12 @@ def currin_hf(xx):
     """
     x1, x2 = xx.T
 
-    are_zero = x2 <= 1e-8
+    are_zero = x2 <= 1e-8  # Assumes x2 approaches 0 from positive
     fact1 = np.ones(x2.shape)
 
     fact1[~are_zero] -= np.exp(-1 / (2*x2[~are_zero]))
 
-    # if abs(x2) <= 1e-8:  # Assumes x2 approaches 0 from positive
+    # if abs(x2) <= 1e-8:
     #     fact1 = 1
     # else:        # Prevents division by 0 error/warning
     #     fact1 = 1 - np.exp(-1 / (2*x2))
