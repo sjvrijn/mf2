@@ -17,7 +17,7 @@ from hypothesis.strategies import floats, integers, lists
 
 from multifidelityfunctions.multiFidelityFunction import row_vectorize, MultiFidelityFunction
 from multifidelityfunctions import bohachevsky, booth, borehole, branin, currin, \
-                                   forrester, hartmann, himmelblau, park91a, park91b, sixHumpCamelBack
+                                   forrester, hartmann6, himmelblau, park91a, park91b, sixHumpCamelBack
 
 
 def test_hartmann6_regression():
@@ -26,8 +26,8 @@ def test_hartmann6_regression():
     output_high = np.load('tests/regression_files/output_hartmann6_high.npy')
     output_low = np.load('tests/regression_files/output_hartmann6_low.npy')
 
-    np.testing.assert_allclose(hartmann.high(data), output_high)
-    np.testing.assert_allclose(hartmann.low(data), output_low)
+    np.testing.assert_allclose(hartmann6.high(data), output_high)
+    np.testing.assert_allclose(hartmann6.low(data), output_low)
 
 
 

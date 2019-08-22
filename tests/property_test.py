@@ -16,7 +16,7 @@ from hypothesis.strategies import floats, integers, lists
 
 from multifidelityfunctions.multiFidelityFunction import row_vectorize, MultiFidelityFunction
 from multifidelityfunctions import bohachevsky, booth, borehole, branin, currin, \
-                                   forrester, hartmann, himmelblau, park91a, park91b, sixHumpCamelBack
+                                   forrester, hartmann6, himmelblau, park91a, park91b, sixHumpCamelBack
 
 from collections import namedtuple
 ValueRange = namedtuple('ValueRange', ['min', 'max'])
@@ -120,7 +120,7 @@ def test_4d_functions(x):
 @given(rectangle_lists(n=6))
 def test_6d_functions(x):
     functions = [
-        (hartmann, 'hartmann'),
+        (hartmann6, 'hartmann'),
     ]
 
     _iterate_over_functions(functions, x)

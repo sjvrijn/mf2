@@ -67,7 +67,7 @@ def f_exp(xx):
 l_bound = [0.1] * 6
 u_bound = [1] * 6
 
-hartmann = MultiFidelityFunction(
+hartmann6 = MultiFidelityFunction(
     u_bound, l_bound,
     [hartmann6_hf, hartmann6_lf],
     fidelity_names=['high', 'low']
