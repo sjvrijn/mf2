@@ -2,7 +2,8 @@
 # -*- coding: utf-8 -*-
 
 """
-mff_test.py: initial testing file for multifidelityfunctions package
+property_test.py: testing file with property-based tests
+for multifidelityfunctions package
 """
 
 __author__ = 'Sander van Rijn'
@@ -13,7 +14,7 @@ import numpy as np
 from hypothesis import given
 from hypothesis.strategies import floats, integers, lists
 
-from .multiFidelityFunction import row_vectorize, MultiFidelityFunction
+from multifidelityfunctions.multiFidelityFunction import row_vectorize, MultiFidelityFunction
 from multifidelityfunctions import bohachevsky, booth, borehole, branin, currin, \
                                    forrester, hartmann, himmelblau, park91a, park91b, sixHumpCamelBack
 
