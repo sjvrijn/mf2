@@ -94,3 +94,10 @@ himmelblau = MultiFidelityFunction(
     [himmelblau_hf, himmelblau_mf, himmelblau_lf],
     fidelity_names=['high', 'medium', 'low']
 )
+
+
+himmelblau_2f = MultiFidelityFunction(
+    u_bound, l_bound,
+    [himmelblau_hf, himmelblau_lf],
+    fidelity_names=['high', 'low']
+)
