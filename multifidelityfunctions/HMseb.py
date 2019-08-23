@@ -75,6 +75,7 @@ l_bound = [-4, -4]
 u_bound = [ 4,  4]
 
 himmelblau_seb = MultiFidelityFunction(
+    "himmelblau sebastian",
     u_bound, l_bound,
     [himmelblau_seb_hf, himmelblau_seb_mf, himmelblau_seb_lf],
     fidelity_names=['high', 'medium', 'low']

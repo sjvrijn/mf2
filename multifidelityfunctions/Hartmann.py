@@ -75,6 +75,7 @@ l_bound = [0.1] * 6
 u_bound = [1] * 6
 
 hartmann6 = MultiFidelityFunction(
+    "Hartmann 6",
     u_bound, l_bound,
     [hartmann6_hf, hartmann6_lf],
     fidelity_names=['high', 'low']

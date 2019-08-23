@@ -43,12 +43,14 @@ def forrester_low(X):
 
 
 forrester = MultiFidelityFunction(
+    "forrester",
     u_bound=u_bound, l_bound=l_bound,
     functions=[forrester_high, forrester_low],
     fidelity_names=['high', 'low'],
 )
 
 forrester_sf = MultiFidelityFunction(
+    "forrester single fidelity",
     u_bound=u_bound, l_bound=l_bound,
     functions=[forrester_high],
     fidelity_names=['high'],

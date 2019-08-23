@@ -97,6 +97,7 @@ l_bound = [-5,  0]
 u_bound = [10, 15]
 
 branin = MultiFidelityFunction(
+    "branin",
     u_bound, l_bound,
     [branin_hf, branin_lf],
     fidelity_names=['high', 'low']

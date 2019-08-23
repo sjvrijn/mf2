@@ -65,6 +65,7 @@ l_bound = [-2, -2]
 u_bound = [ 2,  2]
 
 sixHumpCamelBack = MultiFidelityFunction(
+    "six hump camelback",
     u_bound, l_bound,
     [sixHumpCamelBack_hf, sixHumpCamelBack_lf],
     fidelity_names=['high', 'low']

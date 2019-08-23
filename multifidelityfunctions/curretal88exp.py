@@ -89,6 +89,7 @@ l_bound = [0, 0]
 u_bound = [1, 1]
 
 currin = MultiFidelityFunction(
+    "currin",
     u_bound, l_bound,
     [currin_hf, currin_lf],
     fidelity_names=['high', 'low']

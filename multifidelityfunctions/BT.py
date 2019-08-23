@@ -64,6 +64,7 @@ l_bound = [-10, -10]
 u_bound = [ 10,  10]
 
 booth = MultiFidelityFunction(
+    "booth",
     u_bound, l_bound,
     [booth_hf, booth_lf],
     fidelity_names=['high', 'low']

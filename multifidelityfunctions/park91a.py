@@ -76,6 +76,7 @@ l_bound = [1e-8, 0, 0, 0]
 u_bound = [1, 1, 1, 1]
 
 park91a = MultiFidelityFunction(
+    "park 91a",
     u_bound, l_bound,
     [park91a_hf, park91a_lf],
     fidelity_names=['high', 'low']

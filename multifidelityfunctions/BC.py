@@ -64,6 +64,7 @@ l_bound = [-5, -5]
 u_bound = [ 5,  5]
 
 bohachevsky = MultiFidelityFunction(
+    "bohachevsky",
     u_bound, l_bound,
     [bohachevsky_hf, bohachevsky_lf],
     fidelity_names=['high', 'low']
