@@ -11,23 +11,34 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 import numpy as np
 import pytest
-import os
+from pathlib import Path
 from hypothesis import given
 from hypothesis.strategies import floats, integers, lists
 
-from multifidelityfunctions.multiFidelityFunction import row_vectorize, MultiFidelityFunction
-from multifidelityfunctions import bohachevsky, booth, borehole, branin, currin, \
-                                   forrester, hartmann6, himmelblau, park91a, park91b, sixHumpCamelBack
+from .utils import rescale
+import multifidelityfunctions as mff
 
 
-def test_hartmann6_regression():
-    print(os.getcwd())
-    data = np.load('tests/regression_files/input_6d.npy')
-    output_high = np.load('tests/regression_files/output_hartmann6_high.npy')
-    output_low = np.load('tests/regression_files/output_hartmann6_low.npy')
+@pytest.mark.parametrize("ndim,func", [(1, mff.forrester),
+                     (2, mff.forrester),
+                     (4, mff.forrester),
+                     (6, mff.forrester),
+                     (8, mff.forrester),
+                     (2, mff.bohachevsky),
+                     (2, mff.booth),
+                     (2, mff.branin),
+                     (2, mff.currin),
+                     (2, mff.himmelblau),
+                     (2, mff.sixHumpCamelBack),
+                     (4, mff.park91a),
+                     (4, mff.park91b),
+                     (6, mff.hartmann6),
+                     (8, mff.borehole),])
+def test_function_regression(ndim, func):
 
-    np.testing.assert_allclose(hartmann6.high(data), output_high)
-    np.testing.assert_allclose(hartmann6.low(data), output_low)
+    data = rescale(np.load(Path(f'tests/regression_files/input_{ndim}d.npy')),
+                   range_in=(0,1), range_out=(np.array(func.l_bound), np.array(func.u_bound)))
 
-
-
+    for fid in func.fidelity_names:
+        output = np.load(Path(f'tests/regression_files/output_{ndim}d_{func.name}_{fid}.npy'))
+        np.testing.assert_allclose(func[fid](data), output)
