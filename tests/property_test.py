@@ -14,41 +14,10 @@ import numpy as np
 from hypothesis import given
 from hypothesis.strategies import floats, integers, lists
 
+from .utils import rescale, ValueRange
 from multifidelityfunctions.multiFidelityFunction import row_vectorize, MultiFidelityFunction
 from multifidelityfunctions import bohachevsky, booth, borehole, branin, currin, \
                                    forrester, hartmann6, himmelblau, park91a, park91b, sixHumpCamelBack
-
-from collections import namedtuple
-ValueRange = namedtuple('ValueRange', ['min', 'max'])
-
-
-def determinerange(values):
-    """Determine the range of values in each dimension"""
-    return ValueRange(np.min(values, axis=0), np.max(values, axis=0))
-
-
-def rescale(values, *, range_in=None, range_out=ValueRange(0, 1), scale_only=False):
-    """Perform a scale transformation of `values`: [range_in] --> [range_out]"""
-
-    if range_in is None:
-        range_in = determinerange(values)
-    elif not isinstance(range_in, ValueRange):
-        range_in = ValueRange(*range_in)
-
-    if not isinstance(range_out, ValueRange):
-        range_out = ValueRange(*range_out)
-
-    scale_out = range_out.max - range_out.min
-    scale_in = range_in.max - range_in.min
-
-    if scale_only:
-        scaled_values = (values / scale_in) * scale_out
-    else:
-        scaled_values = (values - range_in.min) / scale_in
-        scaled_values = (scaled_values * scale_out) + range_out.min
-
-    return scaled_values
-
 
 
 @row_vectorize
@@ -56,7 +25,7 @@ def quadratic(xx):
     return np.sqrt(np.sum(xx**2, axis=1))
 
 
-simple_square = MultiFidelityFunction([-1e8], [1e8], [quadratic, quadratic], ['high', 'low'])
+simple_square = MultiFidelityFunction('simple_square', [-1e8], [1e8], [quadratic, quadratic], ['high', 'low'])
 
 # TEST HELPERS -----------------------------------------------------------------
 
