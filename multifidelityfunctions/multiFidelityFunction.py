@@ -49,3 +49,7 @@ class MultiFidelityFunction:
             return self.fidelity_dict[item]
         else:
             raise IndexError(f"Invalid index '{item}'")
+
+
+    def __repr__(self):
+        return f"MultiFidelityFunction({self.name}, {self.u_bound}, {self.l_bound}, {self.fidelity_names})"
