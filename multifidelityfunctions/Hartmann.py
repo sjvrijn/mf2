@@ -34,8 +34,6 @@ _four_nine_exp = np.exp(-4 / 9)
 
 @row_vectorize
 def hartmann6_hf(xx):
-    # if xx.ndim == 2:
-    #     return np.array([hartmann6_hf(x) for x in xx])
 
     xx = xx[:,:,np.newaxis]
 
@@ -43,7 +41,6 @@ def hartmann6_hf(xx):
 
     tmp1 = (xx - _P)**2 * _A
     tmp2 = np.exp(-np.sum(tmp1, axis=1))
-    # tmp3 = alpha.dot(tmp2) + 2.58
     tmp3 = tmp2.dot(alpha) + 2.58
 
     return -(1/1.94) * tmp3.reshape((-1,))
@@ -51,8 +48,6 @@ def hartmann6_hf(xx):
 
 @row_vectorize
 def hartmann6_lf(xx):
-    # if xx.ndim == 2:
-    #     return np.array([hartmann6_lf(x) for x in xx])
 
     xx = xx[:,:,np.newaxis]
 
@@ -60,7 +55,6 @@ def hartmann6_lf(xx):
 
     tmp1 = (xx - _P)**2 * _A
     tmp2 = f_exp(-np.sum(tmp1, axis=1))
-    # tmp3 = alpha.dot(tmp2) + 2.58
     tmp3 = tmp2.dot(alpha) + 2.58
 
     return -(1/1.94) * tmp3.reshape((-1,))
@@ -68,7 +62,7 @@ def hartmann6_lf(xx):
 
 def f_exp(xx):
 
-    return (_four_nine_exp + _four_nine_exp * (np.exp((xx + 4) / 9))) ** 9
+    return (_four_nine_exp + (_four_nine_exp * (xx + 4)/9)) ** 9
 
 
 l_bound = [0.1] * 6
