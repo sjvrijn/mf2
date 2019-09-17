@@ -38,21 +38,22 @@ def create_and_store_output(ndim, func, fidelity):
 
 
 if __name__ == '__main__':
-    for nd, func in [(1, mff.forrester),
-                     (2, mff.forrester),
-                     (4, mff.forrester),
-                     (6, mff.forrester),
-                     (8, mff.forrester),
-                     (2, mff.bohachevsky),
-                     (2, mff.booth),
-                     (2, mff.branin),
-                     (2, mff.currin),
-                     (2, mff.himmelblau),
-                     (2, mff.sixHumpCamelBack),
-                     (4, mff.park91a),
-                     (4, mff.park91b),
-                     (6, mff.hartmann6),
-                     (8, mff.borehole),
-                     ]:
+    for nd, func in [
+        (1, mff.forrester),
+        (2, mff.forrester),
+        (4, mff.forrester),
+        (6, mff.forrester),
+        (8, mff.forrester),
+        (2, mff.bohachevsky),
+        (2, mff.booth),
+        (2, mff.branin),
+        (2, mff.currin),
+        (2, mff.himmelblau),
+        (2, mff.sixHumpCamelBack),
+        (4, mff.park91a),
+        (4, mff.park91b),
+        (6, mff.hartmann6),
+        (8, mff.borehole),
+    ]:
         for fid in func.fidelity_names:
             create_and_store_output(nd, func, fid)
