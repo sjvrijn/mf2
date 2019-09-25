@@ -5,13 +5,13 @@ import numpy as np
 
 
 def row_vectorize(func):
-    def new_func(X):
+    def new_func(X, *args, **kwargs):
         X = np.array(X)
         try:
-            res = func(X)
+            res = func(X, *args, **kwargs)
             return res
         except (np.AxisError, AttributeError, IndexError):
-            res = func(X.reshape((1, -1)))
+            res = func(X.reshape((1, -1)), *args, **kwargs)
             return res
 
     return new_func
