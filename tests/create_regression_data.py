@@ -47,6 +47,7 @@ if __name__ == '__main__':
         (2, mff.bohachevsky),
         (2, mff.booth),
         (2, mff.branin),
+        (2, mff.adjustable_branin(0)),
         (2, mff.currin),
         (2, mff.himmelblau),
         (2, mff.sixHumpCamelBack),

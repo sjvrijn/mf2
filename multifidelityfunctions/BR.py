@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import math
+from functools import partial
+
 import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
@@ -38,18 +39,6 @@ def branin_base(xx):
     xx = [x1, x2]
     """
     x1, x2 = xx.T
-
-    # t = 1 / (8 * math.pi**2)
-    # s = 10
-    # r = 6
-    # c = 5 / math.pi
-    # b = 5.1 / (4 * math.pi**2)
-    # a = 1
-    #
-    # term1 = a * (x2 - b * x1**2 + c * x1 - r)**2
-    # term2 = s * (1 - t) * math.cos(x1)
-    #
-    # return term1 + term2 + s
 
     term1 = x2 - (5.1 * (x1**2 / _four_pi_square)) + ((5*x1) / np.pi) - 6
     term2 = (10 * np.cos(x1)) * (1 - (1/_eight_pi))
@@ -93,6 +82,18 @@ def branin_lf(xx):
     return term1 - term2 + term3 - term4
 
 
+@row_vectorize
+def adjustable_branin_lf(xx, a1):
+
+    x1, x2 = xx.T
+
+    term1 = branin_base(xx)
+    term2 = x2 - (5.1 * (x1**2 / _four_pi_square)) + ((5*x1) / np.pi) - 6
+
+    return term1 - (a1+0.5) * term2**2
+
+
+
 l_bound = [-5,  0]
 u_bound = [10, 15]
 
@@ -100,5 +101,14 @@ branin = MultiFidelityFunction(
     "branin",
     u_bound, l_bound,
     [branin_hf, branin_lf],
-    fidelity_names=['high', 'low']
+    fidelity_names=['high', 'low'],
 )
+
+def adjustable_branin(a1):
+
+    return MultiFidelityFunction(
+        "adjustable Branin",
+        u_bound, l_bound,
+        [branin_base, partial(adjustable_branin_lf, a1=a1)],
+        fidelity_names=['high', 'low'],
+    )
