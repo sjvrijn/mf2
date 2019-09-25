@@ -107,7 +107,7 @@ branin = MultiFidelityFunction(
 def adjustable_branin(a1):
 
     return MultiFidelityFunction(
-        "adjustable Branin",
+        f"adjustable Branin {a1}",
         u_bound, l_bound,
         [branin_base, partial(adjustable_branin_lf, a1=a1)],
         fidelity_names=['high', 'low'],
