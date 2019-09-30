@@ -20,7 +20,7 @@ def row_vectorize(func):
 class MultiFidelityFunction:
 
     def __init__(self, name, u_bound, l_bound, functions, fidelity_names=None):
-        self.name = name.title().replace(' ', '').replace('-', '')
+        self.name = name.title().replace(' ', '')
         self.u_bound = u_bound
         self.l_bound = l_bound
 
