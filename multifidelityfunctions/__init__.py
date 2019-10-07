@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
-from .multiFidelityFunction import *
-from .artificialMultifidelity import *
-from .borehole import *
-from .curretal88exp import *
-from .park91a import *
-from .park91b import *
-from .BC import *
-from .BR import *
-from .BT import *
-from .FR import *
-from .HM import *
-from .HMseb import *
-from .SC import *
-from .Hartmann import *
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .artificialMultifidelity import artificial_multifidelity
+from .borehole import borehole
+from .curretal88exp import currin
+from .park91a import park91a
+from .park91b import park91b
+from .BC import bohachevsky
+from .BR import adjustable_branin, branin
+from .BT import booth
+from .FR import forrester
+from .HM import himmelblau, himmelblau_3f
+from .HMseb import himmelblau_seb
+from .SC import sixHumpCamelBack
+from .Hartmann import adjustable_hartmann3, hartmann6
 
 """
 multifidelityfunctions
