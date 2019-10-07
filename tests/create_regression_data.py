@@ -51,6 +51,7 @@ if __name__ == '__main__':
         (2, mff.currin),
         (2, mff.himmelblau),
         (2, mff.sixHumpCamelBack),
+        (3, mff.adjustable_hartmann3(0)),
         (4, mff.park91a),
         (4, mff.park91b),
         (6, mff.hartmann6),
