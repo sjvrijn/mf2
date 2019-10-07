@@ -50,6 +50,7 @@ if __name__ == '__main__':
         (2, mff.adjustable_branin(0)),
         (2, mff.currin),
         (2, mff.himmelblau),
+        (2, mff.adjustable_paciorek(0)),
         (2, mff.sixHumpCamelBack),
         (3, mff.adjustable_hartmann3(0)),
         (4, mff.park91a),
