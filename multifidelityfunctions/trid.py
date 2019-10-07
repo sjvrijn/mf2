@@ -1,0 +1,36 @@
+#!/usr/bin/python3
+# -*- coding: utf-8 -*-
+from functools import partial
+
+import numpy as np
+
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+"""
+trid.py: contains the Trid 10d function
+
+As defined in "Some Considerations Regarding the Use of Multi-fidelity Kriging
+in the Construction of Surrogate Models" by David J.J. Toal (2015)
+"""
+
+__author__ = 'Sander van Rijn'
+__email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
+
+def trid_hf(xx):
+    temp1 = np.sum((xx - 1) ** 2, axis=1)
+    temp2 = np.sum(xx[:,:-1] * xx[:,1:])
+    return temp1 - temp2
+
+
+def adjustable_trid_lf(xx, a4):
+    temp1 = np.sum((xx - a4) ** 2, axis=1)
+    temp2 = np.sum((a4-0.65) * xx[:,:-1] * xx[:,1:] * np.arange(2, 11), axis=1)
+    return temp1 - temp2
+
+
+def adjustable_trid(a4):
+    return MultiFidelityFunction(
+        f"adjustable Trid {a4}",
+        [1]*10, [0]*10,
+        [trid_hf, partial(adjustable_trid_lf, a4=a4)],
+        fidelity_names=['high', 'low'],
+    )

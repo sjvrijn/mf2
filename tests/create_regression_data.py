@@ -44,19 +44,20 @@ if __name__ == '__main__':
         (4, mff.forrester),
         (6, mff.forrester),
         (8, mff.forrester),
+        (2, mff.adjustable_branin(0)),
+        (2, mff.adjustable_paciorek(0)),
         (2, mff.bohachevsky),
         (2, mff.booth),
         (2, mff.branin),
-        (2, mff.adjustable_branin(0)),
         (2, mff.currin),
         (2, mff.himmelblau),
-        (2, mff.adjustable_paciorek(0)),
         (2, mff.sixHumpCamelBack),
         (3, mff.adjustable_hartmann3(0)),
         (4, mff.park91a),
         (4, mff.park91b),
         (6, mff.hartmann6),
         (8, mff.borehole),
+        (10, mff.adjustable_trid(0)),
     ]:
         for fid in func.fidelity_names:
             create_and_store_output(nd, func, fid)

@@ -7,6 +7,7 @@ from .curretal88exp import currin
 from .park91a import park91a
 from .park91b import park91b
 from .paciorek import adjustable_paciorek
+from .trid import adjustable_trid
 from .BC import bohachevsky
 from .BR import adjustable_branin, branin
 from .BT import booth
