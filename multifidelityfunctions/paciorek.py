@@ -15,11 +15,13 @@ in the Construction of Surrogate Models" by David J.J. Toal (2015)
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
+@row_vectorize
 def paciorek_hf(xx):
     x1, x2 = xx.T
     return np.sin(1/(x1*x2))
 
 
+@row_vectorize
 def adjustable_paciorek_lf(xx, a2):
     x1, x2 = xx.T
     temp1 = paciorek_hf(xx)

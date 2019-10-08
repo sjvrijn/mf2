@@ -1,6 +1,5 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-import math
 import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
