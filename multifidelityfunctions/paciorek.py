@@ -33,7 +33,7 @@ def adjustable_paciorek_lf(xx, a2):
 def adjustable_paciorek(a2):
     return MultiFidelityFunction(
         f"adjustable Paciorek {a2}",
-        [1]*2, [0]*2,
+        [1]*2, [0.3]*2,
         [paciorek_hf, partial(adjustable_paciorek_lf, a2=a2)],
         fidelity_names=['high', 'low'],
     )
