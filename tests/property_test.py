@@ -13,6 +13,7 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 import numpy as np
 from hypothesis import given
 from hypothesis.strategies import floats, integers, lists
+import pytest
 
 from .utils import rescale, ValueRange
 import multifidelityfunctions as mff
@@ -47,61 +48,77 @@ def _2d_array_input(func, x):
     assert np.all(np.isfinite(y))
 
 
-def _iterate_over_functions(functions, x):
-    for f in functions:
-        X = rescale(np.array(x), range_in=ValueRange(0, 1),
-                    range_out=ValueRange(np.array(f.l_bound), np.array(f.u_bound)))
-
-        for fidelity in f.functions:
-            _2d_array_input(fidelity, X.tolist())  # list input TODO: make separate test for @row_vectorize decorator instead
-            _2d_array_input(fidelity, X)           # direct numpy input
+def _test_single_function(f, x):
+    X = rescale(np.array(x), range_in=ValueRange(0, 1),
+                range_out=ValueRange(np.array(f.l_bound), np.array(f.u_bound)))
+    for fidelity in f.functions:
+        _2d_array_input(fidelity, X.tolist())  # list input TODO: make separate test for @row_vectorize decorator instead
+        _2d_array_input(fidelity, X)  # direct numpy input
 
 
 # TESTS ------------------------------------------------------------------------
 
 
 @given(integers(min_value=1, max_value=100).flatmap(rectangle_lists))
-def test_nd_functions(x):
-    functions = [
-        simple_square,
-        mff.forrester,
-    ]
-    _iterate_over_functions(functions, x)
+@pytest.mark.parametrize("function", [
+    simple_square,
+    mff.forrester,
+])
+def test_nd_functions(function, x):
+    _test_single_function(function, x)
 
 
 @given(rectangle_lists(n=2))
-def test_2d_functions(x):
-    functions = [
-        mff.bohachevsky,
-        mff.booth,
-        mff.branin,
-        mff.currin,
-        mff.himmelblau,
-        mff.sixHumpCamelBack,
-    ]
-    _iterate_over_functions(functions, x)
+@pytest.mark.parametrize("function", [
+    mff.bohachevsky,
+    mff.booth,
+    mff.branin,
+    mff.currin,
+    mff.himmelblau,
+    mff.sixHumpCamelBack,
+    mff.adjustable_branin(0.5),
+    mff.adjustable_paciorek(0.5),
+])
+def test_2d_functions(function, x):
+    _test_single_function(function, x)
+
+
+@given(rectangle_lists(n=3))
+@pytest.mark.parametrize("function", [
+    mff.adjustable_hartmann3(0.5),
+])
+def test_3d_functions(function, x):
+    _test_single_function(function, x)
 
 
 @given(rectangle_lists(n=4))
-def test_4d_functions(x):
-    functions = [
-        mff.park91a,
-        mff.park91b,
-    ]
-    _iterate_over_functions(functions, x)
+@pytest.mark.parametrize("function", [
+    mff.park91a,
+    mff.park91b,
+])
+def test_4d_functions(function, x):
+    _test_single_function(function, x)
 
 
 @given(rectangle_lists(n=6))
-def test_6d_functions(x):
-    functions = [
-        mff.hartmann6,
-    ]
-    _iterate_over_functions(functions, x)
+@pytest.mark.parametrize("function", [
+    mff.hartmann6,
+])
+def test_6d_functions(function, x):
+    _test_single_function(function, x)
 
 
 @given(rectangle_lists(n=8))
-def test_8d_functions(x):
-    functions = [
-        mff.borehole,
-    ]
-    _iterate_over_functions(functions, x)
+@pytest.mark.parametrize("function", [
+    mff.borehole,
+])
+def test_8d_functions(function, x):
+    _test_single_function(function, x)
+
+
+@given(rectangle_lists(n=10))
+@pytest.mark.parametrize("function", [
+    mff.adjustable_trid(0.5),
+])
+def test_10d_functions(function, x):
+    _test_single_function(function, x)
