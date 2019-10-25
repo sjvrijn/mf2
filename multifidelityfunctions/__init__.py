@@ -55,11 +55,3 @@ tri_fidelity_functions = [
 six_fidelity_functions = [
     artificial_multifidelity,
 ]
-
-
-
-__all__ = [f.__name__
-           for f in bi_fidelity_functions +
-           adjustable_bifidelity_functions +
-           tri_fidelity_functions +
-           six_fidelity_functions]
