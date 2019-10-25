@@ -26,31 +26,40 @@ A collection of analytical functions with 2 or more available fidelities.
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
-bi_fidelity = [
-    'borehole',
-    'curretal88exp',
-    'park91a',
-    'park91b',
-    'forrester',
-    'hartmann3',
-    'hartmann6',
-    'bohachevsky',
-    'branin',
-    'booth',
-    'sixHumpCamelBack',
+bi_fidelity_functions = [
+    borehole,
+    curretal88exp,
+    park91a,
+    park91b,
+    forrester,
+    hartmann6,
+    himmelblau,
+    bohachevsky,
+    branin,
+    booth,
+    sixHumpCamelBack,
 ]
 
-tri_fidelity = [
-    'himmelblau',
-    'himmelblau_seb',
+adjustable_bifidelity_functions = [
+    adjustable_branin,
+    adjustable_paciorek,
+    adjustable_hartmann3,
+    adjustable_trid,
 ]
 
-six_fidelity = [
-    'artificial_multifidelity',
+tri_fidelity_functions = [
+    himmelblau_3f,
+    himmelblau_seb,
 ]
 
-arbitrary_fidelity = [
+six_fidelity_functions = [
+    artificial_multifidelity,
 ]
 
 
-__all__ = bi_fidelity + tri_fidelity + six_fidelity + arbitrary_fidelity
+
+__all__ = [f.__name__
+           for f in bi_fidelity_functions +
+           adjustable_bifidelity_functions +
+           tri_fidelity_functions +
+           six_fidelity_functions]
