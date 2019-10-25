@@ -28,7 +28,7 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 bi_fidelity_functions = [
     borehole,
-    curretal88exp,
+    currin,
     park91a,
     park91b,
     forrester,
