@@ -18,7 +18,7 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 @row_vectorize
 def trid_hf(xx):
     temp1 = np.sum((xx - 1) ** 2, axis=1)
-    temp2 = np.sum(xx[:,:-1] * xx[:,1:])
+    temp2 = np.sum(xx[:,:-1] * xx[:,1:], axis=1)
     return temp1 - temp2
 
 @row_vectorize
