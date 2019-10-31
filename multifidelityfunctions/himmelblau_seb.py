@@ -1,12 +1,10 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-import numpy as np
-
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
-HM.py:
+himmelblau_seb.py:
 Booth function
 
 Authors: Sander van Rijn, Leiden University
@@ -26,14 +24,14 @@ General Public License for more details.
 
 
 @row_vectorize
-def himmelblau_hf(xx):
+def himmelblau_seb_hf(xx):
     """
     HIMMELBLAU FUNCTION
 
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx.T
+    x1, x2 = xx
 
     term1 = (x1**2 + x2 - 11)**2
     term2 = (x2**2 + x1 - 7)**2
@@ -42,33 +40,24 @@ def himmelblau_hf(xx):
 
 
 @row_vectorize
-def himmelblau_mf(xx):
+def himmelblau_seb_mf(xx):
     """
     HIMMELBLAU FUNCTION, MEDIUM FIDELITY CODE
+
+    Proposed by Sebastian Schmitt, Honda Research Institute Europe (2019)
 
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx.T
+    x1, x2 = xx
+    return himmelblau_seb_hf([0.75 * x1, 0.9 * x2]) + (0.9 * 0.75 * x1 * x2) ** 2 - 1
 
-    x1 *= .75
-    x2 *= .9
 
-    term1 = (x1**2 + x2 - 11)**2              # A -- E
-    # term2 = 7*x2                              # A
-    # term2 = 0                                 # B
-    # term2 = (x2**2 - 7)**2                    # C
-    # term2 = (x2**2 - 7)**2 + 5*x2**2 - 28     # D
-    term2 = (x2**2 - 7)**2 + 10*x2**2 - 45    # E
 
-    # term1 = himmelblau_hf([x1, x2])             # F
-    # term2 = x2**3 - (x1 + 1)**2                 # F
-
-    return term1 + term2
 
 
 @row_vectorize
-def himmelblau_lf(xx):
+def himmelblau_seb_lf(xx):
     """
     HIMMELBLAU FUNCTION, LOWER FIDELITY CODE
     Calls: himmelblau_hf
@@ -78,28 +67,16 @@ def himmelblau_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx.T
-
-    term1 = himmelblau_hf(np.hstack([0.5*x1.reshape(-1,1), 0.8*x2.reshape(-1,1)]))
-    term2 = x2**3 - (x1 + 1)**2
-
-    return term1 + term2
+    x1, x2 = xx
+    return himmelblau_seb_hf([0.7 * x1, 0.8 * x2]) + (x1 * x2) ** 2 - 1
 
 
 l_bound = [-4, -4]
 u_bound = [ 4,  4]
 
-himmelblau_3f = MultiFidelityFunction(
-    "himmelblau 3 fidelity",
+himmelblau_seb = MultiFidelityFunction(
+    "himmelblau sebastian",
     u_bound, l_bound,
-    [himmelblau_hf, himmelblau_mf, himmelblau_lf],
+    [himmelblau_seb_hf, himmelblau_seb_mf, himmelblau_seb_lf],
     fidelity_names=['high', 'medium', 'low']
-)
-
-
-himmelblau = MultiFidelityFunction(
-    "himmelblau",
-    u_bound, l_bound,
-    [himmelblau_hf, himmelblau_lf],
-    fidelity_names=['high', 'low']
 )

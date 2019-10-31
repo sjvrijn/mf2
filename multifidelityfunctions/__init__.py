@@ -3,19 +3,19 @@
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 from .artificialMultifidelity import artificial_multifidelity
 from .borehole import borehole
-from .curretal88exp import currin
+from .currin import currin
 from .park91a import park91a
 from .park91b import park91b
 from .paciorek import adjustable_paciorek
 from .trid import adjustable_trid
-from .BC import bohachevsky
-from .BR import adjustable_branin, branin
-from .BT import booth
-from .FR import forrester
-from .HM import himmelblau, himmelblau_3f
-from .HMseb import himmelblau_seb
-from .SC import sixHumpCamelBack
-from .Hartmann import adjustable_hartmann3, hartmann6
+from .bohachevsky import bohachevsky
+from .branin import adjustable_branin, branin
+from .booth import booth
+from .forrester import forrester
+from .himmelblau import himmelblau, himmelblau_3f
+from .himmelblau_seb import himmelblau_seb
+from .six_hump_camelback import six_hump_camelback
+from .hartmann import adjustable_hartmann3, hartmann6
 
 """
 multifidelityfunctions
@@ -37,7 +37,7 @@ bi_fidelity_functions = [
     bohachevsky,
     branin,
     booth,
-    sixHumpCamelBack,
+    six_hump_camelback,
 ]
 
 adjustable_bifidelity_functions = [

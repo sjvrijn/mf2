@@ -5,7 +5,7 @@ import numpy as np
 from .multiFidelityFunction import row_vectorize, MultiFidelityFunction
 
 """
-FR.py: Forrester function
+forrester.py: Forrester function
 
 This file contains the definition of an adapted version of the simple 1D
 example function as presented in the paper(s) by Forrester et al.

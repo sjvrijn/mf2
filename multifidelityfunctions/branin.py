@@ -7,7 +7,7 @@ import numpy as np
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
-BR.py:
+branin.py:
 Branin function
 
 Authors: Sander van Rijn, Leiden University

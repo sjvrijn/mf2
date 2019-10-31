@@ -6,7 +6,7 @@ import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 """
-Hartmann.py: contains the Hartmann 3d and 6d function
+hartmann.py: contains the Hartmann 3d and 6d function
 
 As defined in
  [3d] "Some Considerations Regarding the Use of Multi-fidelity Kriging in the

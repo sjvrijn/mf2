@@ -30,7 +30,7 @@ import multifidelityfunctions as mff
     (2, mff.branin),
     (2, mff.currin),
     (2, mff.himmelblau),
-    (2, mff.sixHumpCamelBack),
+    (2, mff.six_hump_camelback),
     (3, mff.adjustable_hartmann3(0)),
     (4, mff.park91a),
     (4, mff.park91b),

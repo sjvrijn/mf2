@@ -1,12 +1,13 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+
 import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
-BC.py:
-Bohachevsky function
+six_hump_camelback.py:
+Six-Hump Camel-Back function
 
 Authors: Sander van Rijn, Leiden University
 
@@ -25,47 +26,47 @@ General Public License for more details.
 
 
 @row_vectorize
-def bohachevsky_hf(xx):
+def six_hump_camelback_hf(xx):
     """
-    BOHACHEVSKY FUNCTION
+    SIX-HUMP CAMEL-BACK FUNCTION
 
     INPUT:
     xx = [x1, x2]
     """
     x1, x2 = xx.T
 
-    term1 = x1**2 + 2*x2**2
-    term2 = 0.3*np.cos(3*np.pi*x1)
-    term3 = 0.4*np.cos(4*np.pi*x2)
+    term1 = 4*x1**2 - 2.1*x1**4 + x1**6/3
+    term2 = x1*x2
+    term3 = 4*x2**2 + 4*x2**4
 
-    return term1 - term2 - term3 + 0.7
+    return term1 + term2 + term3
 
 
 @row_vectorize
-def bohachevsky_lf(xx):
+def six_hump_camelback_lf(xx):
     """
-    BOHACHEVSKY FUNCTION, LOWER FIDELITY CODE
-    Calls: bohachevsky_hf
+    SIX-HUMP CAMEL-BACK FUNCTION, LOWER FIDELITY CODE
+    Calls: sixHumpCamelBack_hf
     This function, from Dong et al. (2015), is used as the "low-accuracy code"
-    version of the function bohachevsky_hf.
+    version of the function sixHumpCamelBack_hf.
 
     INPUT:
     xx = [x1, x2]
     """
     x1, x2 = xx.T
 
-    term1 = bohachevsky_hf(np.hstack([0.7*x1.reshape(-1,1), x2.reshape(-1,1)]))
-    term2 = x1*x2 - 12
+    term1 = six_hump_camelback_hf(np.hstack([0.7 * x1.reshape(-1, 1), 0.7 * x2.reshape(-1, 1)]))
+    term2 = x1*x2 - 15
 
     return term1 + term2
 
 
-l_bound = [-5, -5]
-u_bound = [ 5,  5]
+l_bound = [-2, -2]
+u_bound = [ 2,  2]
 
-bohachevsky = MultiFidelityFunction(
-    "bohachevsky",
+six_hump_camelback = MultiFidelityFunction(
+    "six hump camelback",
     u_bound, l_bound,
-    [bohachevsky_hf, bohachevsky_lf],
+    [six_hump_camelback_hf, six_hump_camelback_lf],
     fidelity_names=['high', 'low']
 )

@@ -5,7 +5,7 @@ import numpy as np
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
-curretal88exp.py:
+currin.py:
 CURRIN ET AL. (1988) EXPONENTIAL FUNCTION
 
 Authors: Sonja Surjanovic, Simon Fraser University

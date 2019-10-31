@@ -6,7 +6,7 @@ import numpy as np
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
-BT.py:
+booth.py:
 Booth function
 
 Authors: Sander van Rijn, Leiden University

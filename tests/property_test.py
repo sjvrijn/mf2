@@ -78,7 +78,7 @@ def test_nd_functions(function, x):
     mff.branin,
     mff.currin,
     mff.himmelblau,
-    mff.sixHumpCamelBack,
+    mff.six_hump_camelback,
     mff.adjustable_branin(0.5),
     mff.adjustable_paciorek(0.5),
 ])
