@@ -21,8 +21,13 @@ class MultiFidelityFunction:
 
     def __init__(self, name, u_bound, l_bound, functions, fidelity_names=None):
         self.name = name.title().replace(' ', '')
-        self.u_bound = u_bound
-        self.l_bound = l_bound
+
+        if len(u_bound) != len(l_bound):
+            raise ValueError(f"Length of upper and lower bounds are not equal: "
+                             f"{len(u_bound)} != {len(l_bound)}")
+
+        self.u_bound = np.array(u_bound, dtype=np.float)
+        self.l_bound = np.array(l_bound, dtype=np.float)
 
         self.functions = functions
         if fidelity_names:
@@ -40,6 +45,11 @@ class MultiFidelityFunction:
     @property
     def ndim(self):
         return len(self.u_bound)
+
+
+    @property
+    def bounds(self):
+        return np.array([self.l_bound, self.u_bound], dtype=np.float)
 
 
     def __getitem__(self, item):
