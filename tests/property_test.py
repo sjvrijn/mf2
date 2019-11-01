@@ -52,8 +52,9 @@ def _test_2d_array_input(func, x):
 
 
 def _test_single_function(f, x):
-    X = rescale(np.array(x), range_in=ValueRange(0, 1),
-                range_out=ValueRange(np.array(f.l_bound), np.array(f.u_bound)))
+    X = rescale(np.array(x),
+                range_in=ValueRange(0, 1),
+                range_out=ValueRange(*f.bounds))
     for fidelity in f.functions:
         _test_2d_array_input(fidelity, X.tolist())  # list input TODO: make separate test for @row_vectorize decorator instead
         _test_2d_array_input(fidelity, X)  # direct numpy input

@@ -13,7 +13,7 @@ import numpy as np
 import pytest
 from pathlib import Path
 
-from .utils import rescale
+from .utils import rescale, ValueRange
 import multifidelityfunctions as mff
 
 
@@ -41,7 +41,8 @@ import multifidelityfunctions as mff
 def test_function_regression(ndim, func):
 
     data = rescale(np.load(Path(f'tests/regression_files/input_{ndim}d.npy')),
-                   range_in=(0,1), range_out=(np.array(func.l_bound), np.array(func.u_bound)))
+                   range_in=ValueRange(0,1),
+                   range_out=ValueRange(*func.bounds))
 
     for fid in func.fidelity_names:
         output = np.load(Path(f'tests/regression_files/output_{ndim}d_{func.name}_{fid}.npy'))

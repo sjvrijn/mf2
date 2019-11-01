@@ -11,7 +11,7 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 import multifidelityfunctions as mff
 import numpy as np
-from utils import rescale
+from utils import rescale, ValueRange
 from pathlib import Path
 
 
@@ -31,8 +31,9 @@ def create_and_store_output(ndim, func, fidelity):
     if not file_in.exists():
         create_and_store_input(ndim)
 
-    x = rescale(np.load(file_in), range_in=(0,1),
-                range_out=(np.array(func.l_bound), np.array(func.u_bound)))
+    x = rescale(np.load(file_in),
+                range_in=ValueRange(0,1),
+                range_out=ValueRange(*func.bounds))
     np.save(file_out, func[fidelity](x))
     print(f"output {ndim}d {func.name} created")
 
