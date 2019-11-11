@@ -11,8 +11,8 @@ install:
   - pip install coverage
   - pip install python-coveralls
 script:
-  - coverage run -m pytest --cov=multifidelityfunctions tests/property_test.py
   - pytest tests/regression_test.py
+  - pytest --cov=multifidelityfunctions tests/property_test.py
 after_success:
   - coveralls
 
