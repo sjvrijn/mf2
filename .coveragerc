@@ -1,0 +1,9 @@
+[run]
+source =
+    multifidelityfunctions
+
+[report]
+exclude_lines =
+    def __repr__
+    raise NotImplementedError
+    if __name__ == .__main__.:
