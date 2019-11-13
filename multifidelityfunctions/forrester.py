@@ -30,7 +30,7 @@ def forrester_high(X):
     ndim = X.shape[1]
     term1 = (6*X - 2)**2
     term2 = np.sin(12*X - 4)
-    return np.sum(22 - (term1 * term2 + 6.03), axis=1) / ndim
+    return np.sum(term1 * term2, axis=1) / ndim
 
 
 @row_vectorize
