@@ -42,12 +42,23 @@ def forrester_low(X):
     return term1 - (np.sum(term2, axis=1) / ndim)
 
 
-forrester = MultiFidelityFunction(
-    "forrester",
-    u_bound=u_bound, l_bound=l_bound,
-    functions=[forrester_high, forrester_low],
-    fidelity_names=['high', 'low'],
-)
+def Forrester(ndim=1):
+    if not isinstance(ndim, int):
+        raise TypeError(f"ndim must be of type 'int', not {type(ndim)}")
+    if ndim < 1:
+        raise ValueError(f"ndim must be at least 1, not {ndim}")
+
+    return MultiFidelityFunction(
+        "forrester",
+        u_bound=np.repeat(u_bound, ndim),
+        l_bound=np.repeat(l_bound, ndim),
+        functions=[forrester_high, forrester_low],
+        fidelity_names=['high', 'low'],
+    )
+
+
+forrester = Forrester(ndim=1)
+
 
 forrester_sf = MultiFidelityFunction(
     "forrester single fidelity",
