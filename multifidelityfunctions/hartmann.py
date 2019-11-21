@@ -1,10 +1,5 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-from functools import partial
 
-import numpy as np
-
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 """
 hartmann.py: contains the Hartmann 3d and 6d function
 
@@ -15,9 +10,11 @@ As defined in
       and Nam H. Kim (2016)
 """
 
-__author__ = 'Sander van Rijn'
-__email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
+from functools import partial
 
+import numpy as np
+
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 # Some constant values
 # Hartmann 3d

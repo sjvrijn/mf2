@@ -1,7 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
 himmelblau_seb.py:
@@ -21,6 +18,8 @@ useful, but WITHOUT ANY WARRANTY without even the implied warranty
 of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 General Public License for more details.
 """
+
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 
 @row_vectorize

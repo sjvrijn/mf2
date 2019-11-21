@@ -1,8 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-import numpy as np
-
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
 park91a.py:
@@ -29,6 +25,10 @@ General Public License for more details.
 For function details and reference information, see:
 http://www.sfu.ca/~ssurjano/
 """
+
+import numpy as np
+
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 
 @row_vectorize

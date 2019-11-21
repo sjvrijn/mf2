@@ -1,10 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-from functools import partial
-
-import numpy as np
-
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 """
 branin.py:
@@ -24,6 +18,12 @@ useful, but WITHOUT ANY WARRANTY without even the implied warranty
 of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 General Public License for more details.
 """
+
+from functools import partial
+
+import numpy as np
+
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 
 _four_pi_square = 4*np.pi**2

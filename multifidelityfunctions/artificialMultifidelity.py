@@ -1,6 +1,4 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
-import math
 
 """
 artificialMultifidelity.py:
@@ -60,8 +58,7 @@ References:
 ([Public full text PDF](http://wrap.warwick.ac.uk/79047/7/WRAP_CFD_TEC_merged_final.pdf))
 """
 
-__author__ = 'Sander van Rijn'
-__email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
+import math
 
 
 def evaluateFidelity1(inputs):

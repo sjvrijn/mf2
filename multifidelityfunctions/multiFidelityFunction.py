@@ -1,5 +1,13 @@
-#!/usr/bin/python
 # -*- coding: utf-8 -*-
+
+"""
+multiFidelityFunction.py:
+
+Defines the MultiFidelityFunction class for encapsuling all fidelities and
+parameters of a multi-fidelity function. Also contains any other utility
+functions that are commonly used by the various mf-functions in this package.
+"""
+
 from numbers import Integral
 import numpy as np
 
@@ -20,6 +28,22 @@ def row_vectorize(func):
 class MultiFidelityFunction:
 
     def __init__(self, name, u_bound, l_bound, functions, fidelity_names=None):
+        """All fidelity levels and parameters of a multi-fidelity function.
+
+        :param name:           Name of the multi-fidelity function.
+        :param u_bound:        Upper bound of the intended input range. Length
+                               is also used to determine the (fixed)
+                               dimensionality of the function.
+        :param l_bound:        Lower bound of the intended input range. Must be
+                               of same length as `u_bound`.
+        :param functions:      Iterable of function handles for the different
+                               fidelities, assumed to be sorted in *descending*
+                               order.
+        :param fidelity_names: List of names for the fidelities. Must be given
+                               to support dictionary- or attribute-style
+                               fidelity indexing, such as `f['high']()` and
+                               `f.high()`
+        """
         self.name = name.title().replace(' ', '')
 
         if len(u_bound) != len(l_bound):

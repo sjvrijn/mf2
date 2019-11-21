@@ -1,5 +1,11 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
+
+"""
+multifidelityfunctions
+
+A collection of analytical functions with 2 or more available fidelities.
+"""
+
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 from .artificialMultifidelity import artificial_multifidelity
 from .borehole import borehole
@@ -17,14 +23,10 @@ from .himmelblau_seb import himmelblau_seb
 from .six_hump_camelback import six_hump_camelback
 from .hartmann import adjustable_hartmann3, hartmann6
 
-"""
-multifidelityfunctions
-
-A collection of analytical functions with 2 or more available fidelities.
-"""
 
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
+
 
 bi_fidelity_functions = (
     borehole,

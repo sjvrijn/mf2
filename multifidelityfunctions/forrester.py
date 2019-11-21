@@ -1,8 +1,4 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-import numpy as np
-
-from .multiFidelityFunction import row_vectorize, MultiFidelityFunction
 
 """
 forrester.py: Forrester function
@@ -18,8 +14,9 @@ This version has been adapted in the following ways:
    is calculated as the weighted sum of each separable dimension.
 """
 
-__author__ = 'Sander van Rijn'
-__email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
+import numpy as np
+
+from .multiFidelityFunction import row_vectorize, MultiFidelityFunction
 
 
 l_bound = [0]

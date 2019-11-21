@@ -1,10 +1,5 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-from functools import partial
 
-import numpy as np
-
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 """
 paciorek.py: contains the Paciorek 2d function
 
@@ -12,8 +7,12 @@ As defined in "Some Considerations Regarding the Use of Multi-fidelity Kriging
 in the Construction of Surrogate Models" by David J.J. Toal (2015)
 """
 
-__author__ = 'Sander van Rijn'
-__email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
+from functools import partial
+
+import numpy as np
+
+from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+
 
 @row_vectorize
 def paciorek_hf(xx):
