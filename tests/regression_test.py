@@ -17,7 +17,7 @@ from .utils import rescale, ValueRange
 import multifidelityfunctions as mff
 
 
-@pytest.mark.parametrize("ndim,func", [
+_functions_to_test = (
     (1, mff.forrester),
     (2, mff.forrester),
     (4, mff.forrester),
@@ -39,7 +39,9 @@ import multifidelityfunctions as mff
     (2, mff.adjustable.paciorek(0)),
     (3, mff.adjustable.hartmann3(0)),
     (10, mff.adjustable.trid(0)),
-])
+)
+
+@pytest.mark.parametrize("ndim,func", _functions_to_test)
 def test_function_regression(ndim, func):
 
     data = rescale(np.load(Path(f'tests/regression_files/input_{ndim}d.npy')),
