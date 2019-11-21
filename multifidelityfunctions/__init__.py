@@ -25,7 +25,7 @@ import multifidelityfunctions.adjustable
 
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
-__version__ = '2019.11.0'
+__version__ = '2019.11.1'
 
 
 bi_fidelity_functions = (
