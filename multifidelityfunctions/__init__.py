@@ -11,7 +11,7 @@ from .trid import adjustable_trid
 from .bohachevsky import bohachevsky
 from .branin import adjustable_branin, branin
 from .booth import booth
-from .forrester import forrester
+from .forrester import forrester, Forrester
 from .himmelblau import himmelblau, himmelblau_3f
 from .himmelblau_seb import himmelblau_seb
 from .six_hump_camelback import six_hump_camelback
@@ -26,32 +26,33 @@ A collection of analytical functions with 2 or more available fidelities.
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
-bi_fidelity_functions = [
+bi_fidelity_functions = (
     borehole,
     currin,
     park91a,
     park91b,
     forrester,
+    Forrester,
     hartmann6,
     himmelblau,
     bohachevsky,
     branin,
     booth,
     six_hump_camelback,
-]
+)
 
-adjustable_bifidelity_functions = [
+adjustable_bifidelity_functions = (
     adjustable_branin,
     adjustable_paciorek,
     adjustable_hartmann3,
     adjustable_trid,
-]
+)
 
-tri_fidelity_functions = [
+tri_fidelity_functions = (
     himmelblau_3f,
     himmelblau_seb,
-]
+)
 
-six_fidelity_functions = [
+six_fidelity_functions = (
     artificial_multifidelity,
-]
+)
