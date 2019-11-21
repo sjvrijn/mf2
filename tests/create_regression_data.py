@@ -36,23 +36,23 @@ def create_and_store_input(ndim):
         print(f"input {ndim}d created")
 
 
-def create_and_store_output(ndim, func, fidelity):
-    file_out = Path(f'regression_files/output_{ndim}d_{func.name}_{fidelity}.npy')
+def create_and_store_output(func, fidelity):
+    file_out = Path(f'regression_files/output_{func.ndim}d_{func.name}_{fidelity}.npy')
     if file_out.exists():
         return
 
-    file_in = Path(f'regression_files/input_{ndim}d.npy')
+    file_in = Path(f'regression_files/input_{func.ndim}d.npy')
     if not file_in.exists():
-        create_and_store_input(ndim)
+        create_and_store_input(func.ndim)
 
     x = rescale(np.load(file_in),
                 range_in=ValueRange(0,1),
                 range_out=ValueRange(*func.bounds))
     np.save(file_out, func[fidelity](x))
-    print(f"output {ndim}d {func.name} created")
+    print(f"output {func.ndim}d {func.name} created")
 
 
 if __name__ == '__main__':
-    for nd, func in _functions_to_test:
+    for func in _functions_to_test:
         for fid in func.fidelity_names:
-            create_and_store_output(nd, func, fid)
+            create_and_store_output(func, fid)

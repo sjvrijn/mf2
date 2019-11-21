@@ -18,36 +18,36 @@ import multifidelityfunctions as mff
 
 
 _functions_to_test = (
-    (1, mff.forrester),
-    (2, mff.forrester),
-    (4, mff.forrester),
-    (6, mff.forrester),
-    (8, mff.forrester),
+    mff.forrester,
+    mff.Forrester(ndim=2),
+    mff.Forrester(ndim=4),
+    mff.Forrester(ndim=6),
+    mff.Forrester(ndim=8),
 
-    (2, mff.bohachevsky),
-    (2, mff.booth),
-    (2, mff.branin),
-    (2, mff.currin),
-    (2, mff.himmelblau),
-    (2, mff.six_hump_camelback),
-    (4, mff.park91a),
-    (4, mff.park91b),
-    (6, mff.hartmann6),
-    (8, mff.borehole),
+    mff.bohachevsky,
+    mff.booth,
+    mff.branin,
+    mff.currin,
+    mff.himmelblau,
+    mff.six_hump_camelback,
+    mff.park91a,
+    mff.park91b,
+    mff.hartmann6,
+    mff.borehole,
 
-    (2, mff.adjustable.branin(0)),
-    (2, mff.adjustable.paciorek(0)),
-    (3, mff.adjustable.hartmann3(0)),
-    (10, mff.adjustable.trid(0)),
+    mff.adjustable.branin(0),
+    mff.adjustable.paciorek(0),
+    mff.adjustable.hartmann3(0),
+    mff.adjustable.trid(0),
 )
 
-@pytest.mark.parametrize("ndim,func", _functions_to_test)
-def test_function_regression(ndim, func):
+@pytest.mark.parametrize("func", _functions_to_test)
+def test_function_regression(func):
 
-    data = rescale(np.load(Path(f'tests/regression_files/input_{ndim}d.npy')),
+    data = rescale(np.load(Path(f'tests/regression_files/input_{func.ndim}d.npy')),
                    range_in=ValueRange(0,1),
                    range_out=ValueRange(*func.bounds))
 
     for fid in func.fidelity_names:
-        output = np.load(Path(f'tests/regression_files/output_{ndim}d_{func.name}_{fid}.npy'))
+        output = np.load(Path(f'tests/regression_files/output_{func.ndim}d_{func.name}_{fid}.npy'))
         np.testing.assert_allclose(func[fid](data), output)
