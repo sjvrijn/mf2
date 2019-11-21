@@ -26,6 +26,7 @@ from .hartmann import adjustable_hartmann3, hartmann6
 
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
+__version__ = '2019.11.0'
 
 
 bi_fidelity_functions = (
