@@ -11,7 +11,7 @@ from functools import partial
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from multifidelityfunctions.multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 
 @row_vectorize
@@ -27,7 +27,7 @@ def adjustable_trid_lf(xx, a4):
     return temp1 - temp2
 
 
-def adjustable_trid(a4):
+def trid(a4):
     return MultiFidelityFunction(
         f"adjustable Trid {a4}",
         [1]*10, [0]*10,

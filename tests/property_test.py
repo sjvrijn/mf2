@@ -80,8 +80,8 @@ def test_nd_functions(function, x):
     mff.currin,
     mff.himmelblau,
     mff.six_hump_camelback,
-    mff.adjustable_branin(0.5),
-    mff.adjustable_paciorek(0.5),
+    mff.adjustable.branin(0.5),
+    mff.adjustable.paciorek(0.5),
 ])
 def test_2d_functions(function, x):
     _test_single_function(function, x)
@@ -89,7 +89,7 @@ def test_2d_functions(function, x):
 
 @given(rectangle_lists(n=3))
 @pytest.mark.parametrize("function", [
-    mff.adjustable_hartmann3(0.5),
+    mff.adjustable.hartmann3(0.5),
 ])
 def test_3d_functions(function, x):
     _test_single_function(function, x)
@@ -122,7 +122,7 @@ def test_8d_functions(function, x):
 
 @given(rectangle_lists(n=10))
 @pytest.mark.parametrize("function", [
-    mff.adjustable_trid(0.5),
+    mff.adjustable.trid(0.5),
 ])
 def test_10d_functions(function, x):
     _test_single_function(function, x)

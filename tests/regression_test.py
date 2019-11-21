@@ -23,20 +23,22 @@ import multifidelityfunctions as mff
     (4, mff.forrester),
     (6, mff.forrester),
     (8, mff.forrester),
-    (2, mff.adjustable_branin(0)),
-    (2, mff.adjustable_paciorek(0)),
+
     (2, mff.bohachevsky),
     (2, mff.booth),
     (2, mff.branin),
     (2, mff.currin),
     (2, mff.himmelblau),
     (2, mff.six_hump_camelback),
-    (3, mff.adjustable_hartmann3(0)),
     (4, mff.park91a),
     (4, mff.park91b),
     (6, mff.hartmann6),
     (8, mff.borehole),
-    (10, mff.adjustable_trid(0)),
+
+    (2, mff.adjustable.branin(0)),
+    (2, mff.adjustable.paciorek(0)),
+    (3, mff.adjustable.hartmann3(0)),
+    (10, mff.adjustable.trid(0)),
 ])
 def test_function_regression(ndim, func):
 

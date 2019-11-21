@@ -10,28 +10,11 @@ As defined in
       and Nam H. Kim (2016)
 """
 
-from functools import partial
-
 import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 # Some constant values
-# Hartmann 3d
-_alpha3 = np.array([1.0, 1.2, 3.0, 3.2])[:,np.newaxis]
-_beta3 = np.array([
-    [3.0, 10.0, 30.0],
-    [0.1, 10.0, 35.0],
-    [3.0, 10.0, 30.0],
-    [0.1, 10.0, 35.0],
-]).T[np.newaxis,:,:]
-_P3 = np.array([
-    [.3689, .1170, .2673],
-    [.4699, .4387, .7470],
-    [.1091, .8732, .5547],
-    [.0381, .5743, .8828],
-]).T[np.newaxis,:,:]
-
 # Hartmann 6d
 _alpha6_low = np.array([0.5, 0.5, 2.0, 4.0])[:,np.newaxis]
 _alpha6_high = np.array([1.0, 1.2, 3.0, 3.2])[:, np.newaxis]
@@ -48,43 +31,6 @@ _P6 = np.array([
     [.4047, .8828, .8732, .5743, .1091, .0381],
 ]).T[np.newaxis,:,:]
 _four_nine_exp = np.exp(-4 / 9)
-
-
-@row_vectorize
-def hartmann3_hf(xx):
-
-    xx = xx[:,:,np.newaxis]
-
-    tmp1 = (xx - _P3) ** 2 * _beta3
-    tmp2 = np.exp(-np.sum(tmp1, axis=1))
-    tmp3 = tmp2.dot(_alpha3)
-
-    return -tmp3.reshape((-1,))
-
-
-@row_vectorize
-def adjustable_hartmann3_lf(xx, a3):
-
-    factor = 3/4 * (a3+1)
-
-    xx = xx[:,:,np.newaxis]
-
-    tmp1 = (xx - (_P3 * factor))
-    tmp2 = tmp1 ** 2 * _beta3
-    tmp3 = np.exp(-np.sum(tmp2, axis=1))
-    tmp4 = tmp3.dot(_alpha3)
-
-    return -tmp4.reshape((-1,))
-
-
-def adjustable_hartmann3(a3):
-
-    return MultiFidelityFunction(
-        f"adjustable Hartmann3 {a3}",
-        [1] * 3, [0] * 3,
-        [hartmann3_hf, partial(adjustable_hartmann3_lf, a3=a3)],
-        fidelity_names=['high', 'low'],
-    )
 
 
 @row_vectorize

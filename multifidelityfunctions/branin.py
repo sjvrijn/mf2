@@ -19,8 +19,6 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 General Public License for more details.
 """
 
-from functools import partial
-
 import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
@@ -82,17 +80,6 @@ def branin_lf(xx):
     return term1 - term2 + term3 - term4
 
 
-@row_vectorize
-def adjustable_branin_lf(xx, a1):
-
-    x1, x2 = xx.T
-
-    term1 = branin_base(xx)
-    term2 = x2 - (5.1 * (x1**2 / _four_pi_square)) + ((5*x1) / np.pi) - 6
-
-    return term1 - (a1+0.5) * term2**2
-
-
 
 l_bound = [-5,  0]
 u_bound = [10, 15]
@@ -103,12 +90,3 @@ branin = MultiFidelityFunction(
     [branin_hf, branin_lf],
     fidelity_names=['high', 'low'],
 )
-
-def adjustable_branin(a1):
-
-    return MultiFidelityFunction(
-        f"adjustable Branin {a1}",
-        u_bound, l_bound,
-        [branin_base, partial(adjustable_branin_lf, a1=a1)],
-        fidelity_names=['high', 'low'],
-    )

@@ -11,7 +11,7 @@ from functools import partial
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from multifidelityfunctions.multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 
 @row_vectorize
@@ -29,7 +29,7 @@ def adjustable_paciorek_lf(xx, a2):
     return temp1 - (temp2*temp3)
 
 
-def adjustable_paciorek(a2):
+def paciorek(a2):
     return MultiFidelityFunction(
         f"adjustable Paciorek {a2}",
         [1]*2, [0.3]*2,
