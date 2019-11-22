@@ -1,7 +1,7 @@
-mff.forrester function
+mf2.forrester function
 ======================
 
-.. automodule:: multifidelityfunctions.forrester
+.. automodule:: mf2.forrester
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,7 +1,7 @@
-mff.currin function
+mf2.branin function
 ===================
 
-.. automodule:: multifidelityfunctions.currin
+.. automodule:: mf2.branin
     :members:
     :undoc-members:
     :show-inheritance:

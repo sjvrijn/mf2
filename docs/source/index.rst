@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Multi-Fidelity Functions's documentation!
+Welcome to MF2's documentation!
 ====================================================
 
 
@@ -17,7 +17,7 @@ Contents
    :maxdepth: 1
 
    examples
-   multifidelityfunctions
+   mf2
 
 
 

@@ -1,7 +1,7 @@
-mff.park91a function
+mf2.park91a function
 ====================
 
-.. automodule:: multifidelityfunctions.park91a
+.. automodule:: mf2.park91a
     :members:
     :undoc-members:
     :show-inheritance:

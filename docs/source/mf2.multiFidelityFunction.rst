@@ -1,7 +1,7 @@
-mff.multiFidelityFunction
+mf2.multiFidelityFunction
 =========================
 
-.. automodule:: multifidelityfunctions.multiFidelityFunction
+.. automodule:: mf2.multiFidelityFunction
     :members:
     :special-members: __init__
     :undoc-members:

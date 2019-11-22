@@ -1,7 +1,7 @@
-mff.borehole function
+mf2.borehole function
 =====================
 
-.. automodule:: multifidelityfunctions.borehole
+.. automodule:: mf2.borehole
     :members:
     :undoc-members:
     :show-inheritance:

@@ -1,14 +1,13 @@
 Examples
 ========
 
-This page contains some examples of typical use of the ``multifidelityfunctions``
-package.
+This page contains some examples of typical use of the ``mf2`` package.
 
 
 Importing
 ---------
 
-First of all, the import convention for this package is to import it as ``mff``::
+First of all, the import convention for this package is to import it as ``mf2``::
 
     import mf2
     import numpy as np
@@ -24,23 +23,23 @@ This means that everything about the function is fixed:
 * number of fidelity levels
 * relation between the different fidelity levels
 
-Examples of these functions include the 2D ``mff.booth`` and 8D ``mff.borehole``
+Examples of these functions include the 2D ``mf2.booth`` and 8D ``mf2.borehole``
 functions.
 
 These functions can be directly referenced, and can directly be given one or
 more row-vectors to evaluate simultaneously::
 
     >>> x2 = np.random.random(2)       # single 2D row-vector
-    >>> print(mff.booth.high(x2), mff.booth.low(x2))
+    >>> print(mf2.booth.high(x2), mf2.booth.low(x2))
     ...
     >>> x2 = np.random.random((5, 2))  # 5 row-vectors in 2D
-    >>> print(mff.booth.high(x2), mff.booth.low(x2))
+    >>> print(mf2.booth.high(x2), mf2.booth.low(x2))
     ...
     >>> x8 = np.random.random(8)       # single 8D row-vector
-    >>> print(mff.borehole.high(x8), mff.borehole.low(x8))
+    >>> print(mf2.borehole.high(x8), mf2.borehole.low(x8))
     ...
     >>> x8 = np.random.random((5, 8))  # 5 row-vectors in 8D
-    >>> print(mff.borehole.high(x8), mff.borehole.low(x8))
+    >>> print(mf2.borehole.high(x8), mf2.borehole.low(x8))
     ...
 
 
@@ -49,10 +48,10 @@ Dynamic Dimensionality Functions
 
 Some functions are dynamic in the dimensionality of the input they accept. An
 example of such a function is the ``forrester`` function. The regular 1D
-function is included as ``mff.forrester``, but a custom n-dimensional version
+function is included as ``mf2.forrester``, but a custom n-dimensional version
 can be obtained by calling the factory::
 
-    forrester_4d = mff.Forrester(ndim=4)
+    forrester_4d = mf2.Forrester(ndim=4)
 
 This ``forrester_4d`` is then a regular fixed function as seen before.
 
@@ -65,7 +64,7 @@ correlation between the different high and low fidelity levels. For these too,
 you can simply call a factory that will return a version of that function with
 the parameter fixed to your specification::
 
-    paciorek_high_corr = mff.adjustablepaciorek(a2=0.1)
+    paciorek_high_corr = mf2.adjustablepaciorek(a2=0.1)
 
 The exact relationship between the input parameter and resulting correlation
 can be found in the documentation of the specific functions.
@@ -84,7 +83,7 @@ levels. This class can also be used to define your own multi-fidelity function::
     def sphere_lf(x):
         return abs(x)
 
-    mff_sphere = MultiFidelityFunction(
+    mf2_sphere = MultiFidelityFunction(
         name='sphere',
         u_bound=[1],
         l_bound=[-1],

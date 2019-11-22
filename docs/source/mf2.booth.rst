@@ -1,7 +1,7 @@
-mff.booth function
+mf2.booth function
 ==================
 
-.. automodule:: multifidelityfunctions.booth
+.. automodule:: mf2.booth
     :members:
     :undoc-members:
     :show-inheritance:

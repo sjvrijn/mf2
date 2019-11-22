@@ -1,7 +1,7 @@
-mff.himmelblau function
+mf2.himmelblau function
 =======================
 
-.. automodule:: multifidelityfunctions.himmelblau
+.. automodule:: mf2.himmelblau
     :members:
     :undoc-members:
     :show-inheritance:

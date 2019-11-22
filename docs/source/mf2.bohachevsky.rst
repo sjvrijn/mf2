@@ -1,7 +1,7 @@
-mff.bohachevsky function
+mf2.bohachevsky function
 ========================
 
-.. automodule:: multifidelityfunctions.bohachevsky
+.. automodule:: mf2.bohachevsky
     :members:
     :undoc-members:
     :show-inheritance:

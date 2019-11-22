@@ -1,7 +1,7 @@
-mff.hartmann function
+mf2.hartmann function
 =====================
 
-.. automodule:: multifidelityfunctions.hartmann
+.. automodule:: mf2.hartmann
     :members:
     :undoc-members:
     :show-inheritance:
