@@ -6,7 +6,7 @@ hartmann.py: contains the Hartmann 3d and 6d function
 As defined in
  [3d] "Some Considerations Regarding the Use of Multi-fidelity Kriging in the
       Construction of Surrogate Models" by David J.J. Toal (2015)
- [6d] "Remarks on multi-fidelity surrogates" by Chanyoung Park, Raphael T. Haftka 
+ [6d] "Remarks on multi-fidelity surrogates" by Chanyoung Park, Raphael T. Haftka
       and Nam H. Kim (2016)
 """
 

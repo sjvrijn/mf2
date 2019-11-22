@@ -63,7 +63,7 @@ def park91a_lf(xx):
     INPUT:
     xx = [x1, x2, x3, x4]
     """
-    x1, x2, x3, x4 = xx.T
+    x1, x2, x3, _ = xx.T
     yh = park91a_hf(xx)
 
     term1 = (1 + np.sin(x1) / 10) * yh

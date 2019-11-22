@@ -55,7 +55,7 @@ def branin_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
-    x1, x2 = xx.T
+    _, x2 = xx.T
     return branin_base(xx) - 2.25*x2  # 22.5
 
 
