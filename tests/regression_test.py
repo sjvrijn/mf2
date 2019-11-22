@@ -14,7 +14,7 @@ import pytest
 from pathlib import Path
 
 from .utils import rescale, ValueRange
-import multifidelityfunctions as mff
+import mf2 as mff
 
 
 _functions_to_test = (

@@ -12,7 +12,7 @@ install:
   - pip install python-coveralls
 script:
   - pytest tests/regression_test.py
-  - pytest --cov=multifidelityfunctions tests/property_test.py
+  - pytest --cov=mf2 tests/property_test.py
 after_success:
   - coveralls
 

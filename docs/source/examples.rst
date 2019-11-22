@@ -10,7 +10,7 @@ Importing
 
 First of all, the import convention for this package is to import it as ``mff``::
 
-    import multifidelityfunctions as mff
+    import mf2
     import numpy as np
 
 

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-multifidelityfunctions
+mf2
 
 A collection of analytical functions with 2 or more available fidelities.
 """
@@ -21,11 +21,11 @@ from .himmelblau_seb import himmelblau_seb
 from .six_hump_camelback import six_hump_camelback
 from .hartmann import hartmann6
 
-import multifidelityfunctions.adjustable
+import mf2.adjustable
 
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
-__version__ = '2019.11.1'
+__version__ = '2019.11.2'
 
 
 bi_fidelity_functions = (

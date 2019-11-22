@@ -3,7 +3,7 @@
 
 """
 property_test.py: testing file with property-based tests
-for multifidelityfunctions package
+for mf2 package
 """
 
 __author__ = 'Sander van Rijn'
@@ -16,7 +16,7 @@ from hypothesis.strategies import floats, integers, lists
 import pytest
 
 from .utils import rescale, ValueRange
-import multifidelityfunctions as mff
+import mf2 as mff
 
 
 @mff.row_vectorize

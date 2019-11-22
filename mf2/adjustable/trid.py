@@ -11,7 +11,7 @@ from functools import partial
 
 import numpy as np
 
-from multifidelityfunctions.multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from mf2.multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 
 @row_vectorize

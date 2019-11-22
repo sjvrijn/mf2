@@ -9,7 +9,7 @@ from functools import partial
 
 import numpy as np
 
-from multifidelityfunctions.multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from mf2.multiFidelityFunction import MultiFidelityFunction, row_vectorize
 
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
