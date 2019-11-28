@@ -3,6 +3,7 @@
 [![Coverage Status](https://coveralls.io/repos/github/sjvrijn/mf2/badge.svg?branch=master)](https://coveralls.io/github/sjvrijn/mf2?branch=master)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/54144e7d406b4558a14996b06a89adf8)](https://www.codacy.com/manual/sjvrijn/mf2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sjvrijn/mf2&amp;utm_campaign=Badge_Grade)
 [![Documentation Status](https://readthedocs.org/projects/mf2/badge/?version=latest)](https://mf2.readthedocs.io/en/latest/?badge=latest)
+[![Gitter](https://badges.gitter.im/pymf2/community.svg)](https://gitter.im/pymf2/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
 # Multi-Fidelity-Functions
 
