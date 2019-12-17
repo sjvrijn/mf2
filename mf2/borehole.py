@@ -2,7 +2,7 @@
 
 """Implementation of the bi-fidelity Borehole function as defined in:
 
-    Shifeng Xiong , Peter Z. G. Qian & C. F. Jeff Wu (2013) Sequential
+    Shifeng Xiong, Peter Z. G. Qian & C. F. Jeff Wu (2013) Sequential
     Design and Analysis of High-Accuracy and Low-Accuracy Computer
     Codes, Technometrics, 55:1, 37-46, DOI: 10.1080/00401706.2012.723572
 
@@ -19,11 +19,11 @@ Copyright 2013. Derek Bingham, Simon Fraser University.
 THERE IS NO WARRANTY, EXPRESS OR IMPLIED. WE DO NOT ASSUME ANY LIABILITY
 FOR THE USE OF THIS SOFTWARE.  If software is modified to produce
 derivative works, such modified software should be clearly marked.
-Additionally, this program is free software you can redistribute it
+Additionally, this program is free software; you can redistribute it
 and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation version 2.0 of the License.
+published by the Free Software Foundation; version 2.0 of the License.
 Accordingly, this program is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY without even the implied warranty
+useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 General Public License for more details.
 """

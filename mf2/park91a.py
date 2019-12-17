@@ -1,13 +1,18 @@
 # -*- coding: utf-8 -*-
 
-"""
-park91a.py:
-PARK (1991) FUNCTION 1
+"""Implementation of the bi-fidelity Park ('91) A function as defined in:
 
-Authors: Sonja Surjanovic, Simon Fraser University
-         Derek Bingham, Simon Fraser University
-         Sander van Rijn, Leiden University (Python port)
-Questions/Comments: Please email Derek Bingham at dbingham@stat.sfu.ca.
+    Shifeng Xiong, Peter Z. G. Qian & C. F. Jeff Wu (2013) Sequential
+    Design and Analysis of High-Accuracy and Low-Accuracy Computer
+    Codes, Technometrics, 55:1, 37-46, DOI: 10.1080/00401706.2012.723572
+
+
+Adapted from matlab implementation at
+
+    https://www.sfu.ca/~ssurjano/park91a.html, retrieved 2017-10-02
+
+by: Sonja Surjanovic, Simon Fraser University
+    Derek Bingham, Simon Fraser University
 
 Copyright 2013. Derek Bingham, Simon Fraser University.
 
@@ -21,9 +26,6 @@ Accordingly, this program is distributed in the hope that it will be
 useful, but WITHOUT ANY WARRANTY; without even the implied warranty
 of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 General Public License for more details.
-
-For function details and reference information, see:
-http://www.sfu.ca/~ssurjano/
 """
 
 import numpy as np
