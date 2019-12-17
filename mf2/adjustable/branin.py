@@ -1,9 +1,17 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+"""Implementation of the adjustable bi-fidelity Branin function
+as defined in:
+
+    Toal, D.J.J. Some considerations regarding the use of multi-
+    fidelity Kriging in the construction of surrogate models.
+    Struct Multidisc Optim 51, 1223–1245 (2015)
+    doi:10.1007/s00158-014-1209-5
 """
-Filename.py: << A short summary docstring about this file >>
-"""
+
+
+
 
 from functools import partial
 

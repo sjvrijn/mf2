@@ -1,8 +1,13 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-"""
-Filename.py: << A short summary docstring about this file >>
+"""Implementation of the adjustable bi-fidelity Hartmann3 function
+as defined in:
+
+    Toal, D.J.J. Some considerations regarding the use of multi-
+    fidelity Kriging in the construction of surrogate models.
+    Struct Multidisc Optim 51, 1223–1245 (2015)
+    doi:10.1007/s00158-014-1209-5
 """
 
 from functools import partial

@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 
-"""
-trid.py: contains the Trid 10d function
+"""Implementation of the adjustable bi-fidelity Trid function
+as defined in:
 
-As defined in "Some Considerations Regarding the Use of Multi-fidelity Kriging
-in the Construction of Surrogate Models" by David J.J. Toal (2015)
+    Toal, D.J.J. Some considerations regarding the use of multi-
+    fidelity Kriging in the construction of surrogate models.
+    Struct Multidisc Optim 51, 1223–1245 (2015)
+    doi:10.1007/s00158-014-1209-5
 """
 
 from functools import partial

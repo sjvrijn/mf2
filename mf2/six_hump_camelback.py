@@ -1,22 +1,11 @@
 # -*- coding: utf-8 -*-
 
-"""
-six_hump_camelback.py:
-Six-Hump Camel-Back function
+"""Implementation of the bi-fidelity Six-hump Camel-back function
+as defined in:
 
-Authors: Sander van Rijn, Leiden University
-
-
-THERE IS NO WARRANTY, EXPRESS OR IMPLIED. WE DO NOT ASSUME ANY LIABILITY
-FOR THE USE OF THIS SOFTWARE.  If software is modified to produce
-derivative works, such modified software should be clearly marked.
-Additionally, this program is free software you can redistribute it
-and/or modify it under the terms of the GNU General Public License as
-published by the Free Software Foundation version 2.0 of the License.
-Accordingly, this program is distributed in the hope that it will be
-useful, but WITHOUT ANY WARRANTY without even the implied warranty
-of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
-General Public License for more details.
+    Dong, H., Song, B., Wang, P. et al. Multi-fidelity information
+    fusion based on prediction of kriging. Struct Multidisc Optim
+    51, 1267–1280 (2015) doi:10.1007/s00158-014-1213-9
 """
 
 import numpy as np
