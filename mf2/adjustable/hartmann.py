@@ -9,7 +9,7 @@ from functools import partial
 
 import numpy as np
 
-from mf2.multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from mf2.multiFidelityFunction import MultiFidelityFunction
 
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
@@ -32,8 +32,8 @@ _P3 = np.array([
 ]).T[np.newaxis,:,:]
 
 
-@row_vectorize
 def hartmann3_hf(xx):
+    xx = np.atleast_2d(xx)
 
     xx = xx[:,:,np.newaxis]
 
@@ -44,8 +44,8 @@ def hartmann3_hf(xx):
     return -tmp3.reshape((-1,))
 
 
-@row_vectorize
 def adjustable_hartmann3_lf(xx, a3):
+    xx = np.atleast_2d(xx)
 
     factor = 3/4 * (a3+1)
 

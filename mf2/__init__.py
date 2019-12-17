@@ -6,7 +6,7 @@ mf2
 A collection of analytical functions with 2 or more available fidelities.
 """
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction
 from .artificialMultifidelity import artificial_multifidelity
 from .borehole import borehole
 from .currin import currin

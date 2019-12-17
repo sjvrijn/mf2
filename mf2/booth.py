@@ -21,10 +21,9 @@ General Public License for more details.
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction
 
 
-@row_vectorize
 def booth_hf(xx):
     """
     BOOTH FUNCTION
@@ -32,6 +31,8 @@ def booth_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     term1 = (x1 + 2*x2 - 7)**2
@@ -40,7 +41,6 @@ def booth_hf(xx):
     return term1 + term2
 
 
-@row_vectorize
 def booth_lf(xx):
     """
     BOOTH FUNCTION, LOWER FIDELITY CODE
@@ -51,6 +51,8 @@ def booth_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     term1 = booth_hf(np.hstack([.4*x1.reshape(-1,1), x2.reshape(-1,1)]))

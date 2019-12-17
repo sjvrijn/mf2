@@ -30,13 +30,12 @@ General Public License for more details.
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction
 
 
 _tau = 2*np.pi
 
 
-@row_vectorize
 def borehole_hf(xx):
     """
         BOREHOLE FUNCTION
@@ -45,6 +44,8 @@ def borehole_hf(xx):
         inputs = [rw, r, Tu, Hu, Tl, Hl, L, Kw]
         output = water flow rate
     """
+    xx = np.atleast_2d(xx)
+
     rw, r, Tu, Hu, Tl, Hl, L, Kw = xx.T
 
     frac1 = _tau * Tu * (Hu-Hl)
@@ -56,7 +57,6 @@ def borehole_hf(xx):
     return frac1 / frac2
 
 
-@row_vectorize
 def borehole_lf(xx):
     """
         BOREHOLE FUNCTION, LOWER FIDELITY CODE
@@ -67,6 +67,8 @@ def borehole_lf(xx):
         inputs = [rw, r, Tu, Hu, Tl, Hl, L, Kw]
         output = water flow rate
     """
+    xx = np.atleast_2d(xx)
+
     rw, r, Tu, Hu, Tl, Hl, L, Kw = xx.T
 
     frac1 = 5 * Tu * (Hu-Hl)

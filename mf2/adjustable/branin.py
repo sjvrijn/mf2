@@ -9,7 +9,7 @@ from functools import partial
 
 import numpy as np
 
-from mf2.multiFidelityFunction import row_vectorize, MultiFidelityFunction
+from mf2.multiFidelityFunction import MultiFidelityFunction
 from mf2.branin import branin_base, l_bound, u_bound
 
 __author__ = 'Sander van Rijn'
@@ -19,8 +19,8 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 _four_pi_square = 4*np.pi**2
 
 
-@row_vectorize
 def adjustable_branin_lf(xx, a1):
+    xx = np.atleast_2d(xx)
 
     x1, x2 = xx.T
 

@@ -11,17 +11,19 @@ from functools import partial
 
 import numpy as np
 
-from mf2.multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from mf2.multiFidelityFunction import MultiFidelityFunction
 
 
-@row_vectorize
 def paciorek_hf(xx):
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
     return np.sin(1/(x1*x2))
 
 
-@row_vectorize
 def adjustable_paciorek_lf(xx, a2):
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
     temp1 = paciorek_hf(xx)
     temp2 = 9 * a2**2

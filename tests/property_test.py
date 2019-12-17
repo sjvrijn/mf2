@@ -19,8 +19,9 @@ from .utils import rescale, ValueRange
 import mf2 as mff
 
 
-@mff.row_vectorize
 def quadratic(xx):
+    xx = np.atleast_2d(xx)
+
     return np.sqrt(np.sum(xx**2, axis=1))
 
 

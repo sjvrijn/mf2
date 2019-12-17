@@ -21,10 +21,9 @@ General Public License for more details.
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction
 
 
-@row_vectorize
 def bohachevsky_hf(xx):
     """
     BOHACHEVSKY FUNCTION
@@ -32,6 +31,8 @@ def bohachevsky_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     term1 = x1**2 + 2*x2**2
@@ -41,7 +42,6 @@ def bohachevsky_hf(xx):
     return term1 - term2 - term3 + 0.7
 
 
-@row_vectorize
 def bohachevsky_lf(xx):
     """
     BOHACHEVSKY FUNCTION, LOWER FIDELITY CODE
@@ -52,6 +52,8 @@ def bohachevsky_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     term1 = bohachevsky_hf(np.hstack([0.7*x1.reshape(-1,1), x2.reshape(-1,1)]))

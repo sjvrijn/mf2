@@ -21,10 +21,9 @@ General Public License for more details.
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction
 
 
-@row_vectorize
 def six_hump_camelback_hf(xx):
     """
     SIX-HUMP CAMEL-BACK FUNCTION
@@ -32,6 +31,8 @@ def six_hump_camelback_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     term1 = 4*x1**2 - 2.1*x1**4 + x1**6/3
@@ -41,7 +42,6 @@ def six_hump_camelback_hf(xx):
     return term1 + term2 + term3
 
 
-@row_vectorize
 def six_hump_camelback_lf(xx):
     """
     SIX-HUMP CAMEL-BACK FUNCTION, LOWER FIDELITY CODE
@@ -52,6 +52,8 @@ def six_hump_camelback_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     term1 = six_hump_camelback_hf(np.hstack([0.7 * x1.reshape(-1, 1), 0.7 * x2.reshape(-1, 1)]))

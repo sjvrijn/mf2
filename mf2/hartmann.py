@@ -12,7 +12,7 @@ As defined in
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction
 
 # Some constant values
 # Hartmann 6d
@@ -33,8 +33,8 @@ _P6 = np.array([
 _four_nine_exp = np.exp(-4 / 9)
 
 
-@row_vectorize
 def hartmann6_hf(xx):
+    xx = np.atleast_2d(xx)
 
     xx = xx[:,:,np.newaxis]
 
@@ -45,8 +45,8 @@ def hartmann6_hf(xx):
     return -(1/1.94) * tmp3.reshape((-1,))
 
 
-@row_vectorize
 def hartmann6_lf(xx):
+    xx = np.atleast_2d(xx)
 
     xx = xx[:,:,np.newaxis]
 

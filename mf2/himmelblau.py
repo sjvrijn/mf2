@@ -21,10 +21,9 @@ General Public License for more details.
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction
 
 
-@row_vectorize
 def himmelblau_hf(xx):
     """
     HIMMELBLAU FUNCTION
@@ -32,6 +31,8 @@ def himmelblau_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     term1 = (x1**2 + x2 - 11)**2
@@ -40,7 +41,6 @@ def himmelblau_hf(xx):
     return term1 + term2
 
 
-@row_vectorize
 def himmelblau_mf(xx):
     """
     HIMMELBLAU FUNCTION, MEDIUM FIDELITY CODE
@@ -48,6 +48,8 @@ def himmelblau_mf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     x1 *= .75
@@ -66,7 +68,6 @@ def himmelblau_mf(xx):
     return term1 + term2
 
 
-@row_vectorize
 def himmelblau_lf(xx):
     """
     HIMMELBLAU FUNCTION, LOWER FIDELITY CODE
@@ -77,6 +78,8 @@ def himmelblau_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     term1 = himmelblau_hf(np.hstack([0.5*x1.reshape(-1,1), 0.8*x2.reshape(-1,1)]))

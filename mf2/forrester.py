@@ -16,22 +16,24 @@ This version has been adapted in the following ways:
 
 import numpy as np
 
-from .multiFidelityFunction import row_vectorize, MultiFidelityFunction
+from .multiFidelityFunction import MultiFidelityFunction
 
 
 l_bound = [0]
 u_bound = [1]
 
-@row_vectorize
 def forrester_high(X):
+    X = np.atleast_2d(X)
+
     ndim = X.shape[1]
     term1 = (6*X - 2)**2
     term2 = np.sin(12*X - 4)
     return np.sum(term1 * term2, axis=1) / ndim
 
 
-@row_vectorize
 def forrester_low(X):
+    X = np.atleast_2d(X)
+
     ndim = X.shape[1]
     term1 = 0.5*forrester_high(X)
     term2 = 10*(X - 0.5) - 5

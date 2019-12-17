@@ -19,10 +19,11 @@ of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
 General Public License for more details.
 """
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+import numpy as np
+
+from .multiFidelityFunction import MultiFidelityFunction
 
 
-@row_vectorize
 def himmelblau_seb_hf(xx):
     """
     HIMMELBLAU FUNCTION
@@ -30,6 +31,8 @@ def himmelblau_seb_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx
 
     term1 = (x1**2 + x2 - 11)**2
@@ -38,7 +41,6 @@ def himmelblau_seb_hf(xx):
     return term1 + term2
 
 
-@row_vectorize
 def himmelblau_seb_mf(xx):
     """
     HIMMELBLAU FUNCTION, MEDIUM FIDELITY CODE
@@ -48,14 +50,12 @@ def himmelblau_seb_mf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx
     return himmelblau_seb_hf([0.75 * x1, 0.9 * x2]) + (0.9 * 0.75 * x1 * x2) ** 2 - 1
 
 
-
-
-
-@row_vectorize
 def himmelblau_seb_lf(xx):
     """
     HIMMELBLAU FUNCTION, LOWER FIDELITY CODE
@@ -66,6 +66,8 @@ def himmelblau_seb_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx
     return himmelblau_seb_hf([0.7 * x1, 0.8 * x2]) + (x1 * x2) ** 2 - 1
 

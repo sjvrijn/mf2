@@ -11,17 +11,19 @@ from functools import partial
 
 import numpy as np
 
-from mf2.multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from mf2.multiFidelityFunction import MultiFidelityFunction
 
 
-@row_vectorize
 def trid_hf(xx):
+    xx = np.atleast_2d(xx)
+
     temp1 = np.sum((xx - 1) ** 2, axis=1)
     temp2 = np.sum(xx[:,:-1] * xx[:,1:], axis=1)
     return temp1 - temp2
 
-@row_vectorize
 def adjustable_trid_lf(xx, a4):
+    xx = np.atleast_2d(xx)
+
     temp1 = np.sum((xx - a4) ** 2, axis=1)
     temp2 = np.sum((a4-0.65) * xx[:,:-1] * xx[:,1:] * np.arange(2, 11), axis=1)
     return temp1 - temp2

@@ -28,10 +28,9 @@ http://www.sfu.ca/~ssurjano/
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction
 
 
-@row_vectorize
 def currin_hf(xx):
     """
     CURRIN ET AL. (1988) EXPONENTIAL FUNCTION
@@ -39,6 +38,8 @@ def currin_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     are_zero = x2 <= 1e-8  # Assumes x2 approaches 0 from positive
@@ -57,7 +58,6 @@ def currin_hf(xx):
     return fact1 * fact2 / fact3
 
 
-@row_vectorize
 def currin_lf(xx):
     """
     CURRIN ET AL. (1988) EXPONENTIAL FUNCTION, LOWER FIDELITY CODE
@@ -68,6 +68,8 @@ def currin_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     x1_plus = (x1 + .05).reshape(-1,1)

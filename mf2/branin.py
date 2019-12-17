@@ -21,14 +21,13 @@ General Public License for more details.
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction
 
 
 _four_pi_square = 4*np.pi**2
 _eight_pi = 8*np.pi
 
 
-@row_vectorize
 def branin_base(xx):
     """
     BRANIN FUNCTION
@@ -36,6 +35,8 @@ def branin_base(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     term1 = x2 - (5.1 * (x1**2 / _four_pi_square)) + ((5*x1) / np.pi) - 6
@@ -44,7 +45,6 @@ def branin_base(xx):
     return term1**2 + term2 + 10
 
 
-@row_vectorize
 def branin_hf(xx):
     """
     BRANIN FUNCTION, HIGH FIDELITY CODE
@@ -55,11 +55,12 @@ def branin_hf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     _, x2 = xx.T
     return branin_base(xx) - 2.25*x2  # 22.5
 
 
-@row_vectorize
 def branin_lf(xx):
     """
     BRANIN FUNCTION, LOWER FIDELITY CODE
@@ -70,6 +71,8 @@ def branin_lf(xx):
     INPUT:
     xx = [x1, x2]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2 = xx.T
 
     term1 = branin_base(np.hstack([0.7*x1.reshape(-1,1), 0.7*x2.reshape(-1,1)]))

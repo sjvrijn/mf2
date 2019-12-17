@@ -28,10 +28,9 @@ http://www.sfu.ca/~ssurjano/
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction, row_vectorize
+from .multiFidelityFunction import MultiFidelityFunction
 
 
-@row_vectorize
 def park91a_hf(xx):
     """
     PARK (1991) FUNCTION 1
@@ -39,6 +38,8 @@ def park91a_hf(xx):
     INPUT:
     xx = [x1, x2, x3, x4]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2, x3, x4 = xx.T
 
     term1a = x1 / 2
@@ -52,7 +53,6 @@ def park91a_hf(xx):
     return term1 + term2
 
 
-@row_vectorize
 def park91a_lf(xx):
     """
     PARK (1991) FUNCTION 1, LOWER FIDELITY CODE
@@ -63,6 +63,8 @@ def park91a_lf(xx):
     INPUT:
     xx = [x1, x2, x3, x4]
     """
+    xx = np.atleast_2d(xx)
+
     x1, x2, x3, _ = xx.T
     yh = park91a_hf(xx)
 
