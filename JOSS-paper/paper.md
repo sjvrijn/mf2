@@ -1,5 +1,5 @@
 ---
-title: 'Gala: A Python package for galactic dynamics'
+title: 'MF2: A Collection of Multi-Fidelity Benchmark Functions in Python'
 tags:
   - Python
   - optimization
@@ -7,7 +7,7 @@ tags:
 authors:
   - name: Sander van Rijn
     orcid: 0000-0001-6159-041X
-    affiliation: "1, 2" # (Multiple affiliations must be quoted)
+    affiliation: 1
   - name: Sebastian Schmitt
     affiliation: 2
 affiliations:
@@ -55,13 +55,6 @@ scientific explorations of forthcoming data releases from the *Gaia* mission
 
 Single dollars ($) are required for inline mathematics e.g. $f(x) = e^{\pi/x}$
 
-Double dollars make self-standing equations:
-
-$$\Theta(x) = \left\{\begin{array}{l}
-0\textrm{ if } x < 0\cr
-1\textrm{ else}
-\end{array}\right.$$
-
 
 # Citations
 
@@ -80,6 +73,8 @@ Figures can be included like this: ![Example figure.](figure.png)
 
 # Acknowledgements
 
-This work is part of the research program DAMIOSO with project number 628.006.002, which is partly financed by the Netherlands Organisation for Scientific Research (NWO).
+This work is part of the research program DAMIOSO with project number
+628.006.002, which is partly financed by the Netherlands Organisation
+for Scientific Research (NWO).
 
 # References
