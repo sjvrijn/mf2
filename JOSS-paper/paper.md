@@ -34,15 +34,15 @@ it makes sense to simply use a pre-written implementation. This ensures
 correctness of the functions, makes any results directly comparable, and simply
 saves time from not having to implement the functions yourself. For the
 'regular' single-fidelity benchmarks, the COCO BBOB
-[@nikolaus_hansen_2019_2594848] software is such a widely used collection.
+[@nikolaus_hansen:2019] software is such a widely used collection.
 
 As the field of *multi-fidelity* optimization is becoming more popular, a
 similar set of common benchmarks is appearing in the literature: Dong et al.
-[@dong_multi-fidelity_2015] introduced bi-fidelity versions of the Bohachevsky,
+[@dong_multi-fidelity:2015] introduced bi-fidelity versions of the Bohachevsky,
 Booth, Branin, Himmelblau and Six-hump Camelback functions. Toal
-[@toal_considerations_2015] introduced correlation-adjustable multi-fidelity
+[@toal_considerations:2015] introduced correlation-adjustable multi-fidelity
 versions of the Branin, Paciorek, Hartmann3 and Trid functions. Surjanovic and
-Bingham [@simulationlib] have previously collected a small collection of
+Bingham [@simulationlib:2017] have previously collected a small collection of
 MATLAB/R implementations for the Borehole, Currin and Park91 A and B functions.
 
 ``MF2`` is a new collection of these commonly used multi-fidelity functions,
