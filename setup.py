@@ -9,6 +9,7 @@ setuptools.setup(
     version=mf2.__version__,
     description='A collection of analytical benchmark functions in multiple fidelities',
     long_description=long_description,
+    long_description_content_type="text/markdown",
     author='Sander van Rijn',
     author_email='s.j.van.rijn@liacs.leidenuniv.nl',
     url="https://github.com/sjvrijn/multi-fidelity-functions",
