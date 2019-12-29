@@ -15,7 +15,9 @@ setuptools.setup(
     url="https://github.com/sjvrijn/multi-fidelity-functions",
     packages=setuptools.find_packages(),
     classifiers=[
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
     ],
     python_requires=">=3.6",
 )
