@@ -25,7 +25,7 @@ import mf2.adjustable
 
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
-__version__ = '2019.11.2'
+__version__ = '2019.11.3'
 
 
 bi_fidelity_functions = (
