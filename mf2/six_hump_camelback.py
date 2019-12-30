@@ -51,9 +51,12 @@ def six_hump_camelback_lf(xx):
     return term1 + term2
 
 
+#: Lower bound for Six-hump Camelback function
 l_bound = [-2, -2]
+#: upper bound for Six-hump Camelback function
 u_bound = [ 2,  2]
 
+#: 2D Six-hump Camelback function with fidelities 'high' and 'low'
 six_hump_camelback = MultiFidelityFunction(
     "six hump camelback",
     u_bound, l_bound,

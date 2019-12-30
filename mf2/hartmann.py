@@ -1,21 +1,19 @@
 # -*- coding: utf-8 -*-
 
 """
-hartmann.py: contains the Hartmann 3d and 6d function
+hartmann.py: contains the Hartmann6 function
 
 As defined in
- [3d] "Some Considerations Regarding the Use of Multi-fidelity Kriging in the
-      Construction of Surrogate Models" by David J.J. Toal (2015)
- [6d] "Remarks on multi-fidelity surrogates" by Chanyoung Park, Raphael T. Haftka
-      and Nam H. Kim (2016)
+
+    "Remarks on multi-fidelity surrogates" by Chanyoung Park, Raphael T. Haftka
+    and Nam H. Kim (2016)
 """
 
 import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction
 
-# Some constant values
-# Hartmann 6d
+# Some constant values for the Hartmann 6d calculations
 _alpha6_low = np.array([0.5, 0.5, 2.0, 4.0])[:,np.newaxis]
 _alpha6_high = np.array([1.0, 1.2, 3.0, 3.2])[:, np.newaxis]
 _A6 = np.array([
@@ -51,20 +49,25 @@ def hartmann6_lf(xx):
     xx = xx[:,:,np.newaxis]
 
     tmp1 = (xx - _P6) ** 2 * _A6
-    tmp2 = f_exp(-np.sum(tmp1, axis=1))
+    tmp2 = _f_exp(-np.sum(tmp1, axis=1))
     tmp3 = tmp2.dot(_alpha6_low) + 2.58
 
     return -(1/1.94) * tmp3.reshape((-1,))
 
 
-def f_exp(xx):
-
+def _f_exp(xx):
     return (_four_nine_exp + (_four_nine_exp * (xx + 4)/9)) ** 9
 
 
+#: Lower bound for Hartmann6 function
+l_bound = [0.1] * 6
+#: Upper bound for Hartmann6 function
+u_bound = [1] * 6
+
+#: 6D Hartmann6 function with fidelities 'high' and 'low'
 hartmann6 = MultiFidelityFunction(
     "Hartmann 6",
-    [1] * 6, [0.1] * 6,
+    u_bound, l_bound,
     [hartmann6_hf, hartmann6_lf],
     fidelity_names=['high', 'low']
 )

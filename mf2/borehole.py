@@ -79,9 +79,12 @@ def borehole_lf(xx):
     return frac1 / frac2
 
 
+#: Lower bound for Borehole function
 l_bound = [0.05,   100,  63070,  990, 63.1, 700, 1120,  9855]
+#: Upper bound for Borehole function
 u_bound = [0.15, 50000, 115600, 1110,  116, 820, 1680, 12045]
 
+#: 8D Borehole function with fidelities 'high' and 'low'
 borehole = MultiFidelityFunction(
     "borehole",
     u_bound, l_bound,

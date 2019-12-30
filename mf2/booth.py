@@ -49,9 +49,12 @@ def booth_lf(xx):
     return term1 + term2
 
 
+#: Lower bound for Booth function
 l_bound = [-10, -10]
+#: Upper bound for Booth function
 u_bound = [ 10,  10]
 
+#: 2D Booth function with fidelities 'high' and 'low'
 booth = MultiFidelityFunction(
     "booth",
     u_bound, l_bound,

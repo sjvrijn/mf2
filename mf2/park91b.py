@@ -66,9 +66,12 @@ def park91b_lf(xx):
     return 1.2 * yh - 1
 
 
+#: Lower bound for Park91B function
 l_bound = [0, 0, 0, 0]
+#: Upper bound for Park91B function
 u_bound = [1, 1, 1, 1]
 
+#: 4D Park91B function with fidelities 'high' and 'low'
 park91b = MultiFidelityFunction(
     "park 91b",
     u_bound, l_bound,

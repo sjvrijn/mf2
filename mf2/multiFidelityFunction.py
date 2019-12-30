@@ -55,13 +55,13 @@ class MultiFidelityFunction:
 
     @property
     def ndim(self):
-        """Dimensionality of the function. Inferred as `len(self.u_bound)`."""
+        """Dimensionality of the function. Inferred as ``len(self.u_bound)``."""
         return len(self.u_bound)
 
 
     @property
     def bounds(self):
-        """Lower and upper bounds as a single numpy array of shape (2, ndim)."""
+        """Lower and upper bounds as a single np.array of shape (2, ndim)."""
         return np.array([self.l_bound, self.u_bound], dtype=np.float)
 
 

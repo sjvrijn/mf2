@@ -87,9 +87,12 @@ def currin_lf(xx):
     return (yh1 + yh2 + yh3 + yh4) / 4
 
 
+#: Lower bound for Currin function
 l_bound = [0, 0]
+#: Upper bound for Currin function
 u_bound = [1, 1]
 
+#: 2D Currin function with fidelities 'high' and 'low'
 currin = MultiFidelityFunction(
     "currin",
     u_bound, l_bound,

@@ -72,9 +72,12 @@ def himmelblau_seb_lf(xx):
     return himmelblau_seb_hf([0.7 * x1, 0.8 * x2]) + (x1 * x2) ** 2 - 1
 
 
+#: Lower bound for Himmelblau function
 l_bound = [-4, -4]
+#: Upper bound for Himmelblau function
 u_bound = [ 4,  4]
 
+#: 2D Himmelblau function (Seb's version) with fidelities 'high', 'medium' and 'low'
 himmelblau_seb = MultiFidelityFunction(
     "himmelblau sebastian",
     u_bound, l_bound,

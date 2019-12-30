@@ -71,10 +71,12 @@ def branin_lf(xx):
     return term1 - term2 + term3 - term4
 
 
-
+#: Lower bound for Branin function
 l_bound = [-5,  0]
+#: Upper bound for Branin function
 u_bound = [10, 15]
 
+#: 2D Branin function with fidelities 'high' and 'low'
 branin = MultiFidelityFunction(
     "branin",
     u_bound, l_bound,

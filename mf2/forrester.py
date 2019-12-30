@@ -4,23 +4,21 @@
 forrester.py: Forrester function
 
 This file contains the definition of an adapted version of the simple 1D
-example function as presented in the paper(s) by Forrester et al.
+example function as presented in:
 
-This version has been adapted in the following ways:
- - Inverted, the optimum is a maximum, not a minimum
- - Translated, the (1D) output values have been translated upwards to always
-   be positive, i.e. [~0, ~22]
- - Multi-dimensional, input can be arbitrarily many dimensions. Output value
-   is calculated as the weighted sum of each separable dimension.
+    Forrester Alexander I.J, Sóbester András and Keane Andy J "Multi-fidelity
+    Optimization via Surrogate Modelling", Proceedings of the Royal Society A,
+    vol. 463, http://doi.org/10.1098/rspa.2007.1900
+
+This version has been adapted to be multi-dimensional, input can be arbitrarily
+many dimensions. Output value is calculated as the mean of the outcomes for all
+separate dimensions.
 """
 
 import numpy as np
 
 from .multiFidelityFunction import MultiFidelityFunction
 
-
-l_bound = [0]
-u_bound = [1]
 
 def forrester_high(X):
     X = np.atleast_2d(X)
@@ -41,7 +39,19 @@ def forrester_low(X):
     return term1 - (np.sum(term2, axis=1) / ndim)
 
 
-def Forrester(ndim=1):
+#: Lower bound for Forrester function
+l_bound = [0]
+#: Upper bound for Forrester function
+u_bound = [1]
+
+
+def Forrester(ndim):
+    """Factory method for `ndim`-dimensional multi-fidelity Forrester function
+
+    :param ndim: Desired dimensionality
+    :return:     :class:`~mf2.multiFidelityFunction.MultiFidelityFunction`
+                 instance with bounds of appropriate length
+    """
     if not isinstance(ndim, int):
         raise TypeError(f"ndim must be of type 'int', not {type(ndim)}")
     if ndim < 1:
@@ -56,9 +66,10 @@ def Forrester(ndim=1):
     )
 
 
+#: 1D Forrester function with fidelities 'high' and 'low'
 forrester = Forrester(ndim=1)
 
-
+#: 1D Forrester function with single fidelity 'high'
 forrester_sf = MultiFidelityFunction(
     "forrester single fidelity",
     u_bound=u_bound, l_bound=l_bound,

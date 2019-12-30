@@ -75,9 +75,12 @@ def park91a_lf(xx):
     return term1 + term2 + 0.5
 
 
+#: Lower bound for Park91A function
 l_bound = [1e-8, 0, 0, 0]
+#: Upper bound for Park91A function
 u_bound = [1, 1, 1, 1]
 
+#: 4D Park91A function with fidelities 'high' and 'low'
 park91a = MultiFidelityFunction(
     "park 91a",
     u_bound, l_bound,

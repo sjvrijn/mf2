@@ -50,9 +50,12 @@ def bohachevsky_lf(xx):
     return term1 + term2
 
 
+#: Lower bound for Bohachevsky function
 l_bound = [-5, -5]
+#: Upper bound for Bohachevsky function
 u_bound = [ 5,  5]
 
+#: 2D Bohachevsky function with fidelities 'high' and 'low'
 bohachevsky = MultiFidelityFunction(
     "bohachevsky",
     u_bound, l_bound,

@@ -76,9 +76,12 @@ def himmelblau_lf(xx):
     return term1 + term2
 
 
+#: Lower bound for Himmelblau function
 l_bound = [-4, -4]
+#: Upper bound for Himmelblau function
 u_bound = [ 4,  4]
 
+#: 2D Himmelblau function with fidelities 'high', 'medium' and 'low'
 himmelblau_3f = MultiFidelityFunction(
     "himmelblau 3 fidelity",
     u_bound, l_bound,
@@ -86,7 +89,7 @@ himmelblau_3f = MultiFidelityFunction(
     fidelity_names=['high', 'medium', 'low']
 )
 
-
+#: 2D Himmelblau function with fidelities 'high' and 'low'
 himmelblau = MultiFidelityFunction(
     "himmelblau",
     u_bound, l_bound,
