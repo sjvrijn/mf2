@@ -1,5 +1,5 @@
-mf2.booth function
-==================
+Booth
+=====
 
 .. automodule:: mf2.booth
     :members:

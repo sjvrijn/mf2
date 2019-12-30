@@ -1,5 +1,5 @@
-mf2.bohachevsky function
-========================
+Bohachevsky
+===========
 
 .. automodule:: mf2.bohachevsky
     :members:

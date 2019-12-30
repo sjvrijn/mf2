@@ -1,5 +1,5 @@
-mf2.multiFidelityFunction
-=========================
+MultiFidelityFunction
+=====================
 
 .. automodule:: mf2.multiFidelityFunction
     :members:

@@ -1,5 +1,5 @@
-mf2.currin function
-===================
+Burrin
+======
 
 .. automodule:: mf2.currin
     :members:

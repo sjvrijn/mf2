@@ -1,5 +1,5 @@
-mf2.hartmann function
-=====================
+Hartmann6
+=========
 
 .. automodule:: mf2.hartmann
     :members:

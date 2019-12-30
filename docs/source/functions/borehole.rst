@@ -1,5 +1,5 @@
-mf2.borehole function
-=====================
+Borehole
+========
 
 .. automodule:: mf2.borehole
     :members:

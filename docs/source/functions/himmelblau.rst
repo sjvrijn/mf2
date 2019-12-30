@@ -1,5 +1,5 @@
-mf2.himmelblau function
-=======================
+Himmelblau
+==========
 
 .. automodule:: mf2.himmelblau
     :members:

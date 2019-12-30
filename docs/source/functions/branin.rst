@@ -1,5 +1,5 @@
-mf2.branin function
-===================
+Branin
+======
 
 .. automodule:: mf2.branin
     :members:

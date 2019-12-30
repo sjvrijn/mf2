@@ -1,5 +1,5 @@
-mf2.park91a function
-====================
+Park91 A
+========
 
 .. automodule:: mf2.park91a
     :members:

@@ -1,5 +1,5 @@
-mf2.forrester function
-======================
+Forrester
+=========
 
 .. automodule:: mf2.forrester
     :members:
