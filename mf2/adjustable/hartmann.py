@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 """Implementation of the adjustable bi-fidelity Hartmann3 function
@@ -10,14 +9,12 @@ as defined in:
     doi:10.1007/s00158-014-1209-5
 """
 
+
 from functools import partial
 
 import numpy as np
 
 from mf2.multiFidelityFunction import MultiFidelityFunction
-
-__author__ = 'Sander van Rijn'
-__email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 
 # Some constant values
@@ -65,6 +62,13 @@ def adjustable_hartmann3_lf(xx, a3):
 
 
 def hartmann3(a3):
+    """Factory method for adjustable Hartmann3 function using parameter value `a3`
+
+    :param a3:  Parameter to tune the correlation between high- and low-fidelity
+                functions. Expected values lie in range [0, 1]. High- and low-
+                fidelity are identical for a1=-0.5.
+    :return:    A MultiFidelityFunction instance
+    """
 
     return MultiFidelityFunction(
         f"adjustable Hartmann3 {a3}",

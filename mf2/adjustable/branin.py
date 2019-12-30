@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 """Implementation of the adjustable bi-fidelity Branin function
@@ -11,17 +10,12 @@ as defined in:
 """
 
 
-
-
 from functools import partial
 
 import numpy as np
 
 from mf2.multiFidelityFunction import MultiFidelityFunction
 from mf2.branin import branin_base, l_bound, u_bound
-
-__author__ = 'Sander van Rijn'
-__email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 
 _four_pi_square = 4*np.pi**2
@@ -39,6 +33,13 @@ def adjustable_branin_lf(xx, a1):
 
 
 def branin(a1):
+    """Factory method for adjustable Branin function using parameter value `a1`
+
+    :param a1:  Parameter to tune the correlation between high- and low-fidelity
+                functions. Expected values lie in range [0, 1]. High- and low-
+                fidelity are identical for a1=-0.5.
+    :return:    A MultiFidelityFunction instance
+    """
 
     return MultiFidelityFunction(
         f"adjustable Branin {a1}",

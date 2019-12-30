@@ -11,8 +11,7 @@ Adapted from matlab implementation at
 
     https://www.sfu.ca/~ssurjano/borehole.html, retrieved 2017-10-02
 
-by: Sonja Surjanovic, Simon Fraser University
-    Derek Bingham, Simon Fraser University
+by: Sonja Surjanovic and Derek Bingham, Simon Fraser University
 
 Copyright 2013. Derek Bingham, Simon Fraser University.
 

@@ -9,6 +9,7 @@ as defined in:
     doi:10.1007/s00158-014-1209-5
 """
 
+
 from functools import partial
 
 import numpy as np
@@ -34,6 +35,14 @@ def adjustable_paciorek_lf(xx, a2):
 
 
 def paciorek(a2):
+    """Factory method for adjustable Paciorek function using parameter value `a2`
+
+    :param a2:  Parameter to tune the correlation between high- and low-fidelity
+                functions. Expected values lie in range [0, 1]. High- and low-
+                fidelity are identical for a1=-0.5.
+    :return:    A MultiFidelityFunction instance
+    """
+
     return MultiFidelityFunction(
         f"adjustable Paciorek {a2}",
         [1]*2, [0.3]*2,
