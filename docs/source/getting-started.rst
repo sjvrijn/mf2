@@ -1,16 +1,15 @@
-Examples
-========
+Getting Started
+===============
 
-This page contains some examples of typical use of the ``mf2`` package.
+This page contains some examples to help get you started with using the ``mf2``
+package.
 
+The Basics: What's in a MultiFidelityFunction?
+----------------------------------------------
 
-Importing
----------
-
-First of all, the import convention for this package is to import it as ``mf2``::
-
-    import mf2
-    import numpy as np
+This package serves as a collection of functions with multiple fidelity levels.
+Each of these functions is encoded as a
+:class:`~mf2.multiFidelityFunction.MultiFidelityFunction`
 
 
 Fixed Functions
@@ -23,8 +22,8 @@ This means that everything about the function is fixed:
 * number of fidelity levels
 * relation between the different fidelity levels
 
-Examples of these functions include the 2D ``mf2.booth`` and 8D ``mf2.borehole``
-functions.
+Examples of these functions include the 2D :mod:`~mf2.booth` and 8D
+:mod:`~mf2.borehole` functions.
 
 These functions can be directly referenced, and can directly be given one or
 more row-vectors to evaluate simultaneously::

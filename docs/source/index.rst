@@ -16,7 +16,7 @@ Contents
 .. toctree::
    :maxdepth: 1
 
-   examples
+   getting-started
    mf2
 
 
