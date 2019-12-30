@@ -19,7 +19,7 @@ sys.path.insert(0, os.path.abspath('../../'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Multi-Fidelity Functions'
+project = 'MF2: Multi-Fidelity Functions'
 copyright = '2019, Sander van Rijn'
 author = 'Sander van Rijn'
 
