@@ -1,30 +1,36 @@
 mf2 package
-==============================
-
-Subpackages
------------
-
-.. toctree::
-
-   mf2.adjustable
+===========
 
 Functions
 ---------
 
+Fixed Functions
+^^^^^^^^^^^^^^^
 .. toctree::
 
-   mf2.multiFidelityFunction
-   mf2.bohachevsky
-   mf2.booth
-   mf2.borehole
-   mf2.branin
-   mf2.currin
-   mf2.forrester
-   mf2.hartmann
-   mf2.himmelblau
-   mf2.park91a
-   mf2.park91b
-   mf2.six_hump_camelback
+   functions/multiFidelityFunction
+   functions/bohachevsky
+   functions/booth
+   functions/borehole
+   functions/branin
+   functions/currin
+   functions/forrester
+   functions/hartmann
+   functions/himmelblau
+   functions/park91a
+   functions/park91b
+   functions/six_hump_camelback
+
+
+Adjustable Functions
+^^^^^^^^^^^^^^^^^^^^
+.. toctree::
+
+   functions/adjustable/branin
+   functions/adjustable/paciorek
+   functions/adjustable/hartmann
+   functions/adjustable/trid
+
 
 Module contents
 ---------------

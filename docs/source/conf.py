@@ -99,6 +99,10 @@ html_static_path = ['_static']
 #
 # html_sidebars = {}
 
+# If true, the current module name will be prepended to all description
+# unit titles (such as .. function::).
+add_module_names = False
+
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
