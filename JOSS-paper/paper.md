@@ -39,13 +39,16 @@ saves time from not having to implement the functions yourself. For the
 [@nikolaus_hansen:2019] software is such a widely used collection.
 
 As the field of *multi-fidelity* optimization is becoming more popular, a
-similar set of common benchmarks is appearing in the literature: Dong et al.
-[@dong_multi-fidelity:2015] introduced bi-fidelity versions of the Bohachevsky,
-Booth, Branin, Himmelblau and Six-hump Camelback functions. Toal
-[@toal_considerations:2015] introduced correlation-adjustable multi-fidelity
-versions of the Branin, Paciorek, Hartmann3 and Trid functions. Surjanovic and
-Bingham [@simulationlib:2017] have previously collected a small collection of
-MATLAB/R implementations for the Borehole, Currin and Park91 A and B functions.
+similar set of common benchmarks is appearing in the literature:
+* Forrester et al. [@forrester:2007] introduced a simple 1D bi-fidelity function
+for mostly illustrative purposes.
+* Dong et al. [@dong_multi-fidelity:2015] introduced bi-fidelity versions of the
+Bohachevsky, Booth, Branin, Himmelblau and Six-hump Camelback functions.
+* Toal [@toal_considerations:2015] introduced correlation-adjustable multi-
+fidelity versions of the Branin, Paciorek, Hartmann3 and Trid functions.
+* Surjanovic and Bingham [@simulationlib:2017] have previously collected a small
+collection of MATLAB/R implementations for the Borehole, Currin and Park91 A and
+B functions.
 
 ``MF2`` is a new collection of these commonly used multi-fidelity functions,
 implemented in Python. It uses a standard interface that allows for querying
@@ -53,10 +56,17 @@ single vectors or multiple row-vectors as a single matrix. It also offers a
 simple factory pattern interface for functions with parameters for e.g.
 correlation and dimensionality.
 
+This package is currently in use by the authors in their research on multi-
+fidelity hierarchical surrogate models.
+
 # Acknowledgements
 
 This work is part of the research program DAMIOSO with project number
 628.006.002, which is partly financed by the Netherlands Organisation
 for Scientific Research (NWO).
+
+The first author would like to thank dr. Matthijs van Leeuwen, prof. dr. Thomas
+Bäck, and dr. Markus Olhofer for their supervision and involvement in the
+DAMIOSO project.
 
 # References
