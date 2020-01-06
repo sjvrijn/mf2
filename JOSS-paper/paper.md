@@ -41,15 +41,15 @@ saves time from not having to implement the functions yourself. For the
 As the field of *multi-fidelity* optimization is becoming more popular, a
 similar set of common benchmarks is appearing in the literature:
 
- - Forrester et al. [@forrester:2007] introduced a simple 1D bi-fidelity
-   function for mostly illustrative purposes.
- - Dong et al. [@dong_multi-fidelity:2015] introduced bi-fidelity versions of
-   the Bohachevsky, Booth, Branin, Himmelblau and Six-hump Camelback functions.
- - Toal [@toal_considerations:2015] introduced correlation-adjustable multi-
-   fidelity versions of the Branin, Paciorek, Hartmann3 and Trid functions.
- - Surjanovic and Bingham [@simulationlib:2017] have previously collected a
-   small collection of MATLAB/R implementations for the Borehole, Currin and
-   Park91 A and B functions.
+  * Forrester et al. [@forrester:2007] introduced a simple 1D bi-fidelity
+    function for mostly illustrative purposes.
+  * Dong et al. [@dong_multi-fidelity:2015] introduced bi-fidelity versions of
+    the Bohachevsky, Booth, Branin, Himmelblau and Six-hump Camelback functions.
+  * Toal [@toal_considerations:2015] introduced correlation-adjustable multi-
+    fidelity versions of the Branin, Paciorek, Hartmann3 and Trid functions.
+  * Surjanovic and Bingham [@simulationlib:2017] have previously collected a
+    small collection of MATLAB/R implementations for the Borehole, Currin and
+    Park91 A and B functions.
 
 ``MF2`` is a new collection of these commonly used multi-fidelity functions,
 implemented in Python. It uses a standard interface that allows for querying
