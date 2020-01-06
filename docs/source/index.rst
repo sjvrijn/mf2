@@ -3,8 +3,12 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to MF2's documentation!
-====================================================
+MF2: Multi-Fidelity Functions
+=============================
+
+This is the documentation for the ``mf2`` package. For a short introduction with
+examples, have a look at the :ref:`getting_started` page. Otherwise, you can
+look at the available functions in the package by category.
 
 
 Last updated: (|today|)
@@ -14,7 +18,7 @@ Contents
 ========
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    getting-started
    mf2

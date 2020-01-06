@@ -1,11 +1,8 @@
 mf2 package
 ===========
 
-Functions
----------
-
 Fixed Functions
-^^^^^^^^^^^^^^^
+---------------
 .. toctree::
 
    functions/multiFidelityFunction
@@ -23,19 +20,10 @@ Fixed Functions
 
 
 Adjustable Functions
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 .. toctree::
 
    functions/adjustable/branin
    functions/adjustable/paciorek
    functions/adjustable/hartmann
    functions/adjustable/trid
-
-
-Module contents
----------------
-
-.. automodule:: mf2
-    :members:
-    :undoc-members:
-    :show-inheritance:
