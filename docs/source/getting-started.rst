@@ -10,16 +10,17 @@ The Basics: What's in a MultiFidelityFunction?
 ----------------------------------------------
 
 This package serves as a collection of functions with multiple fidelity levels.
-Each of these functions is encoded as a
-:class:`~mf2.multiFidelityFunction.MultiFidelityFunction` with the following
-attributes:
+The number of levels is at least two, but differs by function. Each function is
+encoded as a :class:`~mf2.multiFidelityFunction.MultiFidelityFunction`
+with the following attributes:
 
 ``.name``
     The *name* is simply a standardized format of the name as an attribute to
     help identify which function is being represented [#footnote_name]_ .
 
 ``ndim``
-    Dimensionality of the function.
+    Number of dimensions. This is the dimensionality (i.e. length) of the input
+    vector X of which the objective is evaluated.
 
 ``.fidelity_names``
     This is a list of the human-readable names given to each fidelity.
@@ -50,8 +51,11 @@ As an example, we'll use the :mod:`~mf2.booth` function. As we can see using
     >>> print(booth.l_bound, booth.u_bound)
     [-10. -10.] [10. 10.]
 
-Most multi-fidelity functions in ``mf2`` are just *bi-fidelity* functions. This
-means that they have two fidelity levels, ``high`` and ``low``:
+Most multi-fidelity functions in ``mf2`` are *bi-fidelity* functions, but a
+function can have any number of fidelities. A bi-fidelity function has two
+fidelity levels, which are typically called ``high`` and ``low``. You can
+easily check the names of the fidelities by printing the ``fidelity_names``
+attribute of a function:
 
     >>> print(len(booth.fidelity_names))
     2
@@ -79,12 +83,6 @@ or with a list-style *index* (which just passes through to ``.functions``).
 The object-style notation ``function.fidelity()`` is recommended for explicit
 access, but the other notations are available for more dynamic usage. With the
 list-style access, the *highest* fidelity is always at index *0*.
-
-This package maintains the following naming convention for the various
-fidelities:
-
-* bi-fidelity: 'high', 'low'
-* tri-fidelity: 'high', 'medium', 'low'
 
 
 Calling the functions
@@ -178,24 +176,39 @@ Adding Your Own
 
 Each function is stored as a ``MultiFidelityFunction``-object, which contains
 the dimensionality, intended upper/lower bounds, and of course all fidelity
-levels. This class can also be used to define your own multi-fidelity function::
+levels. This class can also be used to define your own multi-fidelity function.
+
+To do so, first define regular functions for each fidelity. Then create the
+``MultiFidelityFunction`` object by passing a name, the upper and lower bounds,
+a tuple of the functions for the fidelities, and finally a tuple containing a
+name for each fidelity. The ``fidelity_names`` are optional, but required if
+you want to use attribute-style access of the fidelities.
+
+The following is an example for a 1-dimensional multi-fidelity function named
+``my_mf_sphere`` with three named fidelities ``.high()``, ``.medium()`` and
+``.low()``::
+
+    import numpy as np
+
+    from mf2 import MultiFidelityFunction
 
     def sphere_hf(x):
         return x*x
 
-    def sphere_lf(x):
-        return abs(x)
+    def sphere_mf(x):
+        return x * np.sqrt(x) * np.sign(x)
 
-    mf2_sphere = MultiFidelityFunction(
+    def sphere_lf(x):
+        return np.abs(x)
+
+    my_mf_sphere = MultiFidelityFunction(
         name='sphere',
         u_bound=[1],
         l_bound=[-1],
-        functions=(sphere_hf, sphere_lf),
-        fidelity_names=('high', 'low')
+        functions=(sphere_hf, sphere_mf, sphere_lf),
+        fidelity_names=('high', 'medium', 'low')
     )
 
-Of these parameters, ``fidelity_names`` is optional, but highly recommended
-nonetheless.
 
 
 .. rubric:: Footnotes
