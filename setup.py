@@ -12,7 +12,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     author='Sander van Rijn',
     author_email='s.j.van.rijn@liacs.leidenuniv.nl',
-    url="https://github.com/sjvrijn/multi-fidelity-functions",
+    url="https://github.com/sjvrijn/mf2",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3.6",
