@@ -41,12 +41,19 @@ Simple Usage
 Accessing the functions
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Most multi-fidelity functions in ``mf2`` are just *bi-fidelity* functions. Take
-for example the 2D :mod:`~mf2.booth` function with it's two fidelities ``high``
-and ``low``:
+As an example, we'll use the :mod:`~mf2.booth` function. As we can see using
+``.ndim`` and the bounds, it is two-dimensional:
 
     >>> from mf2 import booth
     >>> print(booth.ndim)
+    2
+    >>> print(booth.l_bound, booth.u_bound)
+    [-10. -10.] [10. 10.]
+
+Most multi-fidelity functions in ``mf2`` are just *bi-fidelity* functions. This
+means that they have two fidelity levels, ``high`` and ``low``:
+
+    >>> print(len(booth.fidelity_names))
     2
     >>> print(booth.fidelity_names)
     ['high', 'low']
@@ -76,8 +83,8 @@ list-style access, the *highest* fidelity is always at index *0*.
 This package maintains the following naming convention for the various
 fidelities:
 
-* 2: 'high', 'low'
-* 3: 'high', 'medium', 'low'
+* bi-fidelity: 'high', 'low'
+* tri-fidelity: 'high', 'medium', 'low'
 
 
 Calling the functions
