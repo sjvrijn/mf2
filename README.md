@@ -1,4 +1,5 @@
 [![PyPI version](https://badge.fury.io/py/mf2.svg)](https://badge.fury.io/py/mf2)
+[![Conda](https://img.shields.io/conda/v/sjvrijn/mf2)](https://anaconda.org/sjvrijn/mf2)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mf2)
 [![Build Status](https://travis-ci.org/sjvrijn/mf2.svg?branch=master)](https://travis-ci.org/sjvrijn/mf2)
 [![Coverage Status](https://coveralls.io/repos/github/sjvrijn/mf2/badge.svg?branch=master)](https://coveralls.io/github/sjvrijn/mf2?branch=master)
