@@ -34,11 +34,11 @@ The only dependency of the mf2 package is the `numpy` package.
 
 ## Installation
 
-The recommended way to install `mf2` is with Python's Pip:
+The recommended way to install `mf2` is with Python's `pip`:
 ```
 python3 -m pip install --user mf2
 ```
-or alternatively using conda:
+or alternatively using `conda`:
 ```
 conda install -c sjvrijn mf2
 ```
