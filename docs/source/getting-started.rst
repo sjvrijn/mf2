@@ -189,7 +189,6 @@ The following is an example for a 1-dimensional multi-fidelity function named
 ``.low()``::
 
     import numpy as np
-
     from mf2 import MultiFidelityFunction
 
     def sphere_hf(x):
