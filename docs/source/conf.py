@@ -103,6 +103,7 @@ html_static_path = ['_static']
 # unit titles (such as .. function::).
 add_module_names = False
 
+html_logo = '../_static/mf2_64px.png'
 
 # -- Options for HTMLHelp output ---------------------------------------------
 
@@ -115,7 +116,7 @@ htmlhelp_basename = 'Multi-FidelityFunctionsdoc'
 latex_elements = {
     # The paper size ('letterpaper' or 'a4paper').
     #
-    # 'papersize': 'letterpaper',
+    # 'papersize': 'a4',
 
     # The font size ('10pt', '11pt' or '12pt').
     #
