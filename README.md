@@ -9,7 +9,25 @@
 # Multi-Fidelity-Functions
 
 This package contains Python implementations for a variety of multi-fidelity
-benchmark functions. The only dependency is the `numpy` package.
+benchmark functions typically used in numerical optimization research.
+
+A multi-fidelity function usually reprensents an objective which should be
+optimized. The term 'multi-fidelity' refers to the fact, that multiple versions
+of the objective function exist which differ in the accuray to describe the
+real objective. A typical real-world example would be the aerodynamic
+efficiency of an airfoil, e.g., its drag value for a given lift value. The
+different fidelity levels are given by the accuracy of the evaluation method
+used to estimate the efficiency. Lower-fidelity versions of the objective
+function refer to less accurate, but simpler approximations of the objective,
+such as computational fluid dynamic simulations on rather coarse meshes,
+whereas higher fidelity levels refer to more accurate but also much more
+demaning evaluations such as prototype tests in wind tunnels. The hope of
+multi-fildelity optimization approaches is that many of the not-so-accurate but
+simple low-fidelity evaluations can be uaws to achieve improved results on the
+realistic high-fidelity version of the objective where only very few
+evaluations can be performed.
+
+The only dependency of the mf2 package is the `numpy` package.
 
 
 ## Installation
@@ -37,13 +55,19 @@ python3 -m pip install --user -e .
 import mf2
 import numpy as np
 
+# create multi-fildelity Forrester function object in two dimensions
 forrester = mf2.Forrester(ndim=2)
-np.random.seed(42)
-X = np.random.random((5, 2))  # 5 samples in 2D
 
+# set numpy random seed for reproducibility
+np.random.seed(42)
+# generate 5 random samples in 2D as matrix
+X = np.random.random((5, 2))
+
+# print high fidelity function values
 print(forrester.high(X))
 # Out: array([ 6.20598519, -2.90702413, -0.96082789,  0.78490341, -2.56183228])
 
+# print low fidelity function values
 print(forrester.low(X))
 # Out: array([6.47672047, 1.89322581, 7.95952025, 5.77115291, 2.17314591])
 ```
@@ -66,11 +90,11 @@ steps:
 2. Add it to the tests:
     * add the function in the `tests/property_test.py` and
     `tests/regression_test.py` files
-    * run the `tests/create_regression_data.py` file to generate the new data
-    files
+    * run `python3 tests/create_regression_data.py` to generate the new
+    data files
     * run the tests
-3. Make sure to commit all new and updated files to git (Travis-CI will complain
-otherwise ;)
+3. Make sure to commit all new and updated files to git (Travis-CI will
+complain otherwise ;)
 4. Create a pull-request!
 
 If you need any help with this process, please get in touch as outlined under
