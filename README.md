@@ -37,6 +37,10 @@ The recommended way to install `mf2` is with Python's Pip:
 ```
 python3 -m pip install --user mf2
 ```
+or alternatively using conda:
+```
+conda install -c sjvrijn mf2
+```
 
 For the latest version, you can install directly from source:
 ```
