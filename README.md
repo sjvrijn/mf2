@@ -5,6 +5,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/54144e7d406b4558a14996b06a89adf8)](https://www.codacy.com/manual/sjvrijn/mf2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sjvrijn/mf2&amp;utm_campaign=Badge_Grade)
 [![Documentation Status](https://readthedocs.org/projects/mf2/badge/?version=latest)][docs-badge]
 [![Gitter](https://badges.gitter.im/pymf2/community.svg)][gitter-badge]
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 # Multi-Fidelity-Functions
 
