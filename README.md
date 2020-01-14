@@ -7,8 +7,7 @@
 | ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mf2) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/54144e7d406b4558a14996b06a89adf8)](https://www.codacy.com/manual/sjvrijn/mf2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sjvrijn/mf2&amp;utm_campaign=Badge_Grade) | |
 | [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) | [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) | |
 
-
-# Introduction
+## Introduction
 
 This package contains Python implementations for a variety of multi-fidelity
 benchmark functions typically used in numerical optimization research.
@@ -111,9 +110,6 @@ If you need any help with this process, please get in touch as outlined under
 
 The [Gitter][gitter] channel is the preferred way to get in touch for any other
 questions, comments or discussions about this package.
-
-
-
 
 [docs]:         https://mf2.readthedocs.io/en/latest/
 [docs-badge]:   https://mf2.readthedocs.io/en/latest/?badge=latest
