@@ -25,13 +25,14 @@ such as computational fluid dynamic simulations on rather coarse meshes,
 whereas higher fidelity levels refer to more accurate but also much more
 demaning evaluations such as prototype tests in wind tunnels. The hope of
 multi-fildelity optimization approaches is that many of the not-so-accurate but
-simple low-fidelity evaluations can be uaws to achieve improved results on the
+simple low-fidelity evaluations can be used to achieve improved results on the
 realistic high-fidelity version of the objective where only very few
 evaluations can be performed.
 
-The only dependency of the mf2 package is the `numpy` (https://numpy.org/)
+The only dependency of the mf2 package is the `numpy <https://numpy.org/>`_
 package.
 
+The source for this package is hosted at `github.com/sjvrijn/mf2 <https://github.com/sjvrijn/mf2>`_.
 
 Last updated: (|today|)
 
