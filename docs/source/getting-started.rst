@@ -180,13 +180,10 @@ levels. This class can also be used to define your own multi-fidelity function.
 
 To do so, first define regular functions for each fidelity. Then create the
 ``MultiFidelityFunction`` object by passing a name, the upper and lower bounds,
-a tuple of the functions for the fidelities, and finally a tuple containing a
-name for each fidelity. The ``fidelity_names`` are optional, but required if
-you want to use attribute-style access of the fidelities.
+and a tuple of the functions for the fidelities.
 
 The following is an example for a 1-dimensional multi-fidelity function named
-``my_mf_sphere`` with three named fidelities ``.high()``, ``.medium()`` and
-``.low()``::
+``my_mf_sphere`` with three fidelities::
 
     import numpy as np
     from mf2 import MultiFidelityFunction
@@ -205,8 +202,49 @@ The following is an example for a 1-dimensional multi-fidelity function named
         u_bound=[1],
         l_bound=[-1],
         functions=(sphere_hf, sphere_mf, sphere_lf),
-        fidelity_names=('high', 'medium', 'low')
     )
+
+These functions can be accessed using list-style *indices*, but as no names
+are given, the object-style *attributes* or dict-style *keys* won't work:
+
+    >>> print(my_mf_sphere[0])
+    <function sphere_hf at 0x...>
+    >>> print(my_mf_sphere['medium'])
+    ---------------------------------------------------------------------------
+    IndexError                                Traceback (most recent call last)
+    ...
+    IndexError: Invalid index 'medium'
+    >>> print(my_mf_sphere.low)
+    ---------------------------------------------------------------------------
+    AttributeError                            Traceback (most recent call last)
+    ...
+    AttributeError: 'MultiFidelityFunction' object has no attribute 'low'
+    >>> print(my_mf_sphere.fidelity_names)
+    None
+
+To enable access by attribute or key, a tuple containing a name for each fidelity
+is required. Let's extend the previous example by adding
+``fidelity_names=('high', 'medium', 'low')``::
+
+    my_named_mf_sphere = MultiFidelityFunction(
+        name='sphere',
+        u_bound=[1],
+        l_bound=[-1],
+        functions=(sphere_hf, sphere_mf, sphere_lf),
+        fidelity_names=('high', 'medium', 'low'),
+    )
+
+Now we the attribute and key access will work:
+
+    >>> print(my_named_mf_sphere[0])
+    <function sphere_hf at 0x...>
+    >>> print(my_named_mf_sphere['medium'])
+    <function sphere_mf at 0x...>
+    >>> print(my_named_mf_sphere.low)
+    <function sphere_lf at 0x...>
+    >>> print(my_named_mf_sphere.fidelity_names)
+    ('high', 'medium', 'low')
+
 
 
 
