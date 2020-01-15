@@ -38,38 +38,39 @@ saves time from not having to implement the functions yourself. An example of a
 commonly used benchmark suite for optimizing continuous problems is the COCO
 BBOB software by `@nikolaus_hansen:2019`.
 
-As simulation-based problems in engineering are requiring more and more time
+As simulation-based problems in engineering are requiring increasingly more time
 and computation power, a new sub-field of *multi-fidelity* optimization has
-become more popular. A problem is considered a multi-fidelity problem if there
-are multiple versions that differ in their accuracy of describing the real
-objective. A real-world example would be the aerodynamic efficiency of an
-airfoil. A low-fidelity simulation would use a coarse mesh, and give lower
-accuracy, but be fast to calculate, while a high-fidelity simulation would use
-a much finer mesh and therefore be more accurate while taking longer to
-calculate. Multi-fidelity methods aim to combine these multiple information
-sources to obtain better results in equal or less time compared to only using a
-single information source.
+gained popularity. A multi-fidelity problem is characterised by having multiple
+versions that differ in their accuracy of describing the real objective. A
+real-world example would be the aerodynamic efficiency of an airfoil: A
+*low-fidelity* simulation would use a coarse mesh, and give lower accuracy, but
+be fast to calculate, while a *high-fidelity* simulation would use a much finer
+mesh and therefore be more accurate while taking longer to calculate.
+Multi-fidelity methods aim to combine these multiple information sources to
+obtain better results in equal or less time compared to only using a single
+information source.
 
 Because multi-fidelity problems are a new class of problems, the existing
 single-fidelity benchmark suites that exist cannot be used for this field. To
 this end, new multi-fidelity benchmark functions have been introduced in the
-literature and are being adopted by other works:
+literature and are being adopted by other researchers.
+
+The ``MF2`` package provides a consistent Python implementation of a collection
+of these Multi-Fidelity Functions. It uses a standard interface that allows for
+querying single vectors or multiple row-vectors as a single matrix. It also
+offers a simple factory pattern interface for functions with parameters for e.g.
+correlation and dimensionality. At this moment, ``MF2`` has collected functions
+from the following previous works:
 
   * `@forrester:2007` introduced a simple 1D bi-fidelity function for mostly
     illustrative purposes.
+  * `@simulationlib:2017` have previously collected a small collection of
+    MATLAB/R implementations for the Borehole, Currin and Park91 A and B
+    functions.
   * `@dong_multi-fidelity:2015` introduced bi-fidelity versions of the
     Bohachevsky, Booth, Branin, Himmelblau and Six-hump Camelback functions.
   * `@toal_considerations:2015` introduced correlation-adjustable multi-fidelity
     versions of the Branin, Paciorek, Hartmann3 and Trid functions.
-  * `@simulationlib:2017` have previously collected a small collection of
-    MATLAB/R implementations for the Borehole, Currin and Park91 A and B
-    functions.
-
-``MF2`` is a new collection of these commonly used multi-fidelity functions,
-implemented in Python. It uses a standard interface that allows for querying
-single vectors or multiple row-vectors as a single matrix. It also offers a
-simple factory pattern interface for functions with parameters for e.g.
-correlation and dimensionality.
 
 This package is currently in use by the authors in their research on multi-
 fidelity hierarchical surrogate models.
