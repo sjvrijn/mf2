@@ -36,7 +36,7 @@ it makes sense to simply use a pre-written implementation. This ensures
 correctness of the functions, makes any results directly comparable, and simply
 saves time from not having to implement the functions yourself. An example of a
 commonly used benchmark suite for optimizing continuous problems is the COCO
-BBOB software by `@nikolaus_hansen:2019`.
+BBOB software by @nikolaus_hansen:2019.
 
 As simulation-based problems in engineering are requiring increasingly more time
 and computation power, a new sub-field of *multi-fidelity* optimization has
