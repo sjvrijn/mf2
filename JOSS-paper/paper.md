@@ -11,17 +11,17 @@ authors:
   - name: Sebastian Schmitt
     affiliation: 2
 affiliations:
- - name: Leiden University, The Netherlands
-   index: 1
- - name: Honda Research Institute Europe, Germany
-   index: 2
-date: 31 December 2019
+  - name: Leiden University, The Netherlands
+    index: 1
+  - name: Honda Research Institute Europe, Germany
+    index: 2
+date: 17 January 2020
 bibliography: paper.bib
 
 ---
 
 
-# Summary
+# Background
 
 The field of (evolutionary) optimization algorithms often works with expensive
 black-box optimization problems. Because of how computationally expensive they
@@ -31,25 +31,39 @@ are used. These functions are not only fast to compute, but also have known
 landscape properties that can be taken into account when examining the
 performance of new algorithms.
 
-As the same sets of benchmark functions are typically used in literature, having
+As the same sets of benchmark functions are typically used in literature,
 it makes sense to simply use a pre-written implementation. This ensures
 correctness of the functions, makes any results directly comparable, and simply
-saves time from not having to implement the functions yourself. For the
-'regular' single-fidelity benchmarks, the COCO BBOB
-[@nikolaus_hansen:2019] software is such a widely used collection.
+saves time from not having to implement the functions yourself. An example of a
+commonly used benchmark suite for optimizing continuous problems is the COCO
+BBOB software by `@nikolaus_hansen:2019`.
 
-As the field of *multi-fidelity* optimization is becoming more popular, a
-similar set of common benchmarks is appearing in the literature:
+As simulation-based problems in engineering are requiring more and more time
+and computation power, a new sub-field of *multi-fidelity* optimization has
+become more popular. A problem is considered a multi-fidelity problem if there
+are multiple versions that differ in their accuracy of describing the real
+objective. A real-world example would be the aerodynamic efficiency of an
+airfoil. A low-fidelity simulation would use a coarse mesh, and give lower
+accuracy, but be fast to calculate, while a high-fidelity simulation would use
+a much finer mesh and therefore be more accurate while taking longer to
+calculate. Multi-fidelity methods aim to combine these multiple information
+sources to obtain better results in equal or less time compared to only using a
+single information source.
 
-  * Forrester et al. [@forrester:2007] introduced a simple 1D bi-fidelity
-    function for mostly illustrative purposes.
-  * Dong et al. [@dong_multi-fidelity:2015] introduced bi-fidelity versions of
-    the Bohachevsky, Booth, Branin, Himmelblau and Six-hump Camelback functions.
-  * Toal [@toal_considerations:2015] introduced correlation-adjustable multi-
-    fidelity versions of the Branin, Paciorek, Hartmann3 and Trid functions.
-  * Surjanovic and Bingham [@simulationlib:2017] have previously collected a
-    small collection of MATLAB/R implementations for the Borehole, Currin and
-    Park91 A and B functions.
+Because multi-fidelity problems are a new class of problems, the existing
+single-fidelity benchmark suites that exist cannot be used for this field. To
+this end, new multi-fidelity benchmark functions have been introduced in the
+literature and are being adopted by other works:
+
+  * `@forrester:2007` introduced a simple 1D bi-fidelity function for mostly
+    illustrative purposes.
+  * `@dong_multi-fidelity:2015` introduced bi-fidelity versions of the
+    Bohachevsky, Booth, Branin, Himmelblau and Six-hump Camelback functions.
+  * `@toal_considerations:2015` introduced correlation-adjustable multi-fidelity
+    versions of the Branin, Paciorek, Hartmann3 and Trid functions.
+  * `@simulationlib:2017` have previously collected a small collection of
+    MATLAB/R implementations for the Borehole, Currin and Park91 A and B
+    functions.
 
 ``MF2`` is a new collection of these commonly used multi-fidelity functions,
 implemented in Python. It uses a standard interface that allows for querying
