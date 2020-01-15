@@ -62,14 +62,14 @@ offers a simple factory pattern interface for functions with parameters for e.g.
 correlation and dimensionality. At this moment, ``MF2`` has collected functions
 from the following previous works:
 
-  * `@forrester:2007` introduced a simple 1D bi-fidelity function for mostly
+  * @forrester:2007 introduced a simple 1D bi-fidelity function for mostly
     illustrative purposes.
-  * `@simulationlib:2017` have previously collected a small collection of
+  * @simulationlib:2017 have previously collected a small collection of
     MATLAB/R implementations for the Borehole, Currin and Park91 A and B
     functions.
-  * `@dong_multi-fidelity:2015` introduced bi-fidelity versions of the
+  * @dong_multi-fidelity:2015 introduced bi-fidelity versions of the
     Bohachevsky, Booth, Branin, Himmelblau and Six-hump Camelback functions.
-  * `@toal_considerations:2015` introduced correlation-adjustable multi-fidelity
+  * @toal_considerations:2015 introduced correlation-adjustable multi-fidelity
     versions of the Branin, Paciorek, Hartmann3 and Trid functions.
 
 This package is currently in use by the authors in their research on multi-
