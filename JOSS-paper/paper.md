@@ -21,34 +21,34 @@ bibliography: paper.bib
 ---
 
 
-# Background
+# Summary
 
 The field of (evolutionary) optimization algorithms often works with expensive
-black-box optimization problems. Because of how computationally expensive they
-are, real-world problems are not a first choice to test on when developing new
-algorithms. Instead, benchmark functions such as Sphere, Rastrigin, and Ackley
-are used. These functions are not only fast to compute, but also have known
-landscape properties that can be taken into account when examining the
-performance of new algorithms.
+black-box optimization problems. However, for the development of novel
+algorithms and approaches, real-world problems are not feasible due to their
+high computational cost. Instead, benchmark functions such as Sphere, Rastrigin,
+and Ackley are typically used. These functions are not only fast to compute, but
+also have known properties which are very helpful when examining the performance
+of new algorithms.
 
-As the same sets of benchmark functions are typically used in literature,
-it makes sense to simply use a pre-written implementation. This ensures
-correctness of the functions, makes any results directly comparable, and simply
-saves time from not having to implement the functions yourself. An example of a
-commonly used benchmark suite for optimizing continuous problems is the COCO
-BBOB software by @nikolaus_hansen:2019.
+As only a limited set of benchmark functions are typically used in literature,
+compiling a set of implementations for the most commonly used functions is
+warranted. This ensures correctness of the functions, makes any results directly
+comparable, and simply saves time from not having to implement the functions
+yourself. An example of a commonly used benchmark suite for optimizing
+continuous problems is the COCO BBOB software by @nikolaus_hansen:2019.
 
 As simulation-based problems in engineering are requiring increasingly more time
 and computation power, a new sub-field of *multi-fidelity* optimization has
 gained popularity. A multi-fidelity problem is characterised by having multiple
-versions that differ in their accuracy of describing the real objective. A
-real-world example would be the aerodynamic efficiency of an airfoil: A
-*low-fidelity* simulation would use a coarse mesh, and give lower accuracy, but
-be fast to calculate, while a *high-fidelity* simulation would use a much finer
-mesh and therefore be more accurate while taking longer to calculate.
-Multi-fidelity methods aim to combine these multiple information sources to
-obtain better results in equal or less time compared to only using a single
-information source.
+versions of an evaluation function that differ in their accuracy of describing
+the real objective. A real-world example would be the aerodynamic efficiency of
+an airfoil: A *low-fidelity* simulation would use a coarse mesh, and give lower
+accuracy, but be fast to calculate, while a *high-fidelity* simulation would use
+a much finer mesh and therefore be more accurate while taking longer to
+calculate. Multi-fidelity methods aim to combine these multiple information
+sources to obtain better results in equal or less time compared to only using a
+single information source.
 
 Because multi-fidelity problems are a new class of problems, the existing
 single-fidelity benchmark suites that exist cannot be used for this field. To
