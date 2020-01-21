@@ -37,7 +37,7 @@ def branin(a1):
 
     :param a1:  Parameter to tune the correlation between high- and low-fidelity
                 functions. Expected values lie in range [0, 1]. High- and low-
-                fidelity are identical for a1=-0.5.
+                fidelity are identical for `a1=-0.5`.
     :return:    A MultiFidelityFunction instance
     """
 

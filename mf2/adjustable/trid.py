@@ -32,18 +32,21 @@ def adjustable_trid_lf(xx, a4):
     return temp1 - temp2
 
 
+u_bound = [1]*10
+l_bound = [0]*10
+
+
 def trid(a4):
     """Factory method for adjustable Trid function using parameter value `a4`
 
     :param a4:  Parameter to tune the correlation between high- and low-fidelity
-                functions. Expected values lie in range [0, 1]. High- and low-
-                fidelity are identical for a1=-0.5.
+                functions. Expected values lie in range [0, 1].
     :return:    A MultiFidelityFunction instance
     """
 
     return MultiFidelityFunction(
         f"adjustable Trid {a4}",
-        [1]*10, [0]*10,
+        u_bound, l_bound,
         [trid_hf, partial(adjustable_trid_lf, a4=a4)],
         fidelity_names=['high', 'low'],
     )

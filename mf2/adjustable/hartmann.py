@@ -61,18 +61,22 @@ def adjustable_hartmann3_lf(xx, a3):
     return -tmp4.reshape((-1,))
 
 
+u_bound = [1]*3
+l_bound = [0]*3
+
+
 def hartmann3(a3):
     """Factory method for adjustable Hartmann3 function using parameter value `a3`
 
     :param a3:  Parameter to tune the correlation between high- and low-fidelity
                 functions. Expected values lie in range [0, 1]. High- and low-
-                fidelity are identical for a1=-0.5.
+                fidelity are identical for `a3=1/3`.
     :return:    A MultiFidelityFunction instance
     """
 
     return MultiFidelityFunction(
         f"adjustable Hartmann3 {a3}",
-        [1] * 3, [0] * 3,
+        u_bound, l_bound,
         [hartmann3_hf, partial(adjustable_hartmann3_lf, a3=a3)],
         fidelity_names=['high', 'low'],
     )
