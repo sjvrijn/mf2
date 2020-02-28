@@ -3,6 +3,8 @@ import mf2
 
 with open('README.md') as f:
     long_description = f.read()
+with open('requirements.txt') as f:
+    requirements = f.read().splitlines()
 
 setuptools.setup(
     name='mf2',
@@ -20,4 +22,5 @@ setuptools.setup(
         "Programming Language :: Python :: 3.8",
     ],
     python_requires=">=3.6",
+    install_requires=requirements,
 )
