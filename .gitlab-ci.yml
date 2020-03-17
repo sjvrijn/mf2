@@ -26,6 +26,6 @@ before_script:
 
 test:
   script:
-    - pip install -r requirements.txt
+    - pip install -r requirements-dev.txt
     - pytest --cov=mf2 tests/property_test.py
     - pytest tests/regression_test.py

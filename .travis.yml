@@ -8,7 +8,7 @@ matrix:
       sudo: true
     - python: 3.8
 install:
-  - pip install -r requirements.txt
+  - pip install -r requirements-dev.txt
   - pip install coverage
   - pip install python-coveralls
 script:

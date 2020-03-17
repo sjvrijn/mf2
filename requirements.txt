@@ -1,4 +1,1 @@
-hypothesis
 numpy
-pytest
-pytest-cov
