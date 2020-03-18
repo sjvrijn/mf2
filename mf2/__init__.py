@@ -7,7 +7,6 @@ A collection of analytical functions with 2 or more available fidelities.
 """
 
 from .multiFidelityFunction import MultiFidelityFunction
-from .artificialMultifidelity import artificial_multifidelity
 from .borehole import borehole
 from .currin import currin
 from .park91a import park91a
@@ -25,29 +24,30 @@ import mf2.adjustable
 
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
-__version__ = '2019.11.3'
+with open('VERSION') as f:
+    __version__ = f.readline()
 
 
 bi_fidelity_functions = (
-    borehole,
+    # 1D
+    forrester,
+    # 2D
+    bohachevsky,
+    booth,
+    branin,
     currin,
+    himmelblau,
+    six_hump_camelback,
+    # 4D
     park91a,
     park91b,
-    forrester,
-    Forrester,
+    # 6D
     hartmann6,
-    himmelblau,
-    bohachevsky,
-    branin,
-    booth,
-    six_hump_camelback,
+    # 8D
+    borehole,
 )
 
 tri_fidelity_functions = (
     himmelblau_3f,
     himmelblau_seb,
-)
-
-six_fidelity_functions = (
-    artificial_multifidelity,
 )
