@@ -1,6 +1,8 @@
 import setuptools
-import mf2
+from pathlib import Path
 
+with open(Path('mf2/VERSION')) as f:
+    version = f.readline()
 with open('README.md') as f:
     long_description = f.read()
 with open('requirements.txt') as f:
@@ -8,7 +10,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name='mf2',
-    version=mf2.__version__,
+    version=version,
     description='A collection of analytical benchmark functions in multiple fidelities',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -20,6 +22,8 @@ setuptools.setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
+        "Intended Audience :: Science/Research",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     ],
     python_requires=">=3.6",
     install_requires=requirements,
