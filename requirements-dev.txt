@@ -1,4 +1,4 @@
+-r requirements.txt
 hypothesis
-numpy
 pytest
 pytest-cov

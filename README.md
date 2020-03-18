@@ -49,11 +49,13 @@ For the latest version, you can install directly from source:
 python3 -m pip install --user https://github.com/sjvrijn/mf2/archive/master.zip
 ```
 
-To work in your own version locally, it is best to clone the repository first:
+To work in your own version locally, it is best to clone the repository first,
+and additionally install the dev-requirements:
 ```
 git clone https://github.com/sjvrijn/mf2.git
 cd mf2
 python3 -m pip install --user -e .
+python3 -m pip install -r requirements-dev.txt
 ```
 
 ## Example Usage
