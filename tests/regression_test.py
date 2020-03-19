@@ -14,31 +14,31 @@ import pytest
 from pathlib import Path
 
 from .utils import rescale, ValueRange
-import mf2 as mff
+import mf2
 
 
 _functions_to_test = (
-    mff.forrester,
-    mff.Forrester(ndim=2),
-    mff.Forrester(ndim=4),
-    mff.Forrester(ndim=6),
-    mff.Forrester(ndim=8),
+    mf2.forrester,
+    mf2.Forrester(ndim=2),
+    mf2.Forrester(ndim=4),
+    mf2.Forrester(ndim=6),
+    mf2.Forrester(ndim=8),
 
-    mff.bohachevsky,
-    mff.booth,
-    mff.branin,
-    mff.currin,
-    mff.himmelblau,
-    mff.six_hump_camelback,
-    mff.park91a,
-    mff.park91b,
-    mff.hartmann6,
-    mff.borehole,
+    mf2.bohachevsky,
+    mf2.booth,
+    mf2.branin,
+    mf2.currin,
+    mf2.himmelblau,
+    mf2.six_hump_camelback,
+    mf2.park91a,
+    mf2.park91b,
+    mf2.hartmann6,
+    mf2.borehole,
 
-    mff.adjustable.branin(0),
-    mff.adjustable.paciorek(0),
-    mff.adjustable.hartmann3(0),
-    mff.adjustable.trid(0),
+    mf2.adjustable.branin(0),
+    mf2.adjustable.paciorek(0),
+    mf2.adjustable.hartmann3(0),
+    mf2.adjustable.trid(0),
 )
 
 @pytest.mark.parametrize("func", _functions_to_test)

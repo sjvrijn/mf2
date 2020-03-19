@@ -16,7 +16,7 @@ from hypothesis.strategies import floats, integers, lists
 import pytest
 
 from .utils import rescale, ValueRange
-import mf2 as mff
+import mf2
 
 
 def quadratic(xx):
@@ -25,7 +25,7 @@ def quadratic(xx):
     return np.sqrt(np.sum(xx**2, axis=1))
 
 
-simple_square = mff.MultiFidelityFunction('simple_square', [-1e8], [1e8], [quadratic, quadratic], ['high', 'low'])
+simple_square = mf2.MultiFidelityFunction('simple_square', [-1e8], [1e8], [quadratic, quadratic], ['high', 'low'])
 
 # TEST HELPERS -----------------------------------------------------------------
 
@@ -67,7 +67,7 @@ def _test_single_function(f, x):
 @given(integers(min_value=1, max_value=100).flatmap(rectangle_lists))
 @pytest.mark.parametrize("function", [
     simple_square,
-    mff.forrester,
+    mf2.forrester,
 ])
 def test_nd_functions(function, x):
     _test_single_function(function, x)
@@ -75,14 +75,14 @@ def test_nd_functions(function, x):
 
 @given(rectangle_lists(n=2))
 @pytest.mark.parametrize("function", [
-    mff.bohachevsky,
-    mff.booth,
-    mff.branin,
-    mff.currin,
-    mff.himmelblau,
-    mff.six_hump_camelback,
-    mff.adjustable.branin(0.5),
-    mff.adjustable.paciorek(0.5),
+    mf2.bohachevsky,
+    mf2.booth,
+    mf2.branin,
+    mf2.currin,
+    mf2.himmelblau,
+    mf2.six_hump_camelback,
+    mf2.adjustable.branin(0.5),
+    mf2.adjustable.paciorek(0.5),
 ])
 def test_2d_functions(function, x):
     _test_single_function(function, x)
@@ -90,7 +90,7 @@ def test_2d_functions(function, x):
 
 @given(rectangle_lists(n=3))
 @pytest.mark.parametrize("function", [
-    mff.adjustable.hartmann3(0.5),
+    mf2.adjustable.hartmann3(0.5),
 ])
 def test_3d_functions(function, x):
     _test_single_function(function, x)
@@ -98,8 +98,8 @@ def test_3d_functions(function, x):
 
 @given(rectangle_lists(n=4))
 @pytest.mark.parametrize("function", [
-    mff.park91a,
-    mff.park91b,
+    mf2.park91a,
+    mf2.park91b,
 ])
 def test_4d_functions(function, x):
     _test_single_function(function, x)
@@ -107,7 +107,7 @@ def test_4d_functions(function, x):
 
 @given(rectangle_lists(n=6))
 @pytest.mark.parametrize("function", [
-    mff.hartmann6,
+    mf2.hartmann6,
 ])
 def test_6d_functions(function, x):
     _test_single_function(function, x)
@@ -115,7 +115,7 @@ def test_6d_functions(function, x):
 
 @given(rectangle_lists(n=8))
 @pytest.mark.parametrize("function", [
-    mff.borehole,
+    mf2.borehole,
 ])
 def test_8d_functions(function, x):
     _test_single_function(function, x)
@@ -123,7 +123,7 @@ def test_8d_functions(function, x):
 
 @given(rectangle_lists(n=10))
 @pytest.mark.parametrize("function", [
-    mff.adjustable.trid(0.5),
+    mf2.adjustable.trid(0.5),
 ])
 def test_10d_functions(function, x):
     _test_single_function(function, x)
