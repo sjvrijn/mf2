@@ -1,8 +1,6 @@
 import setuptools
 from pathlib import Path
 
-with open(Path('mf2/VERSION')) as f:
-    version = f.readline()
 with open('README.md') as f:
     long_description = f.read()
 with open('requirements.txt') as f:
@@ -10,7 +8,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name='mf2',
-    version=version,
+    version='2019.11.3',
     description='A collection of analytical benchmark functions in multiple fidelities',
     long_description=long_description,
     long_description_content_type="text/markdown",
