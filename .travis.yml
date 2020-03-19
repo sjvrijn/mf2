@@ -8,12 +8,11 @@ matrix:
       sudo: true
     - python: 3.8
 install:
+  - pip install .
   - pip install -r requirements-dev.txt
-  - pip install coverage
-  - pip install python-coveralls
+  - pip install coverage python-coveralls
 script:
   - pytest tests/regression_test.py
   - pytest --cov=mf2 tests/property_test.py
 after_success:
   - coveralls
-
