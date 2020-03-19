@@ -100,7 +100,7 @@ steps:
 2. Add it to the tests:
    * add the function in the `tests/property_test.py` and
    `tests/regression_test.py` files
-   * run `python3 tests/create_regression_data.py` to generate the new
+   * run `python3 -m tests.create_regression_data` to generate the new
    data files
    * run the tests
 3. Make sure to commit all new and updated files to git (Travis-CI will
