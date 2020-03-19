@@ -22,12 +22,15 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 import numpy as np
 from pyprojroot import here
 
-from utils import rescale, ValueRange
-from regression_test import _functions_to_test
+from .utils import rescale, ValueRange
+from .regression_test import _functions_to_test
+
+
+files_location = here('tests/regression_files')
 
 
 def create_and_store_input(ndim):
-    fname = here(f'tests/regression_files/input_{ndim}d.npy')
+    fname = files_location / f'input_{ndim}d.npy'
     if not fname.exists():
         np.random.seed(20160501)  # Setting seed for reproducibility
         np.save(fname, np.random.rand(100,ndim))
@@ -35,13 +38,13 @@ def create_and_store_input(ndim):
 
 
 def create_and_store_output(func, fidelity):
-    file_out = here(f'tests/regression_files/output_{func.ndim}d_{func.name}_{fidelity}.npy')
-    if file_out.exists():
-        return
-
-    file_in = here(f'tests/regression_files/input_{func.ndim}d.npy')
+    file_in = files_location / f'input_{func.ndim}d.npy'
     if not file_in.exists():
         create_and_store_input(func.ndim)
+
+    file_out = files_location / f'output_{func.ndim}d_{func.name}_{fidelity}.npy'
+    if file_out.exists():
+        return
 
     x = rescale(np.load(file_in),
                 range_in=ValueRange(0,1),
@@ -54,3 +57,4 @@ if __name__ == '__main__':
     for func in _functions_to_test:
         for fid in func.fidelity_names:
             create_and_store_output(func, fid)
+    print("All required files are now present.")
