@@ -1,12 +1,8 @@
-#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
 """
-Filename.py: << A short summary docstring about this file >>
+utils.py: collection of utilities for testing the mf2 package
 """
-
-__author__ = 'Sander van Rijn'
-__email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 
 from collections import namedtuple
@@ -44,4 +40,3 @@ def rescale(values, *, range_in=None, range_out=ValueRange(0, 1), scale_only=Fal
         scaled_values = (scaled_values * scale_out) + range_out.min
 
     return scaled_values
-
