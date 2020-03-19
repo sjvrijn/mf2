@@ -10,8 +10,8 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 
 import numpy as np
+from pyprojroot import here
 import pytest
-from pathlib import Path
 
 from .utils import rescale, ValueRange
 import mf2
@@ -44,10 +44,10 @@ _functions_to_test = (
 @pytest.mark.parametrize("func", _functions_to_test)
 def test_function_regression(func):
 
-    data = rescale(np.load(Path(f'tests/regression_files/input_{func.ndim}d.npy')),
+    data = rescale(np.load(here(f'tests/regression_files/input_{func.ndim}d.npy')),
                    range_in=ValueRange(0,1),
                    range_out=ValueRange(*func.bounds))
 
     for fid in func.fidelity_names:
-        output = np.load(Path(f'tests/regression_files/output_{func.ndim}d_{func.name}_{fid}.npy'))
+        output = np.load(here(f'tests/regression_files/output_{func.ndim}d_{func.name}_{fid}.npy'))
         np.testing.assert_allclose(func[fid](data), output)

@@ -19,17 +19,15 @@ Performs 2 steps for each function that is tested in 'regression_test.py':
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
-
-from pathlib import Path
-
 import numpy as np
+from pyprojroot import here
 
 from utils import rescale, ValueRange
 from regression_test import _functions_to_test
 
 
 def create_and_store_input(ndim):
-    fname = Path(f'regression_files/input_{ndim}d.npy')
+    fname = here(f'tests/regression_files/input_{ndim}d.npy')
     if not fname.exists():
         np.random.seed(20160501)  # Setting seed for reproducibility
         np.save(fname, np.random.rand(100,ndim))
@@ -37,11 +35,11 @@ def create_and_store_input(ndim):
 
 
 def create_and_store_output(func, fidelity):
-    file_out = Path(f'regression_files/output_{func.ndim}d_{func.name}_{fidelity}.npy')
+    file_out = here(f'tests/regression_files/output_{func.ndim}d_{func.name}_{fidelity}.npy')
     if file_out.exists():
         return
 
-    file_in = Path(f'regression_files/input_{func.ndim}d.npy')
+    file_in = here(f'tests/regression_files/input_{func.ndim}d.npy')
     if not file_in.exists():
         create_and_store_input(func.ndim)
 
