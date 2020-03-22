@@ -59,7 +59,10 @@ The ``MF2`` package provides a consistent Python implementation of a collection
 of these Multi-Fidelity Functions. It uses a standard interface that allows for
 querying single vectors or multiple row-vectors as a single matrix. It also
 offers a simple factory pattern interface for functions with parameters for e.g.
-correlation and dimensionality. At this moment, ``MF2`` has collected functions
+correlation and dimensionality. A plot of how these implementations scale can
+be seen in \autoref{fig:scalability}.
+
+At this moment, ``MF2`` has collected functions
 from the following previous works:
 
   * @forrester:2007 introduced a simple 1D bi-fidelity function for mostly
@@ -74,6 +77,15 @@ from the following previous works:
 
 This package is currently in use by the authors in their research on multi-
 fidelity hierarchical surrogate models.
+
+![**Scalability plot** This plot shows how the evaluation time of high- and
+low-fidelity functions scales with the number of points *N* being passed in
+simultaneously. The times are divided by the time needed for N=1 as a
+normalization. Results are grouped by function dimensionality. If there are
+multiple functions, the mean is plotted with error bars indicating the minimum
+and maximum time. Note that the 6D Hartmann6 function is significantly more
+computationally expensive than other functions by definition, as it requires
+multiple matrix multiplications.\label{fig:scalability}](scalability.pdf)
 
 # Acknowledgements
 
