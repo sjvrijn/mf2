@@ -20,5 +20,3 @@ To work in your own version locally, it is best to clone the repository first::
     git clone https://github.com/sjvrijn/mf2.git
     cd mf2
     python3 -m pip install --user -e .
-
-

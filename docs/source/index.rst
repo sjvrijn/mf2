@@ -44,6 +44,7 @@ Contents
    :maxdepth: 2
 
    install
+   example-usage
    getting-started
    mf2
 
