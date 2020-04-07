@@ -15,7 +15,7 @@ affiliations:
     index: 1
   - name: Honda Research Institute Europe, Germany
     index: 2
-date: 17 January 2020
+date: 7 April 2020
 bibliography: paper.bib
 
 ---
@@ -54,6 +54,15 @@ Because multi-fidelity problems are a new class of problems, the existing
 single-fidelity benchmark suites that exist cannot be used for this field. To
 this end, new multi-fidelity benchmark functions have been introduced in the
 literature and are being adopted by other researchers.
+
+This new class of benchmark problems is best served by introducing
+a new implementation suite because their structure is inherently different from
+other benchmarks. That is, multi-fidelity problems naturally benefit from
+having the different fidelities combined into a single 'problem'. No existing
+suite of benchmark functions currently uses such a structure, or can easily
+accomodate it. A new suite additionally gives more freedom to adapt to new
+multi-fidelity benchmarks as the field continues to evolve and new needs become
+apparent.
 
 The ``MF2`` package provides a consistent Python implementation of a collection
 of these Multi-Fidelity Functions. It uses a standard interface that allows for
