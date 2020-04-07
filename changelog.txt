@@ -1,5 +1,6 @@
 since last version:
 - Removed unused artificialMultiidelity.py
+- De-duplicated borehole fidelities
 
 v2020.4.1:
 - Added Manifest.in to include requirements and docs in source distribution

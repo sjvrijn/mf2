@@ -35,6 +35,20 @@ from .multiFidelityFunction import MultiFidelityFunction
 _tau = 2*np.pi
 
 
+def _borehole_base(xx, A, B):
+    xx = np.atleast_2d(xx)
+
+    rw, r, Tu, Hu, Tl, Hl, L, Kw = xx.T
+
+    frac1 = A * Tu * (Hu-Hl)
+
+    frac2a = 2*L*Tu / (np.log(r/rw) * (rw**2) * Kw)
+    frac2b = Tu / Tl
+    frac2 = np.log(r/rw) * (B+frac2a+frac2b)
+
+    return frac1 / frac2
+
+
 def borehole_hf(xx):
     """
         BOREHOLE FUNCTION
@@ -43,17 +57,7 @@ def borehole_hf(xx):
         inputs = [rw, r, Tu, Hu, Tl, Hl, L, Kw]
         output = water flow rate
     """
-    xx = np.atleast_2d(xx)
-
-    rw, r, Tu, Hu, Tl, Hl, L, Kw = xx.T
-
-    frac1 = _tau * Tu * (Hu-Hl)
-
-    frac2a = 2*L*Tu / (np.log(r/rw)*(rw**2)*Kw)
-    frac2b = Tu / Tl
-    frac2 = np.log(r/rw) * (1+frac2a+frac2b)
-
-    return frac1 / frac2
+    return _borehole_base(xx, A=_tau, B=1)
 
 
 def borehole_lf(xx):
@@ -66,23 +70,13 @@ def borehole_lf(xx):
         inputs = [rw, r, Tu, Hu, Tl, Hl, L, Kw]
         output = water flow rate
     """
-    xx = np.atleast_2d(xx)
-
-    rw, r, Tu, Hu, Tl, Hl, L, Kw = xx.T
-
-    frac1 = 5 * Tu * (Hu-Hl)
-
-    frac2a = 2*L*Tu / (np.log(r/rw) * (rw**2) * Kw)
-    frac2b = Tu/Tl
-    frac2 = np.log(r/rw) * (1.5+frac2a+frac2b)
-
-    return frac1 / frac2
+    return _borehole_base(xx, A=5, B=1.5)
 
 
 #: Lower bound for Borehole function
-l_bound = [0.05,   100,  63070,  990, 63.1, 700, 1120,  9855]
+l_bound = [0.05,    100,  63_070,   990, 63.1, 700, 1_120,  9_855]
 #: Upper bound for Borehole function
-u_bound = [0.15, 50000, 115600, 1110,  116, 820, 1680, 12045]
+u_bound = [0.15, 50_000, 115_600, 1_110,  116, 820, 1_680, 12_045]
 
 #: 8D Borehole function with fidelities 'high' and 'low'
 borehole = MultiFidelityFunction(
