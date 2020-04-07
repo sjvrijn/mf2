@@ -1,4 +1,4 @@
-Burrin
+Currin
 ======
 
 .. automodule:: mf2.currin
