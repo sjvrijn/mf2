@@ -1,5 +1,5 @@
 since last version:
-
+- Added Manifest.in to include requirements and docs in source distribution
 
 v2020.4.0:
 - Added documentation for adjustable functions

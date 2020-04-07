@@ -1,0 +1,2 @@
+include requirements.txt requirements-dev.txt
+recursive-include docs *.rst
