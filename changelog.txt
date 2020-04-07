@@ -1,0 +1,58 @@
+since last version:
+
+
+v2020.4.0:
+- Added documentation for adjustable functions
+- Added documentation to bounds variables and MultiFidelityFunction instances
+- Expanded getting-started page of documentation
+- Documentation: added generic introduction
+- Updated JOSS paper:
+  * added acknowledgements, 
+  * added Forrester reference
+  * itemized functions included in package
+  * extended introduction of multi-fidelity definition
+  * added scalability comparison script + results figure
+  * updated surjanovic and bingham entry in bib-file
+- Added README badges: conda, JOSS, license. Now formatted in a table
+- Dependencies automatically installed upon install
+- Requirements for tests moved to `requirements-dev.txt`
+- Separated requirements into regular 'requirements' and 'requirements-dev'
+- Added requirements-dev install instruction to README
+- __init__ now uses pkg_resources to version number, defined in setup.py
+- Added simple logo to documentation
+- Added conda install instruction
+- Clarified available fidelity levels and their use in docs/getting-started
+- Added installation page to docs
+- documentation now shows difference between in- or excluding `fidelity_names=`
+  in MultiFidelityFunction definition
+- Adjustable functions: bounds now separate variables, docstrings updated with correct parameter values for high-low equality
+- Tests cleanup: removed old 'import mf2 as mff', paths fixed using pyprojroot
+- Update README: added correct module-script instruction for create_regression_files
+- Updated travis script to install the package
+- Bugfix: fixed mistake in low-fidelity Forrester definition
+- Added example-usage to docs: reproducing fig. 1 from Forrester 2007
+- Bugfix: mistake in low-fidelity of Forrester function
+- Included changelog
+
+v2019.11.3:
+- @row_vectorize decorator on functions replaced by np.atleast_2d call
+- Improved docstrings for all functions
+- Added JOSS paper
+- Added README badges: PyPI, gitter chat
+- Added README sections: Installation, Example Usage, Contributing and Contact
+- Added CI for Python3.8
+- Upated PyPI page specifiers: markdown text + Python versions (3.6-3.8)
+
+v2019.11.2:
+- Added GPL 3.0 license 
+- Renamed package: multifidelityfunctions -> mf2
+
+v2019.11.1:
+- Correlation-adjustable functions moved to .adjustable subpackage
+- Refactored benchmarks to test into single definition list
+- Added docs for all non-adjustable functions
+- Added docstrings for MultiFidelityFunction properties
+
+v2019.11.0:
+- First release
+
