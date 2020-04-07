@@ -47,6 +47,7 @@ else:
     df = pd.read_csv(save_location)
 
 
+np.random.seed(20160501)
 fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.8), constrained_layout=True)
 plt.suptitle('Scalability of mf2-functions')
 xticks = pd.unique(df['size'])
