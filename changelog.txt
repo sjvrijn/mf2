@@ -1,4 +1,7 @@
 since last version:
+
+
+v2020.4.1:
 - Added Manifest.in to include requirements and docs in source distribution
 
 v2020.4.0:

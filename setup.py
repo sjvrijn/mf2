@@ -7,7 +7,7 @@ with open('requirements.txt') as f:
 
 setuptools.setup(
     name='mf2',
-    version='2020.4.0',
+    version='2020.4.1',
     description='A collection of analytical benchmark functions in multiple fidelities',
     long_description=long_description,
     long_description_content_type="text/markdown",
