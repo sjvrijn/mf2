@@ -1,5 +1,5 @@
-Branin
-======
+Adjustable Branin
+=================
 
 .. automodule:: mf2.adjustable.branin
     :members:

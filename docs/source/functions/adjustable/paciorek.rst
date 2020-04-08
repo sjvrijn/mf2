@@ -1,5 +1,5 @@
-Paciorek
-========
+Adjustable Paciorek
+===================
 
 .. automodule:: mf2.adjustable.paciorek
     :members:
