@@ -1,6 +1,17 @@
 since last version:
+
+
+v2020.4.2
 - Removed unused artificialMultiidelity.py
 - De-duplicated borehole fidelities
+- Added LICENSE file to source distribution
+- Documentation:
+  * updated copyright
+  * updated develop install instructions
+  * fixed typo: Burrin -> Currin
+  * Added 'Adjustable' to titles of adjustable function pages
+- JOSS paper:
+  * Added statement of need paragraph
 
 v2020.4.1:
 - Added Manifest.in to include requirements and docs in source distribution
