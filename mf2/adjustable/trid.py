@@ -32,8 +32,8 @@ def adjustable_trid_lf(xx, a4):
     return temp1 - temp2
 
 
-u_bound = [1]*10
-l_bound = [0]*10
+u_bound = [100]*10
+l_bound = [-100]*10
 
 
 def trid(a4):
