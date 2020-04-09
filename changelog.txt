@@ -1,7 +1,10 @@
 since last version:
 
 
-v2020.4.2
+v2020.4.3:
+- Bugfix: corrected bounds for adjustable Trid function
+
+v2020.4.2:
 - Removed unused artificialMultiidelity.py
 - De-duplicated borehole fidelities
 - Added LICENSE file to source distribution
