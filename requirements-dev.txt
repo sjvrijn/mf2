@@ -1,5 +1,7 @@
 -r requirements.txt
 hypothesis
+matplotlib
+pandas
 pyprojroot
 pytest
 pytest-cov
