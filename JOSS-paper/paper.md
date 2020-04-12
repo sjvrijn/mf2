@@ -94,7 +94,7 @@ normalization. Results are grouped by function dimensionality. If there are
 multiple functions, the mean is plotted with error bars indicating the minimum
 and maximum time. Note that the 6D Hartmann6 function is significantly more
 computationally expensive than other functions by definition, as it requires
-multiple matrix multiplications.\label{fig:scalability}](scalability.pdf)
+multiple matrix multiplications.\label{fig:scalability}](../docs/_static/scalability.pdf)
 
 # Acknowledgements
 
