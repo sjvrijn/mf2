@@ -45,6 +45,7 @@ def plot_mf2_scalability(df):
     plt.suptitle('Scalability of mf2-functions')
     xticks = pd.unique(df['size'])
     for ax, (fid, df_per_fid) in zip(axes, df.groupby('fidelity')):
+        ax.grid(linestyle='--', linewidth=1, alpha=.5)
         ax.set_xscale('log')
         ax.set_yscale('log')
         ax.set_xlabel('$N$')
@@ -65,7 +66,6 @@ def plot_mf2_scalability(df):
                                            np.max(data, axis=0) - mean]))
                 ax.errorbar(xticks, mean, min_max, label=label, capsize=4)
 
-
     axes[0].legend(loc=0)
     axes[1].legend(loc=0)
     plt.savefig('scalability.pdf')
@@ -80,9 +80,10 @@ def plot_scalability_comparison(df1, df2, name1, name2):
     df2 = df2.loc[df2['name'].isin(names1)]
 
     fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.8), constrained_layout=True)
-    plt.suptitle(f'Scalability comparison: {name1} vs {name2}')
+    plt.suptitle(f'{name1} vs {name2}')
     xticks = pd.unique(df1['size'])
     for ax, (fid, df_per_fid1), (_, df_per_fid2) in zip(axes, df1.groupby('fidelity'), df2.groupby('fidelity')):
+        ax.grid(linestyle='--', linewidth=1, alpha=.5)
         ax.set_xscale('log')
         ax.set_yscale('log')
         ax.set_xlabel('$N$')

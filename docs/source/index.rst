@@ -45,6 +45,7 @@ Contents
 
    install
    example-usage
+   performance
    getting-started
    mf2
 
