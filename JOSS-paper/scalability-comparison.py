@@ -73,6 +73,46 @@ def plot_mf2_scalability(df):
     plt.show()
 
 
+def plot_scalability_comparison(df1, df2, name1, name2):
+
+    names1, names2 = pd.unique(df1['name']), pd.unique(df2['name'])
+    df1 = df1.loc[df1['name'].isin(names2)]
+    df2 = df2.loc[df2['name'].isin(names1)]
+
+    fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.8), constrained_layout=True)
+    plt.suptitle(f'Scalability comparison: {name1} vs {name2}')
+    xticks = pd.unique(df1['size'])
+    for ax, (fid, df_per_fid1), (_, df_per_fid2) in zip(axes, df1.groupby('fidelity'), df2.groupby('fidelity')):
+        ax.set_xscale('log')
+        ax.set_yscale('log')
+        ax.set_xlabel('$N$')
+        ax.set_ylabel('$t/t_0$')
+        ax.set_title(f'{fid} fidelity')
+        for (ndim, df_per_dim1), (_, df_per_dim2) in zip(df_per_fid1.groupby('ndim'), df_per_fid2.groupby('ndim')):
+            data1, data2 = [], []
+            for (name, sub_df1), (_, sub_df2) in zip(df_per_dim1.groupby('name'), df_per_dim2.groupby('name')):
+                data1.append(sub_df1['norm_time_per'].values)
+                data2.append(sub_df2['norm_time_per'].values)
+            data1, data2 = np.array(data1), np.array(data2)
+
+            for data, name, linestyle in zip([data1, data2], [name1, name2], ['-', '--']):
+                mean = np.mean(data, axis=0)
+                label = f'{name}: {ndim}D'
+                if data.shape[0] == 1:
+                    ax.plot(xticks, mean, linestyle, label=label)
+                else:
+                    min_max = np.abs(np.array([mean - np.min(data, axis=0),
+                                               np.max(data, axis=0) - mean]))
+                    ax.errorbar(xticks, mean, min_max, fmt=linestyle, label=label, capsize=4)
+
+
+    axes[0].legend(loc=0)
+    axes[1].legend(loc=0)
+    plt.savefig('scalability_comparison.pdf')
+    plt.savefig('scalability_comparison.png')
+    plt.show()
+
+
 np.random.seed(20160501)
 save_location = Path('time_scaling.csv')
 if not save_location.exists():
@@ -80,5 +120,9 @@ if not save_location.exists():
     df.to_csv(save_location, index=False)
 else:
     df = pd.read_csv(save_location)
-
 plot_mf2_scalability(df)
+
+
+matlab_save_location = Path('time_scaling_matlab.csv')
+matlab_df = pd.read_csv(matlab_save_location)
+plot_scalability_comparison(df, matlab_df, 'mf2 (Python)', 'S&B (Matlab)')
