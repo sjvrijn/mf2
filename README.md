@@ -41,7 +41,7 @@ python3 -m pip install --user mf2
 ```
 or alternatively using `conda`:
 ```
-conda install -c sjvrijn mf2
+conda install -c conda-forge mf2
 ```
 
 For the latest version, you can install directly from source:
@@ -55,7 +55,7 @@ and additionally install the dev-requirements:
 git clone https://github.com/sjvrijn/mf2.git
 cd mf2
 python3 -m pip install --user -e .
-python3 -m pip install -r requirements-dev.txt
+python3 -m pip install --user -r requirements-dev.txt
 ```
 
 ## Example Usage
