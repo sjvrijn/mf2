@@ -50,18 +50,16 @@ calculate. Multi-fidelity methods aim to combine these multiple information
 sources to obtain better results in equal or less time compared to only using a
 single information source.
 
-Because multi-fidelity problems are a new class of problems, the existing
-single-fidelity benchmark suites that exist cannot be used for this field. To
-this end, new multi-fidelity benchmark functions have been introduced in the
-literature and are being adopted by other researchers.
-
-This new class of benchmark problems is best served by introducing
-a new implementation suite because their structure is inherently different from
-other benchmarks. That is, multi-fidelity problems naturally benefit from
-having the different fidelities combined into a single 'problem'. No existing
-suite of benchmark functions currently uses such a structure, or can easily
-accomodate it. A new suite additionally gives more freedom to adapt to new
-multi-fidelity benchmarks as the field continues to evolve and new needs become
+To this end, new multi-fidelity benchmark functions have been introduced in the
+literature and are being adopted by other researchers. These multi-fidelity
+problems naturally benefit from having the different fidelities combined into a
+single 'problem'. The existing single-fidelity benchmark suites that exist
+cannot be used for this field: no existing suite of benchmark functions
+currently uses such a structure, or can easily accomodate it. Therefore, this
+new class of benchmark problems is best served by introducing a new
+implementation suite because their structure is inherently different from other
+benchmarks. A new suite additionally gives more freedom to adapt to new multi
+fidelity benchmarks as the field continues to evolve and new needs become
 apparent.
 
 The ``MF2`` package provides a consistent Python implementation of a collection
