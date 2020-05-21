@@ -84,8 +84,9 @@ from the following previous works:
   * @toal_considerations:2015 introduced correlation-adjustable multi-fidelity
     versions of the Branin, Paciorek, Hartmann3 and Trid functions.
 
-This package is currently in use by the authors in their research on multi-
-fidelity hierarchical surrogate models.
+
+This package is currently in use by the authors in their research on
+multi-fidelity hierarchical surrogate models.
 
 ![**Scalability plot** This plot shows how the evaluation time of high- and
 low-fidelity functions scales with the number of points *N* being passed in
