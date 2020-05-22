@@ -49,6 +49,8 @@ def plot_mf2_scalability(df):
     fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.8), constrained_layout=True)
     plt.suptitle('Scalability of mf2-functions')
     xticks = pd.unique(df['size'])
+    y_lim = 10**(np.log10(df['norm_time_per'].max()) + 1)
+    x_lim = 10**(np.log10(df['size'].max()) + 1)
     for ax, (fid, df_per_fid) in zip(axes, df.groupby('fidelity')):
         ax.grid(linestyle='--', linewidth=1, alpha=.5)
         ax.set_xscale('log')
@@ -56,6 +58,8 @@ def plot_mf2_scalability(df):
         ax.set_xlabel('$N$')
         ax.set_ylabel('$t/t_0$')
         ax.set_title(f'{fid} fidelity')
+        ax.set_xlim(right=x_lim)
+        ax.set_ylim(top=y_lim)
         for ndim, df_per_dim in df_per_fid.groupby('ndim'):
             data, names = [], []
             for name, sub_df in df_per_dim.groupby('name'):
@@ -91,6 +95,11 @@ def plot_scalability_comparison(df1, df2, name1, name2):
     fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.8), constrained_layout=True)
     plt.suptitle(f'{name1} vs {name2}')
     xticks = pd.unique(df1['size'])
+
+    df = pd.concat([df1, df2])
+    y_lim = 10**(np.log10(df['norm_time_per'].max()) + 1)
+    x_lim = 10**(np.log10(df['size'].max()) + 1)
+
     for ax, (fid, df_per_fid1), (_, df_per_fid2) in zip(axes, df1.groupby('fidelity'), df2.groupby('fidelity')):
         ax.grid(linestyle='--', linewidth=1, alpha=.5)
         ax.set_xscale('log')
@@ -98,6 +107,8 @@ def plot_scalability_comparison(df1, df2, name1, name2):
         ax.set_xlabel('$N$')
         ax.set_ylabel('$t/t_0$')
         ax.set_title(f'{fid} fidelity')
+        ax.set_xlim(right=x_lim)
+        ax.set_ylim(top=y_lim)
         for (ndim, df_per_dim1), (_, df_per_dim2) in zip(df_per_fid1.groupby('ndim'), df_per_fid2.groupby('ndim')):
             data1, data2, names = [], [], []
             for (name, sub_df1), (_, sub_df2) in zip(df_per_dim1.groupby('name'), df_per_dim2.groupby('name')):
