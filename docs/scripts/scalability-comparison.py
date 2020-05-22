@@ -114,16 +114,20 @@ def plot_scalability_comparison(df1, df2, name1, name2):
     plt.show()
 
 
-np.random.seed(20160501)
-save_location = Path('time_scaling.csv')
-if not save_location.exists():
-    df = create_and_store_time_scaling_data()
-    df.to_csv(save_location, index=False)
-else:
-    df = pd.read_csv(save_location)
-plot_mf2_scalability(df)
+def main():
+    np.random.seed(20160501)
+    save_location = Path('time_scaling.csv')
+    if not save_location.exists():
+        df = create_and_store_time_scaling_data()
+        df.to_csv(save_location, index=False)
+    else:
+        df = pd.read_csv(save_location)
+    plot_mf2_scalability(df)
+
+    matlab_save_location = Path('time_scaling_matlab.csv')
+    matlab_df = pd.read_csv(matlab_save_location)
+    plot_scalability_comparison(df, matlab_df, 'mf2 (Python)', 'S&B (Matlab)')
 
 
-matlab_save_location = Path('time_scaling_matlab.csv')
-matlab_df = pd.read_csv(matlab_save_location)
-plot_scalability_comparison(df, matlab_df, 'mf2 (Python)', 'S&B (Matlab)')
+if __name__ == '__main__':
+    main()
