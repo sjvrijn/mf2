@@ -13,7 +13,12 @@ def create_and_store_time_scaling_data():
     Record = namedtuple('Record', 'ndim name size fidelity number time_per norm_time_per')
     records = []
 
-    for func in mf2.bi_fidelity_functions:
+    bi_fidelity_functions = [
+        *mf2.bi_fidelity_functions,
+        *[func(0.5) for func in mf2.adjustable.bi_fidelity_functions]
+    ]
+
+    for func in bi_fidelity_functions:
         print(func.name)
 
         base_times = {'high': None, 'low': None}
