@@ -1,5 +1,10 @@
 since last version:
+- JOSS paper:
+  * Fixed typo
+  * Rewrote 'statement of need' paragraphs
+  * Improved closing of the paper: how is package used by authors
 - Documentation:
+  * hardware and software version info now mentioned on performance page
   * example-usage separated out into separate file in docs/scripts
   * figure of example-usage improved to 600dpi
   * page on performance added, script for plots added in docs/scripts
