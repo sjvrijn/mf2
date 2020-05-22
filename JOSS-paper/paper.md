@@ -64,8 +64,9 @@ apparent.
 
 The ``MF2`` package provides a consistent Python implementation of a collection
 of these Multi-Fidelity Functions. It uses a standard interface that allows for
-querying single vectors or multiple row-vectors as a single matrix. It also
-offers a simple factory pattern interface for functions with parameters for e.g.
+querying single vectors or multiple row-vectors as a single matrix, relying on
+``numpy``'s optimized back-end to handle parallelization. It also offers a
+simple factory pattern interface for functions with parameters for e.g.
 correlation and dimensionality. A plot of how these implementations scale can
 be seen in \autoref{fig:scalability}.
 
