@@ -82,9 +82,12 @@ from the following previous works:
   * @toal_considerations:2015 introduced correlation-adjustable multi-fidelity
     versions of the Branin, Paciorek, Hartmann3 and Trid functions.
 
+As no convenient existing implementations written in Python could be found
+during the authors' research how the accuracy of multi-fidelity surrogate models
+depends on the number of samples per fidelity, which required the evaluation of
+many independent model training and test sets, the decision was made to
+standardize the implementations and make them available for wider use.
 
-This package is currently in use by the authors in their research on
-multi-fidelity hierarchical surrogate models.
 
 ![**Scalability plot** This plot shows how the evaluation time of high- and
 low-fidelity functions scales with the number of points *N* being passed in
