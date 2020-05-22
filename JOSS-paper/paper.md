@@ -91,12 +91,15 @@ standardize the implementations and make them available for wider use.
 
 ![**Scalability plot** This plot shows how the evaluation time of high- and
 low-fidelity functions scales with the number of points *N* being passed in
-simultaneously. The times are divided by the time needed for N=1 as a
-normalization. Results are grouped by function dimensionality. If there are
-multiple functions, the mean is plotted with error bars indicating the minimum
-and maximum time. Note that the 6D Hartmann6 function is significantly more
-computationally expensive than other functions by definition, as it requires
-multiple matrix multiplications.\label{fig:scalability}](../docs/_static/scalability.pdf)
+simultaneously. Running times were measured on a desktop PC with an Intel core
+i7 5820k 6-core CPU, with Python 3.6.3 and Numpy 1.18.4. The times are divided
+by the time needed for N=1 as a normalization. This is done independently for
+each function and fidelity level. Results are grouped by function
+dimensionality. If there are multiple functions, the mean is plotted with error
+bars indicating the minimum and maximum time. Note that the 3D Hartmann3 and 6D
+Hartmann6 function are significantly more computationally expensive than other
+functions by definition, as they requires multiple matrix multiplications.
+\label{fig:scalability}](../docs/_static/scalability.pdf)
 
 # Acknowledgements
 
