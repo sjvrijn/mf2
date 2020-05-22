@@ -57,16 +57,20 @@ def plot_mf2_scalability(df):
         ax.set_ylabel('$t/t_0$')
         ax.set_title(f'{fid} fidelity')
         for ndim, df_per_dim in df_per_fid.groupby('ndim'):
-            data = []
+            data, names = [], []
             for name, sub_df in df_per_dim.groupby('name'):
                 data.append(sub_df['norm_time_per'].values)
+                names.append(name)
             data = np.array(data)
 
             mean = np.mean(data, axis=0)
-            label = f'{ndim}D'
             if data.shape[0] == 1:
+                label = names[0].title()
+                if 'Adjustable' in label:
+                    label = label[len('Adjustable'):-len('0.5')].title()
                 ax.plot(xticks, mean, label=label)
             else:
+                label = f'Mean of {len(names)} {ndim}D functions'
                 min_max = np.abs(np.array([mean - np.min(data, axis=0),
                                            np.max(data, axis=0) - mean]))
                 ax.errorbar(xticks, mean, min_max, label=label, capsize=4)
@@ -95,18 +99,22 @@ def plot_scalability_comparison(df1, df2, name1, name2):
         ax.set_ylabel('$t/t_0$')
         ax.set_title(f'{fid} fidelity')
         for (ndim, df_per_dim1), (_, df_per_dim2) in zip(df_per_fid1.groupby('ndim'), df_per_fid2.groupby('ndim')):
-            data1, data2 = [], []
+            data1, data2, names = [], [], []
             for (name, sub_df1), (_, sub_df2) in zip(df_per_dim1.groupby('name'), df_per_dim2.groupby('name')):
                 data1.append(sub_df1['norm_time_per'].values)
                 data2.append(sub_df2['norm_time_per'].values)
+                names.append(name)
             data1, data2 = np.array(data1), np.array(data2)
 
             for data, name, linestyle in zip([data1, data2], [name1, name2], ['-', '--']):
                 mean = np.mean(data, axis=0)
-                label = f'{name}: {ndim}D'
                 if data.shape[0] == 1:
-                    ax.plot(xticks, mean, linestyle, label=label)
+                    label = names[0].title()
+                    if 'Adjustable' in label:
+                        label = label[len('Adjustable'):-len('0.5')].title()
+                    ax.plot(xticks, mean, linestyle, label=f'{name}: {label}')
                 else:
+                    label = f'{name}: Mean of {len(names)} {ndim}D functions'
                     min_max = np.abs(np.array([mean - np.min(data, axis=0),
                                                np.max(data, axis=0) - mean]))
                     ax.errorbar(xticks, mean, min_max, fmt=linestyle, label=label, capsize=4)
