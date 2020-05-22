@@ -14,7 +14,7 @@ from .paciorek import paciorek
 from .trid import trid
 
 
-bifidelity_functions = (
+bi_fidelity_functions = (
     branin,
     paciorek,
     hartmann3,
