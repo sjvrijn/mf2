@@ -40,8 +40,7 @@ def create_and_store_time_scaling_data():
                 records.append(Record(func.ndim, func.name, size, fid, num, time_per, norm_time_per))
         print()
 
-    df = pd.DataFrame.from_records(records, columns=Record._fields)
-    return df
+    return pd.DataFrame.from_records(records, columns=Record._fields)
 
 
 def plot_mf2_scalability(df):
