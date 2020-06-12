@@ -9,7 +9,7 @@ matrix:
     - python: 3.8
 install:
   - pip install .
-  - pip install -r requirements-dev.txt
+  - pip install -U -r requirements-dev.txt
   - pip install coverage coveralls
 script:
   - pytest tests/regression_test.py
