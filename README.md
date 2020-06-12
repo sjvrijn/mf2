@@ -64,21 +64,18 @@ python3 -m pip install --user -r requirements-dev.txt
 import mf2
 import numpy as np
 
-# create multi-fildelity Forrester function object in two dimensions
-forrester = mf2.Forrester(ndim=2)
-
 # set numpy random seed for reproducibility
 np.random.seed(42)
 # generate 5 random samples in 2D as matrix
 X = np.random.random((5, 2))
 
 # print high fidelity function values
-print(forrester.high(X))
-# Out: array([ 6.20598519, -2.90702413, -0.96082789,  0.78490341, -2.56183228])
+print(branin.high(X))
+# Out: array([36.78994906 34.3332972  50.48149005 43.0569396  35.5268224 ])
 
 # print low fidelity function values
-print(forrester.low(X))
-# Out: array([6.47672047, 1.89322581, 7.95952025, 5.77115291, 2.17314591])
+print(branin.low(X))
+# Out: array([-5.8762639  -6.66852889  3.84944507 -1.56314141 -6.23242223])
 ```
 
 For more usage examples, please refer to the full documentation on
