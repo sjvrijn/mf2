@@ -2,7 +2,7 @@
 
 | Package Info | Status | Support |
 |--------------|--------|---------|
-| [![PyPI version](https://badge.fury.io/py/mf2.svg)](https://badge.fury.io/py/mf2) | [![Build Status](https://travis-ci.com/sjvrijn/mf2.svg?branch=master)](https://travis-ci.org/sjvrijn/mf2) | [![Documentation Status](https://readthedocs.org/projects/mf2/badge/?version=latest)][docs-badge] |
+| [![PyPI version](https://badge.fury.io/py/mf2.svg)](https://badge.fury.io/py/mf2) | [![Build Status](https://travis-ci.com/sjvrijn/mf2.svg?branch=master)](https://travis-ci.com/sjvrijn/mf2) | [![Documentation Status](https://readthedocs.org/projects/mf2/badge/?version=latest)][docs-badge] |
 | [![Conda](https://img.shields.io/conda/v/conda-forge/mf2)](https://anaconda.org/sjvrijn/mf2) | [![Coverage Status](https://coveralls.io/repos/github/sjvrijn/mf2/badge.svg?branch=master)](https://coveralls.io/github/sjvrijn/mf2?branch=master) | [![Gitter](https://badges.gitter.im/pymf2/community.svg)][gitter-badge] |
 | ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mf2) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/54144e7d406b4558a14996b06a89adf8)](https://www.codacy.com/manual/sjvrijn/mf2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sjvrijn/mf2&amp;utm_campaign=Badge_Grade) | |
 | [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) | [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) | |
