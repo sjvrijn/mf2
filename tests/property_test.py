@@ -12,7 +12,8 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 import numpy as np
 from hypothesis import given
-from hypothesis.strategies import floats, integers, lists
+from hypothesis.extra.numpy import arrays
+from hypothesis.strategies import floats, integers, just, tuples
 import pytest
 
 from .utils import rescale, ValueRange
@@ -28,10 +29,12 @@ def quadratic(xx):
 simple_square = mf2.MultiFidelityFunction('simple_square', [-1e8], [1e8], [quadratic, quadratic], ['high', 'low'])
 
 # TEST HELPERS -----------------------------------------------------------------
-
-def rectangle_lists(n):
-    return lists(lists(floats(min_value=0, max_value=1),
-                       min_size=n, max_size=n), min_size=1)
+def ndim_array(n):
+    return arrays(
+        dtype=np.float,
+        shape=tuples(integers(min_value=1, max_value=100), just(n)),
+        elements=floats(0, 1),
+    )
 
 
 def _test_1d_array_input(func, x):
@@ -57,14 +60,14 @@ def _test_single_function(f, x):
                 range_in=ValueRange(0, 1),
                 range_out=ValueRange(*f.bounds))
     for fidelity in f.functions:
-        _test_2d_array_input(fidelity, X.tolist())  # list input TODO: make separate test for @row_vectorize decorator instead
+        _test_2d_array_input(fidelity, X.tolist())
         _test_2d_array_input(fidelity, X)  # direct numpy input
 
 
 # TESTS ------------------------------------------------------------------------
 
 
-@given(integers(min_value=1, max_value=100).flatmap(rectangle_lists))
+@given(integers(min_value=1, max_value=100).flatmap(ndim_array))
 @pytest.mark.parametrize("function", [
     simple_square,
     mf2.forrester,
@@ -73,7 +76,7 @@ def test_nd_functions(function, x):
     _test_single_function(function, x)
 
 
-@given(rectangle_lists(n=2))
+@given(ndim_array(n=2))
 @pytest.mark.parametrize("function", [
     mf2.bohachevsky,
     mf2.booth,
@@ -88,7 +91,7 @@ def test_2d_functions(function, x):
     _test_single_function(function, x)
 
 
-@given(rectangle_lists(n=3))
+@given(ndim_array(n=3))
 @pytest.mark.parametrize("function", [
     mf2.adjustable.hartmann3(0.5),
 ])
@@ -96,7 +99,7 @@ def test_3d_functions(function, x):
     _test_single_function(function, x)
 
 
-@given(rectangle_lists(n=4))
+@given(ndim_array(n=4))
 @pytest.mark.parametrize("function", [
     mf2.park91a,
     mf2.park91b,
@@ -105,7 +108,7 @@ def test_4d_functions(function, x):
     _test_single_function(function, x)
 
 
-@given(rectangle_lists(n=6))
+@given(ndim_array(n=6))
 @pytest.mark.parametrize("function", [
     mf2.hartmann6,
 ])
@@ -113,7 +116,7 @@ def test_6d_functions(function, x):
     _test_single_function(function, x)
 
 
-@given(rectangle_lists(n=8))
+@given(ndim_array(n=8))
 @pytest.mark.parametrize("function", [
     mf2.borehole,
 ])
@@ -121,7 +124,7 @@ def test_8d_functions(function, x):
     _test_single_function(function, x)
 
 
-@given(rectangle_lists(n=10))
+@given(ndim_array(n=10))
 @pytest.mark.parametrize("function", [
     mf2.adjustable.trid(0.5),
 ])

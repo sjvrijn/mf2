@@ -1,5 +1,5 @@
 -r requirements.txt
-hypothesis
+hypothesis[numpy]
 matplotlib
 pandas
 pyprojroot

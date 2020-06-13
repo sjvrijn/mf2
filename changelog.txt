@@ -1,4 +1,5 @@
 since last version:
+- updated array-generation strategy in property-test
 - JOSS paper:
   * Fixed typo
   * Rewrote 'statement of need' paragraphs
