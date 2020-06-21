@@ -1,7 +1,7 @@
 from string import ascii_letters
 
 from hypothesis import given
-from hypothesis.strategies import integers, lists, text, tuples
+from hypothesis.strategies import integers, lists, text
 from mf2 import MultiFidelityFunction
 from pytest import raises
 
@@ -46,11 +46,11 @@ def test_access_without_fidelity_names(num_fidelities):
     )
 
     with raises(AttributeError):
-        x = mff.high()
-        x = mff.low()
+        _ = mff.high()
+        _ = mff.low()
     with raises(IndexError):
-        x = mff['high']()
-        x = mff['low']()
+        _ = mff['high']()
+        _ = mff['low']()
 
     for idx in range(num_fidelities):
         assert mff[idx]() == idx
