@@ -54,5 +54,3 @@ def test_access_without_fidelity_names(num_fidelities):
 
     for idx in range(num_fidelities):
         assert mff[idx]() == idx
-
-

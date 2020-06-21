@@ -66,6 +66,14 @@ def _test_single_function(f, x):
 
 # TESTS ------------------------------------------------------------------------
 
+def test_confirm_bifidelity_functions():
+    fidelity_names = ['high', 'low']
+    for f in mf2.bi_fidelity_functions:
+        assert f.fidelity_names is not None
+        assert len(f.fidelity_names) == len(f.functions) == 2
+        for name in fidelity_names:
+            assert name in f.fidelity_dict
+
 
 @given(integers(min_value=1, max_value=100).flatmap(ndim_array))
 @pytest.mark.parametrize("function", [
