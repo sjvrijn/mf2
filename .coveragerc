@@ -1,6 +1,6 @@
 [run]
 source =
-    multifidelityfunctions
+    mf2
 
 [report]
 exclude_lines =
