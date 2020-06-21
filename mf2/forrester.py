@@ -46,15 +46,13 @@ l_bound = [0]
 u_bound = [1]
 
 
-def Forrester(ndim):
+def Forrester(ndim: int):
     """Factory method for `ndim`-dimensional multi-fidelity Forrester function
 
     :param ndim: Desired dimensionality
     :return:     :class:`~mf2.multiFidelityFunction.MultiFidelityFunction`
                  instance with bounds of appropriate length
     """
-    if not isinstance(ndim, int):
-        raise TypeError(f"ndim must be of type 'int', not {type(ndim)}")
     if ndim < 1:
         raise ValueError(f"ndim must be at least 1, not {ndim}")
 

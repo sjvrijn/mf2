@@ -76,6 +76,24 @@ def test_nd_functions(function, x):
     _test_single_function(function, x)
 
 
+@given(integers(1, 100))
+@pytest.mark.parametrize("factory", [
+    mf2.Forrester,
+])
+def test_dimensionality_factory_valid_ndim(factory, ndim):
+    func = factory(ndim)
+    assert func.ndim == ndim
+
+
+@given(integers(max_value=0))
+@pytest.mark.parametrize("factory", [
+    mf2.Forrester,
+])
+def test_dimensionality_factory_invalid_ndim(factory, ndim):
+    with pytest.raises(ValueError):
+        _ = factory(ndim)
+
+
 @given(ndim_array(n=2))
 @pytest.mark.parametrize("function", [
     mf2.bohachevsky,
