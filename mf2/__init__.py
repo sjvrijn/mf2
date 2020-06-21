@@ -16,8 +16,7 @@ from .bohachevsky import bohachevsky
 from .branin import branin
 from .booth import booth
 from .forrester import forrester, Forrester
-from .himmelblau import himmelblau, himmelblau_3f
-from .himmelblau_seb import himmelblau_seb
+from .himmelblau import himmelblau
 from .six_hump_camelback import six_hump_camelback
 from .hartmann import hartmann6
 
@@ -45,9 +44,4 @@ bi_fidelity_functions = (
     hartmann6,
     # 8D
     borehole,
-)
-
-tri_fidelity_functions = (
-    himmelblau_3f,
-    himmelblau_seb,
 )
