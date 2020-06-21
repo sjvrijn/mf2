@@ -65,7 +65,7 @@ u_bound = [1]*3
 l_bound = [0]*3
 
 
-def hartmann3(a3):
+def hartmann3(a3: float):
     """Factory method for adjustable Hartmann3 function using parameter value `a3`
 
     :param a3:  Parameter to tune the correlation between high- and low-fidelity

@@ -32,7 +32,7 @@ def adjustable_branin_lf(xx, a1):
     return term1 - (a1+0.5) * term2**2
 
 
-def branin(a1):
+def branin(a1: float):
     """Factory method for adjustable Branin function using parameter value `a1`
 
     :param a1:  Parameter to tune the correlation between high- and low-fidelity

@@ -38,7 +38,7 @@ u_bound = [1]*2
 l_bound = [0.3]*2
 
 
-def paciorek(a2):
+def paciorek(a2: float):
     """Factory method for adjustable Paciorek function using parameter value `a2`
 
     :param a2:  Parameter to tune the correlation between high- and low-fidelity

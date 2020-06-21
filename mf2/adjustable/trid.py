@@ -36,7 +36,7 @@ u_bound = [100]*10
 l_bound = [-100]*10
 
 
-def trid(a4):
+def trid(a4: float):
     """Factory method for adjustable Trid function using parameter value `a4`
 
     :param a4:  Parameter to tune the correlation between high- and low-fidelity
