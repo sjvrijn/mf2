@@ -70,11 +70,11 @@ np.random.seed(42)
 X = np.random.random((5, 2))
 
 # print high fidelity function values
-print(branin.high(X))
+print(mf2.branin.high(X))
 # Out: array([36.78994906 34.3332972  50.48149005 43.0569396  35.5268224 ])
 
 # print low fidelity function values
-print(branin.low(X))
+print(mf2.branin.low(X))
 # Out: array([-5.8762639  -6.66852889  3.84944507 -1.56314141 -6.23242223])
 ```
 
