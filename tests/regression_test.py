@@ -10,7 +10,6 @@ __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 
 import numpy as np
-from pyprojroot import here
 import pytest
 
 from .utils import rescale, ValueRange
@@ -19,9 +18,6 @@ import mf2
 
 _functions_to_test = (
     mf2.forrester,
-    mf2.Forrester(ndim=2),
-    mf2.Forrester(ndim=4),
-    mf2.Forrester(ndim=6),
     mf2.Forrester(ndim=8),
 
     mf2.bohachevsky,
@@ -41,13 +37,18 @@ _functions_to_test = (
     mf2.adjustable.trid(0),
 )
 
-@pytest.mark.parametrize("func", _functions_to_test)
-def test_function_regression(func):
 
-    data = rescale(np.load(here(f'tests/regression_files/input_{func.ndim}d.npy')),
-                   range_in=ValueRange(0,1),
-                   range_out=ValueRange(*func.bounds))
+def idfn(func):
+    return f"{func.ndim}D-{func.name}"
 
-    for fid in func.fidelity_names:
-        output = np.load(here(f'tests/regression_files/output_{func.ndim}d_{func.name}_{fid}.npy'))
-        np.testing.assert_allclose(func[fid](data), output)
+
+@pytest.mark.parametrize("func", _functions_to_test, ids=idfn)
+def test_function_regression(num_regression, func):
+    np.random.seed(20160501)
+    data_in = rescale(np.random.rand(100, func.ndim),
+                      range_in=ValueRange(0,1),
+                      range_out=ValueRange(*func.bounds))
+
+    num_regression.check({
+        fid: func[fid](data_in) for fid in func.fidelity_names
+    })
