@@ -97,7 +97,7 @@ steps:
 2. Add it to the tests:
    * Add the function in the `tests/property_test.py` and
    `tests/regression_test.py` files
-   * Run the tests. It will fail the first time while the
+   * Run the tests: `pytest tests`. It will fail the first time while the
    [`pytest-regressions`][pytest-regressions] package automatically creates
    the new output files.
    * Run the tests again to confirm that all tests now pass.
