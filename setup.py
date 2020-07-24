@@ -4,7 +4,7 @@ with open('README.md') as f:
     long_description = f.read()
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
-with open('requirements-dev.txt.txt') as f:
+with open('requirements-dev.txt') as f:
     requirements_dev = f.read().splitlines()
 
 setuptools.setup(
