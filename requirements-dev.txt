@@ -5,3 +5,4 @@ pandas
 pyprojroot
 pytest
 pytest-cov
+pytest-regressions
