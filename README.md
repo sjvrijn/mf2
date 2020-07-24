@@ -95,11 +95,12 @@ steps:
 
 1. Implement the function in a new file in the appropriate (sub)folder
 2. Add it to the tests:
-   * add the function in the `tests/property_test.py` and
+   * Add the function in the `tests/property_test.py` and
    `tests/regression_test.py` files
-   * run `python3 -m tests.create_regression_data` to generate the new
-   data files
-   * run the tests
+   * Run the tests. It will fail the first time while the
+   [`pytest-regressions`][pytest-regressions] package automatically creates
+   the new output files.
+   * Run the tests again to confirm that all tests now pass.
 3. Make sure to commit all new and updated files to git (Travis-CI will
 complain otherwise ;)
 4. Create a pull-request!
@@ -112,8 +113,9 @@ If you need any help with this process, please get in touch as outlined under
 The [Gitter][gitter] channel is the preferred way to get in touch for any other
 questions, comments or discussions about this package.
 
-[docs]:         https://mf2.readthedocs.io/en/latest/
-[docs-badge]:   https://mf2.readthedocs.io/en/latest/?badge=latest
-[gitter]:       https://gitter.im/pymf2/community
-[gitter-badge]: https://gitter.im/pymf2/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-[new-issue]:    https://github.com/sjvrijn/mf2/issues/new
+[docs]:               https://mf2.readthedocs.io/en/latest/
+[docs-badge]:         https://mf2.readthedocs.io/en/latest/?badge=latest
+[gitter]:             https://gitter.im/pymf2/community
+[gitter-badge]:       https://gitter.im/pymf2/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
+[new-issue]:          https://github.com/sjvrijn/mf2/issues/new
+[pytest-regressions]: https://github.com/ESSS/pytest-regressions
