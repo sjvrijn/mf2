@@ -4,6 +4,8 @@ with open('README.md') as f:
     long_description = f.read()
 with open('requirements.txt') as f:
     requirements = f.read().splitlines()
+with open('requirements-dev.txt.txt') as f:
+    requirements_dev = f.read().splitlines()
 
 setuptools.setup(
     name='mf2',
@@ -24,4 +26,5 @@ setuptools.setup(
     ],
     python_requires=">=3.6",
     install_requires=requirements,
+    extras_require={"dev": requirements_dev},
 )

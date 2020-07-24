@@ -54,8 +54,7 @@ and additionally install the dev-requirements:
 ```
 git clone https://github.com/sjvrijn/mf2.git
 cd mf2
-python3 -m pip install --user -e .
-python3 -m pip install --user -r requirements-dev.txt
+python3 -m pip install --user -e .[dev]
 ```
 
 ## Example Usage
