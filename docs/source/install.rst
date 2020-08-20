@@ -7,7 +7,7 @@ The recommended way to install `mf2` is with Python's `pip`::
 
 or alternatively using `conda`::
 
-    conda install -c sjvrijn mf2
+    conda install -c conda-forge mf2
 
 
 For the latest version, you can install directly from source::
