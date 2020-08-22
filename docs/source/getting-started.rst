@@ -18,7 +18,7 @@ with the following attributes:
     The *name* is simply a standardized format of the name as an attribute to
     help identify which function is being represented [#footnote_name]_ .
 
-``ndim``
+``.ndim``
     Number of dimensions. This is the dimensionality (i.e. length) of the input
     vector X of which the objective is evaluated.
 
