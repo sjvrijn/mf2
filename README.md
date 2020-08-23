@@ -86,30 +86,9 @@ For more usage examples, please refer to the full documentation on
 
 ## Contributing
 
-Contributions to this project are more than welcome!
-
-### Bugs
-If you've found a problem of some sort, please open an issue on
-[GitHub][new-issue].
-
-### Additions
-To add new functions to this package, you can roughly follow the following
-steps:
-
-1. Implement the function in a new file in the appropriate (sub)folder
-2. Add it to the tests:
-   * Add the function in the `tests/property_test.py` and
-   `tests/regression_test.py` files
-   * Run the tests: `pytest tests`. It will fail the first time while the
-   [`pytest-regressions`][pytest-regressions] package automatically creates
-   the new output files.
-   * Run the tests again to confirm that all tests now pass.
-3. Make sure to commit all new and updated files to git (Travis-CI will
-complain otherwise ;)
-4. Create a pull-request!
-
-If you need any help with this process, please get in touch as outlined under
-**Contact**.
+Contributions to this project such as bug reports or benchmark function
+suggestions are more than welcome! Please refer to ``CONTRIBUTING.md`` for more
+details.
 
 ## Contact
 
