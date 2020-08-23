@@ -84,10 +84,10 @@ from the following previous works:
     versions of the Branin, Paciorek, Hartmann3 and Trid functions.
 
 As no convenient existing implementations written in Python could be found
-during the authors' research how the accuracy of multi-fidelity surrogate models
-depends on the number of samples per fidelity, which required the evaluation of
-many independent model training and test sets, the decision was made to
-standardize the implementations and make them available for wider use.
+during the authors' research on how the accuracy of multi-fidelity surrogate
+models depends on the number of samples per fidelity, which required the
+evaluation of many independent model training and test sets, the decision was
+made to standardize the implementations and make them available for wider use.
 
 
 ![**Scalability plot** This plot shows how the evaluation time of high- and
