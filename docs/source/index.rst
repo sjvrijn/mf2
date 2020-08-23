@@ -10,8 +10,12 @@ This is the documentation for the ``mf2`` package. For a short introduction with
 examples, have a look at the :ref:`getting_started` page. Otherwise, you can
 look at the available functions in the package by category.
 
-This package contains Python implementations for a variety of multi-fidelity
-benchmark functions typically used in numerical optimization research.
+The ``mf2`` package providing consistent, efficient and tested Python
+implementations of a variety of multi-fidelity benchmark functions. The goal is
+to simplify life for numerical optimization researchers by saving time otherwise
+spent reimplementing and debugging the same common functions, and enabling
+direct comparisons with other work using the same definitions, improving
+reproducibility in general.
 
 A multi-fidelity function usually reprensents an objective which should be
 optimized. The term 'multi-fidelity' refers to the fact, that multiple versions

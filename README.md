@@ -10,8 +10,12 @@
 
 ## Introduction
 
-This package contains Python implementations for a variety of multi-fidelity
-benchmark functions typically used in numerical optimization research.
+The `mf2` package providing consistent, efficient and tested Python
+implementations of a variety of multi-fidelity benchmark functions. The goal is
+to simplify life for numerical optimization researchers by saving time otherwise
+spent reimplementing and debugging the same common functions, and enabling
+direct comparisons with other work using the same definitions, improving
+reproducibility in general.
 
 A multi-fidelity function usually reprensents an objective which should be
 optimized. The term 'multi-fidelity' refers to the fact that multiple versions
@@ -31,7 +35,7 @@ evaluations can be performed.
 
 The only dependency of the mf2 package is the `numpy` package.
 
-Documentation is available at [mf2.readthedocs.io](https://mf2.readthedocs.io/en/latest/)
+Documentation is available at [mf2.readthedocs.io][docs]
 
 ## Installation
 
