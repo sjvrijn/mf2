@@ -1,4 +1,4 @@
-# Multi-Fidelity-Functions
+# MF2: Multi-Fidelity-Functions
 
 | Package Info | Status | Support |
 |--------------|--------|---------|
@@ -10,7 +10,7 @@
 
 ## Introduction
 
-The `mf2` package providing consistent, efficient and tested Python
+The `mf2` package provides consistent, efficient and tested Python
 implementations of a variety of multi-fidelity benchmark functions. The goal is
 to simplify life for numerical optimization researchers by saving time otherwise
 spent reimplementing and debugging the same common functions, and enabling

@@ -10,7 +10,7 @@ This is the documentation for the ``mf2`` package. For a short introduction with
 examples, have a look at the :ref:`getting_started` page. Otherwise, you can
 look at the available functions in the package by category.
 
-The ``mf2`` package providing consistent, efficient and tested Python
+The ``mf2`` package provides consistent, efficient and tested Python
 implementations of a variety of multi-fidelity benchmark functions. The goal is
 to simplify life for numerical optimization researchers by saving time otherwise
 spent reimplementing and debugging the same common functions, and enabling
