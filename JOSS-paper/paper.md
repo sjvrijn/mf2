@@ -31,11 +31,11 @@ and Ackley are typically used. These functions are not only fast to compute, but
 also have known properties which are very helpful when examining the performance
 of new algorithms.
 
-As only a limited set of benchmark functions are typically used in literature,
+As only a limited set of benchmark functions are typically used in the literature,
 compiling a set of implementations for the most commonly used functions is
 warranted. This ensures correctness of the functions, makes any results directly
-comparable, and simply saves time from not having to implement the functions
-yourself. An example of a commonly used benchmark suite for optimizing
+comparable, and simply saves researchers time from not having to implement the functions
+themselves. An example of a commonly used benchmark suite for optimizing
 continuous problems is the COCO BBOB software by @nikolaus_hansen:2019.
 
 As simulation-based problems in engineering are requiring increasingly more time
