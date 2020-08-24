@@ -87,7 +87,7 @@ For more usage examples, please refer to the full documentation on
 ## Contributing
 
 Contributions to this project such as bug reports or benchmark function
-suggestions are more than welcome! Please refer to ``CONTRIBUTING.md`` for more
+suggestions are more than welcome! Please [refer to ``CONTRIBUTING.md``] for more
 details.
 
 ## Contact
@@ -101,3 +101,4 @@ questions, comments or discussions about this package.
 [gitter-badge]:       https://gitter.im/pymf2/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 [new-issue]:          https://github.com/sjvrijn/mf2/issues/new
 [pytest-regressions]: https://github.com/ESSS/pytest-regressions
+[refer to ``CONTRIBUTING.md``]: https://github.com/sjvrijn/mf2/blob/master/CONTRIBUTING.md
