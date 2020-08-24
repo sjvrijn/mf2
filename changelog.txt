@@ -1,5 +1,14 @@
 since last version:
+- can now install development requirements using `pip install mf2[dev]` notation
+- conda references now point to conda-forge channel
 - updated array-generation strategy in property-test
+- removed obsolete code (himmelblau 3-fidelity)
+- Added type hints for adjustable functions
+- moved contributions section in Readme to separate CONTRIBUTING.md file
+- Tests:
+  * array-generation in property-test now uses hypothesis' numpy array strategy
+  * coverage now at 100%: Added tests for remaining uncovered code
+  * Rewrote regression tests to use pytest-regressions plugin
 - JOSS paper:
   * Fixed typo
   * Rewrote 'statement of need' paragraphs
