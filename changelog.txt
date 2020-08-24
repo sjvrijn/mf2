@@ -1,4 +1,8 @@
 since last version:
+- 
+
+
+v2020.8.0:
 - can now install development requirements using `pip install mf2[dev]` notation
 - conda references now point to conda-forge channel
 - updated array-generation strategy in property-test
