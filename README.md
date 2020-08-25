@@ -95,10 +95,33 @@ details.
 The [Gitter][gitter] channel is the preferred way to get in touch for any other
 questions, comments or discussions about this package.
 
+## Citation
+
+Was this package useful to you? Great! If this leads to a publication, we'd
+appreciate it if you would cite our [JOSS paper]:
+
+```
+@article{vanRijn2020,
+  doi = {10.21105/joss.02049},
+  url = {https://doi.org/10.21105/joss.02049},
+  year = {2020},
+  publisher = {The Open Journal},
+  volume = {5},
+  number = {52},
+  pages = {2049},
+  author = {Sander van Rijn and Sebastian Schmitt},
+  title = {MF2: A Collection of Multi-Fidelity Benchmark Functions in Python},
+  journal = {Journal of Open Source Software}
+}
+```
+
+
 [docs]:               https://mf2.readthedocs.io/en/latest/
 [docs-badge]:         https://mf2.readthedocs.io/en/latest/?badge=latest
 [gitter]:             https://gitter.im/pymf2/community
 [gitter-badge]:       https://gitter.im/pymf2/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 [new-issue]:          https://github.com/sjvrijn/mf2/issues/new
 [pytest-regressions]: https://github.com/ESSS/pytest-regressions
+[JOSS paper]:         https://joss.theoj.org/papers/10.21105/joss.02049
 [refer to ``CONTRIBUTING.md``]: https://github.com/sjvrijn/mf2/blob/master/CONTRIBUTING.md
+
