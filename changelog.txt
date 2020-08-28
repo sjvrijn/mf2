@@ -1,5 +1,5 @@
 since last version:
-- 
+- enabled branch coverage and -Werror flag for tests 
 
 
 v2020.8.0:
