@@ -6,7 +6,8 @@
 | [![Conda](https://img.shields.io/conda/v/conda-forge/mf2)](https://anaconda.org/conda-forge/mf2) | [![Coverage Status](https://coveralls.io/repos/github/sjvrijn/mf2/badge.svg?branch=master)](https://coveralls.io/github/sjvrijn/mf2?branch=master) | [![Gitter](https://badges.gitter.im/pymf2/community.svg)][gitter-badge] |
 | ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mf2) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/54144e7d406b4558a14996b06a89adf8)](https://www.codacy.com/manual/sjvrijn/mf2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sjvrijn/mf2&amp;utm_campaign=Badge_Grade) | |
 | [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) | [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) | |
-| [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3749395.svg)](https://doi.org/10.5281/zenodo.3749395) | [![status](https://joss.theoj.org/papers/2575e93fc693c5c3bfa8736c60c35398/status.svg)](https://joss.theoj.org/papers/2575e93fc693c5c3bfa8736c60c35398) | |
+| [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3749395.svg)](https://doi.org/10.5281/zenodo.3749395) | [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4231/badge)](https://bestpractices.coreinfrastructure.org/projects/4231) | |
+| [![status](https://joss.theoj.org/papers/2575e93fc693c5c3bfa8736c60c35398/status.svg)](https://joss.theoj.org/papers/2575e93fc693c5c3bfa8736c60c35398) | | |
 
 ## Introduction
 
