@@ -37,8 +37,8 @@ class MultiFidelityFunction:
             raise ValueError(f"Length of upper and lower bounds are not equal: "
                              f"{len(u_bound)} != {len(l_bound)}")
 
-        self.u_bound = np.array(u_bound, dtype=np.float)
-        self.l_bound = np.array(l_bound, dtype=np.float)
+        self.u_bound = np.array(u_bound, dtype=float)
+        self.l_bound = np.array(l_bound, dtype=float)
 
         self.functions = functions
         if fidelity_names:
@@ -66,7 +66,7 @@ class MultiFidelityFunction:
     @property
     def bounds(self):
         """Lower and upper bounds as a single np.array of shape (2, ndim)."""
-        return np.array([self.l_bound, self.u_bound], dtype=np.float)
+        return np.array([self.l_bound, self.u_bound], dtype=float)
 
 
     def __getitem__(self, item):
