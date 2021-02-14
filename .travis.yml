@@ -7,6 +7,7 @@ matrix:
       dist: xenial
       sudo: true
     - python: 3.8
+    - python: 3.9
 before_install:
   - python -m pip install --upgrade pip
 install:
