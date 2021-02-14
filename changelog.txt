@@ -1,4 +1,7 @@
 since last version:
+-
+
+v2021.2.0:
 - enabled branch coverage and -Werror flag for tests
 - updated naming of functions: no space between function and number
 - MultiFidelityFunction stores original name as _name, .name is now a property
