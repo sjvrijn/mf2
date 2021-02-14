@@ -1,4 +1,4 @@
-from string import ascii_letters
+from string import ascii_letters, printable
 
 from hypothesis import given
 from hypothesis.strategies import integers, lists, text
@@ -6,6 +6,11 @@ from mf2 import MultiFidelityFunction
 from pytest import raises
 
 
+@given(text(alphabet=printable, min_size=1, max_size=30))
+def test_name(name):
+    mff = MultiFidelityFunction(name, [0], [0], functions=None)
+    assert mff._name == name
+    assert mff.name == name.title()
 
 def test_unequal_bound_lenghts():
     with raises(ValueError):

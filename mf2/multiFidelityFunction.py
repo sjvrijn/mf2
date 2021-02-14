@@ -31,14 +31,14 @@ class MultiFidelityFunction:
                                fidelity indexing, such as `f['high']()` and
                                `f.high()`
         """
-        self.name = name.title().replace(' ', '')
+        self._name = name
 
         if len(u_bound) != len(l_bound):
             raise ValueError(f"Length of upper and lower bounds are not equal: "
                              f"{len(u_bound)} != {len(l_bound)}")
 
-        self.u_bound = np.array(u_bound, dtype=np.float)
-        self.l_bound = np.array(l_bound, dtype=np.float)
+        self.u_bound = np.array(u_bound, dtype=float)
+        self.l_bound = np.array(l_bound, dtype=float)
 
         self.functions = functions
         if fidelity_names:
@@ -52,6 +52,10 @@ class MultiFidelityFunction:
             self.fidelity_dict = None
             self.fidelity_names = None
 
+    @property
+    def name(self):
+        return self._name.title()
+
 
     @property
     def ndim(self):
@@ -62,7 +66,7 @@ class MultiFidelityFunction:
     @property
     def bounds(self):
         """Lower and upper bounds as a single np.array of shape (2, ndim)."""
-        return np.array([self.l_bound, self.u_bound], dtype=np.float)
+        return np.array([self.l_bound, self.u_bound], dtype=float)
 
 
     def __getitem__(self, item):
@@ -75,4 +79,4 @@ class MultiFidelityFunction:
 
 
     def __repr__(self):
-        return f"MultiFidelityFunction({self.name}, {self.u_bound}, {self.l_bound}, {self.fidelity_names})"
+        return f"MultiFidelityFunction({self.name}, {self.u_bound}, {self.l_bound}, fidelity_names={self.fidelity_names})"

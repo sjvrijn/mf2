@@ -31,7 +31,7 @@ simple_square = mf2.MultiFidelityFunction('simple_square', [-1e8], [1e8], [quadr
 # TEST HELPERS -----------------------------------------------------------------
 def ndim_array(n):
     return arrays(
-        dtype=np.float,
+        dtype=float,
         shape=tuples(integers(min_value=1, max_value=100), just(n)),
         elements=floats(0, 1),
     )
