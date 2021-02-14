@@ -31,7 +31,7 @@ class MultiFidelityFunction:
                                fidelity indexing, such as `f['high']()` and
                                `f.high()`
         """
-        self.name = name.title().replace(' ', '')
+        self._name = name
 
         if len(u_bound) != len(l_bound):
             raise ValueError(f"Length of upper and lower bounds are not equal: "
@@ -51,6 +51,10 @@ class MultiFidelityFunction:
         else:
             self.fidelity_dict = None
             self.fidelity_names = None
+
+    @property
+    def name(self):
+        return self._name.title()
 
 
     @property
@@ -75,4 +79,4 @@ class MultiFidelityFunction:
 
 
     def __repr__(self):
-        return f"MultiFidelityFunction({self.name}, {self.u_bound}, {self.l_bound}, {self.fidelity_names})"
+        return f"MultiFidelityFunction({self.name}, {self.u_bound}, {self.l_bound}, fidelity_names={self.fidelity_names})"
