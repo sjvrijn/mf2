@@ -82,7 +82,7 @@ u_bound = [1, 1, 1, 1]
 
 #: 4D Park91A function with fidelities 'high' and 'low'
 park91a = MultiFidelityFunction(
-    "park 91a",
+    "park91a",
     u_bound, l_bound,
     [park91a_hf, park91a_lf],
     fidelity_names=['high', 'low']
