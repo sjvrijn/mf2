@@ -7,7 +7,7 @@ A collection of analytical functions with 2 or more available fidelities.
 """
 import pkg_resources
 
-from .multiFidelityFunction import MultiFidelityFunction
+from .multiFidelityFunction import MultiFidelityFunction, invert
 from .borehole import borehole
 from .currin import currin
 from .park91a import park91a

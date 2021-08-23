@@ -103,6 +103,28 @@ def test_dimensionality_factory_invalid_ndim(factory, ndim):
 
 
 @given(ndim_array(n=2))
+def test_double_invert_idempotency(x):
+    """Checks that applying invert() twice results in the same values"""
+    orig = mf2.branin
+    double_inverted = mf2.invert(mf2.invert(orig))
+    assert np.allclose(orig.low(x), double_inverted.low(x))
+    assert np.allclose(orig.high(x), double_inverted.high(x))
+
+
+@given(ndim_array(n=2))
+def test_invert_currin(x):
+    """Test the optimum of the (inverted) Currin function"""
+    currin = mf2.currin
+    inverted_currin = mf2.invert(mf2.currin)
+    x_opt = [0.21666666667, 0]
+    y_opt = mf2.currin.high(x_opt)
+    inverted_y_opt = y_opt * -1
+
+    assert all(currin.high(x) < y_opt)
+    assert all(inverted_currin.high(x) > inverted_y_opt)
+
+
+@given(ndim_array(n=2))
 @pytest.mark.parametrize("function", [
     mf2.bohachevsky,
     mf2.booth,
