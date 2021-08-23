@@ -1,4 +1,5 @@
 since last version:
+- Added an 'invert' function to enable switching between minimization and maximization
 -
 
 v2021.2.0:
@@ -54,7 +55,7 @@ v2020.4.0:
 - Expanded getting-started page of documentation
 - Documentation: added generic introduction
 - Updated JOSS paper:
-  * added acknowledgements, 
+  * added acknowledgements,
   * added Forrester reference
   * itemized functions included in package
   * extended introduction of multi-fidelity definition
@@ -91,7 +92,7 @@ v2019.11.3:
 - Upated PyPI page specifiers: markdown text + Python versions (3.6-3.8)
 
 v2019.11.2:
-- Added GPL 3.0 license 
+- Added GPL 3.0 license
 - Renamed package: multifidelityfunctions -> mf2
 
 v2019.11.1:

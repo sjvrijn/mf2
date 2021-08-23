@@ -9,6 +9,7 @@ functions that are commonly used by the various mf-functions in this package.
 """
 
 from numbers import Integral
+from typing import Callable
 import numpy as np
 
 
@@ -80,3 +81,28 @@ class MultiFidelityFunction:
 
     def __repr__(self):
         return f"MultiFidelityFunction({self.name}, {self.u_bound}, {self.l_bound}, fidelity_names={self.fidelity_names})"
+
+
+def invert(mff: MultiFidelityFunction) -> MultiFidelityFunction:
+    """Invert a MultiFidelityFunction by multiplying all fidelities by -1
+
+    :param mff: The MultiFidelityFunction to invert
+    :return:     A new MultiFidelityFunction with the inverted fidelities
+    """
+
+    functions = [_invert_function(f) for f in mff.functions]
+
+    return MultiFidelityFunction(
+        mff._name, mff.u_bound, mff.l_bound,
+        functions,
+        fidelity_names=mff.fidelity_names,
+    )
+
+
+def _invert_function(func: Callable) -> Callable:
+    """Applies a *-1 modification to the given function"""
+
+    def inverted(x):
+        return func(x) * -1
+
+    return inverted
