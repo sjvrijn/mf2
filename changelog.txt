@@ -1,5 +1,6 @@
 since last version:
 - Added an 'invert' function to enable switching between minimization and maximization
+- Update branin_hf definition: correct constant from 2.25 to 22.5
 -
 
 v2021.2.0:
