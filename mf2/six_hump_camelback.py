@@ -23,10 +23,11 @@ def six_hump_camelback_hf(xx):
     xx = np.atleast_2d(xx)
 
     x1, x2 = xx.T
+    x1sq, x2sq = x1*x1, x2*x2
 
-    term1 = 4*x1**2 - 2.1*x1**4 + x1**6/3
+    term1 = (4 - 2.1*x1sq + (x1sq*x1sq)/3) * x1sq
     term2 = x1*x2
-    term3 = -4*x2**2 + 4*x2**4
+    term3 = (-4 + 4*x2sq) * x2sq
 
     return term1 + term2 + term3
 
