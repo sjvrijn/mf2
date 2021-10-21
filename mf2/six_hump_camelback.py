@@ -26,7 +26,7 @@ def six_hump_camelback_hf(xx):
 
     term1 = 4*x1**2 - 2.1*x1**4 + x1**6/3
     term2 = x1*x2
-    term3 = 4*x2**2 + 4*x2**4
+    term3 = -4*x2**2 + 4*x2**4
 
     return term1 + term2 + term3
 
