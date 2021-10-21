@@ -46,7 +46,7 @@ def branin_hf(xx):
     xx = np.atleast_2d(xx)
 
     _, x2 = xx.T
-    return branin_base(xx) - 2.25*x2  # 22.5
+    return branin_base(xx) - 22.5*x2
 
 
 def branin_lf(xx):
