@@ -1,10 +1,12 @@
 since last version:
+-
+
+v2021.10.0
 - Added an 'invert' function to enable switching between minimization and maximization
 - Update branin_hf definition: correct constant from 2.25 to 22.5
 - Update six_hump_camelback_hf definition:
   * include omitted minus sign
   * rewrite to speed up calculation
--
 
 v2021.2.0:
 - enabled branch coverage and -Werror flag for tests

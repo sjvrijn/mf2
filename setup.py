@@ -9,7 +9,7 @@ with open('requirements-dev.txt') as f:
 
 setuptools.setup(
     name='mf2',
-    version='2021.2.0',
+    version='2021.10.0',
     description='A collection of analytical benchmark functions in multiple fidelities',
     long_description=long_description,
     long_description_content_type="text/markdown",
