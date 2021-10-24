@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "van Rijn"
+  given-names: "Sander"
+  affiliation: "Leiden University"
+  orcid: "https://orcid.org/0000-0001-6159-041X"
+- family-names: "Schmitt"
+  given-names: "Sebastian"
+  affiliation: "Honda Research Institute Europe"
+  orcid: "https://orcid.org/0000-0001-7130-5483"
+title: "MF2: Multi-Fidelity-Functions"
+version: 2021.10.0
+doi: 10.5281/zenodo.3610282
+date-released: 2021-10-22
+url: "https://github.com/sjvrijn/mf2"
+license: GPL-3.0
+preferred-citation:
+  type: article
+  authors:
+  - family-names: "van Rijn"
+    given-names: "Sander"
+    affiliation: "Leiden University"
+    orcid: "https://orcid.org/0000-0001-6159-041X"
+  - family-names: "Schmitt"
+    given-names: "Sebastian"
+    affiliation: "Honda Research Institute Europe"
+    orcid: "https://orcid.org/0000-0001-7130-5483"
+  doi: "10.21105/joss.02049"
+  journal: "Journal of Open Source Software"
+  publisher: "The Open Journal"
+  title: "MF2: A Collection of Multi-Fidelity Benchmark Functions in Python"
+  pages: 2049
+  number: 52
+  volume: 5
+  year: 2020
