@@ -106,6 +106,7 @@ def invert(mff: MultiFidelityFunction) -> MultiFidelityFunction:
         mff._name, mff.u_bound, mff.l_bound,
         functions,
         fidelity_names=mff.fidelity_names,
+        x_opt=mff.x_opt,
     )
 
 
