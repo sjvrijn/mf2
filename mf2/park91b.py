@@ -71,10 +71,13 @@ l_bound = [0, 0, 0, 0]
 #: Upper bound for Park91B function
 u_bound = [1, 1, 1, 1]
 
+x_opt = [0, 0, 0, 0]
+
 #: 4D Park91B function with fidelities 'high' and 'low'
 park91b = MultiFidelityFunction(
     "park91b",
     u_bound, l_bound,
     [park91b_hf, park91b_lf],
-    fidelity_names=['high', 'low']
+    fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )

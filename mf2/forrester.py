@@ -45,6 +45,7 @@ l_bound = [0]
 #: Upper bound for Forrester function
 u_bound = [1]
 
+x_opt = 0.757248757841856
 
 def Forrester(ndim: int):
     """Factory method for `ndim`-dimensional multi-fidelity Forrester function
@@ -62,6 +63,7 @@ def Forrester(ndim: int):
         l_bound=np.repeat(l_bound, ndim),
         functions=[forrester_high, forrester_low],
         fidelity_names=['high', 'low'],
+        x_opt=np.repeat(x_opt, ndim),
     )
 
 
@@ -74,4 +76,5 @@ forrester_sf = MultiFidelityFunction(
     u_bound=u_bound, l_bound=l_bound,
     functions=[forrester_high],
     fidelity_names=['high'],
+    x_opt=x_opt,
 )

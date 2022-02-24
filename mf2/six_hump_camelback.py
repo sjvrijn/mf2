@@ -56,10 +56,13 @@ l_bound = [-2, -2]
 #: upper bound for Six-hump Camelback function
 u_bound = [ 2,  2]
 
+x_opt = [0.0898, -0.7126]
+
 #: 2D Six-hump Camelback function with fidelities 'high' and 'low'
 six_hump_camelback = MultiFidelityFunction(
     "six hump camelback",
     u_bound, l_bound,
     [six_hump_camelback_hf, six_hump_camelback_lf],
-    fidelity_names=['high', 'low']
+    fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )
