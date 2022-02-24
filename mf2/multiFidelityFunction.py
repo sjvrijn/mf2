@@ -43,7 +43,7 @@ class MultiFidelityFunction:
 
         self.u_bound = np.array(u_bound, dtype=float)
         self.l_bound = np.array(l_bound, dtype=float)
-        if x_opt:
+        if x_opt is not None:
             self.x_opt = np.array(np.atleast_1d(x_opt), dtype=float)
             if len(self.x_opt) != len(u_bound):
                 raise ValueError(f"Length of x_opt and bounds are not equal: "
