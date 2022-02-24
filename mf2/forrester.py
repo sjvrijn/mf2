@@ -45,7 +45,7 @@ l_bound = [0]
 #: Upper bound for Forrester function
 u_bound = [1]
 
-x_opt = 0.757248757841856
+x_opt = [0.757248757841856]
 
 def Forrester(ndim: int):
     """Factory method for `ndim`-dimensional multi-fidelity Forrester function
