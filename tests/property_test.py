@@ -178,3 +178,19 @@ def test_8d_functions(function, x):
 ])
 def test_10d_functions(function, x):
     _test_single_function(function, x)
+
+
+@pytest.mark.parametrize("function", mf2.bi_fidelity_functions)
+def test_combined_functions(function, n_cases=1_000):
+    if function.x_opt is None:
+        return
+    if function.name == 'Currin':
+        function = mf2.invert(function)
+
+    x = rescale(np.random.rand(n_cases, function.ndim),
+                range_in=ValueRange(0, 1),
+                range_out=ValueRange(*function.bounds))
+    y = function.high(x)
+
+    y_opt = function.high(function.x_opt)
+    assert np.all((y_opt - y) < 1e8)
