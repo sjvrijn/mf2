@@ -55,10 +55,13 @@ l_bound = [-5, -5]
 #: Upper bound for Bohachevsky function
 u_bound = [ 5,  5]
 
+x_opt = [0,0]
+
 #: 2D Bohachevsky function with fidelities 'high' and 'low'
 bohachevsky = MultiFidelityFunction(
     "bohachevsky",
     u_bound, l_bound,
     [bohachevsky_hf, bohachevsky_lf],
-    fidelity_names=['high', 'low']
+    fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )

@@ -15,7 +15,8 @@ import numpy as np
 
 class MultiFidelityFunction:
 
-    def __init__(self, name, u_bound, l_bound, functions, fidelity_names=None):
+    def __init__(self, name, u_bound, l_bound, functions, fidelity_names=None,
+                 *, x_opt=None):
         """All fidelity levels and parameters of a multi-fidelity function.
 
         :param name:           Name of the multi-fidelity function.
@@ -31,6 +32,8 @@ class MultiFidelityFunction:
                                to support dictionary- or attribute-style
                                fidelity indexing, such as `f['high']()` and
                                `f.high()`
+        :param x_opt:          Location of optimum x_opt for highest fidelity
+                               (if known).
         """
         self._name = name
 
@@ -40,6 +43,13 @@ class MultiFidelityFunction:
 
         self.u_bound = np.array(u_bound, dtype=float)
         self.l_bound = np.array(l_bound, dtype=float)
+        if x_opt is not None:
+            self.x_opt = np.array(np.atleast_1d(x_opt), dtype=float)
+            if len(self.x_opt) != len(u_bound):
+                raise ValueError(f"Length of x_opt and bounds are not equal: "
+                                 f"{len(self.x_opt)} != {len(u_bound)}")
+        else:
+            self.x_opt = x_opt
 
         self.functions = functions
         if fidelity_names:
@@ -96,6 +106,7 @@ def invert(mff: MultiFidelityFunction) -> MultiFidelityFunction:
         mff._name, mff.u_bound, mff.l_bound,
         functions,
         fidelity_names=mff.fidelity_names,
+        x_opt=mff.x_opt,
     )
 
 

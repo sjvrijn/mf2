@@ -1,4 +1,5 @@
 since last version:
+- Added MultiFidelityFunction.x_opt attribute for known optimum of function
 -
 
 v2021.10.0

@@ -92,10 +92,13 @@ l_bound = [0, 0]
 #: Upper bound for Currin function
 u_bound = [1, 1]
 
+x_opt = [0.21666666666666, 0]
+
 #: 2D Currin function with fidelities 'high' and 'low'
 currin = MultiFidelityFunction(
     "currin",
     u_bound, l_bound,
     [currin_hf, currin_lf],
-    fidelity_names=['high', 'low']
+    fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )

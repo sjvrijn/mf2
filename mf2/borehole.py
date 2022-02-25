@@ -78,10 +78,13 @@ l_bound = [0.05,    100,  63_070,   990, 63.1, 700, 1_120,  9_855]
 #: Upper bound for Borehole function
 u_bound = [0.15, 50_000, 115_600, 1_110,  116, 820, 1_680, 12_045]
 
+x_opt = [5e-2, 5e4, 6.307e4, 9.9e2, 6.31e1, 8.2e2, 1.68e3, 9.855e3]
+
 #: 8D Borehole function with fidelities 'high' and 'low'
 borehole = MultiFidelityFunction(
     "borehole",
     u_bound, l_bound,
     [borehole_hf, borehole_lf],
-    fidelity_names=['high', 'low']
+    fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )

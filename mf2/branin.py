@@ -76,10 +76,13 @@ l_bound = [-5,  0]
 #: Upper bound for Branin function
 u_bound = [10, 15]
 
+x_opt = [-3.786088705282203, 15]
+
 #: 2D Branin function with fidelities 'high' and 'low'
 branin = MultiFidelityFunction(
     "branin",
     u_bound, l_bound,
     [branin_hf, branin_lf],
     fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )

@@ -64,10 +64,13 @@ l_bound = [0.1] * 6
 #: Upper bound for Hartmann6 function
 u_bound = [1] * 6
 
+x_opt = [0.2017, 0.1500, 0.4769, 0.2753, 0.3117, 0.6573]
+
 #: 6D Hartmann6 function with fidelities 'high' and 'low'
 hartmann6 = MultiFidelityFunction(
     "Hartmann6",
     u_bound, l_bound,
     [hartmann6_hf, hartmann6_lf],
-    fidelity_names=['high', 'low']
+    fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )

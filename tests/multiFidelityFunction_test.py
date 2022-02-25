@@ -12,11 +12,24 @@ def test_name(name):
     assert mff._name == name
     assert mff.name == name.title()
 
+
 def test_unequal_bound_lenghts():
+    bounds_A, bounds_B = [0], [1, 2]
     with raises(ValueError):
-        bounds_A, bounds_B = [0], [1, 2]
         MultiFidelityFunction('test', bounds_A, bounds_B, functions=None)
+    with raises(ValueError):
         MultiFidelityFunction('test', bounds_B, bounds_A, functions=None)
+
+
+def test_invalid_x_opt():
+    """Test that an error is raised if len(x_opt) is incorrect"""
+    l_bound, u_bound = [0, 0], [1, 1]
+    with raises(ValueError):
+        MultiFidelityFunction('test', u_bound, l_bound, functions=None,
+                              x_opt=[.5])
+    with raises(ValueError):
+        MultiFidelityFunction('test', u_bound, l_bound, functions=None,
+                              x_opt=[.5, .5, .5])
 
 
 @given(integers(0, 100))
