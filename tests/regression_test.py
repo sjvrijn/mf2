@@ -58,5 +58,5 @@ def test_xopt_regression(num_regression):
     num_regression.check({
         func.name: func.high(func.x_opt)
         for func in _functions_to_test
-        if func.xopt
+        if func.x_opt is not None
     })
