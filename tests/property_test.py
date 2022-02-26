@@ -10,10 +10,12 @@ __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
 
 
+from itertools import chain
+
 import numpy as np
 from hypothesis import given
 from hypothesis.extra.numpy import arrays
-from hypothesis.strategies import floats, integers, just, tuples
+from hypothesis.strategies import data, floats, integers, just, tuples
 import pytest
 
 from .utils import rescale, ValueRange
@@ -124,64 +126,18 @@ def test_invert_currin(x):
     assert all(inverted_currin.high(x) > inverted_y_opt)
 
 
-@given(ndim_array(n=2))
-@pytest.mark.parametrize("function", [
-    mf2.bohachevsky,
-    mf2.booth,
-    mf2.branin,
-    mf2.currin,
-    mf2.himmelblau,
-    mf2.six_hump_camelback,
-    mf2.adjustable.branin(0.5),
-    mf2.adjustable.paciorek(0.5),
-])
-def test_2d_functions(function, x):
-    _test_single_function(function, x)
-
-
-@given(ndim_array(n=3))
-@pytest.mark.parametrize("function", [
-    mf2.adjustable.hartmann3(0.5),
-])
-def test_3d_functions(function, x):
-    _test_single_function(function, x)
-
-
-@given(ndim_array(n=4))
-@pytest.mark.parametrize("function", [
-    mf2.park91a,
-    mf2.park91b,
-])
-def test_4d_functions(function, x):
-    _test_single_function(function, x)
-
-
-@given(ndim_array(n=6))
-@pytest.mark.parametrize("function", [
-    mf2.hartmann6,
-])
-def test_6d_functions(function, x):
-    _test_single_function(function, x)
-
-
-@given(ndim_array(n=8))
-@pytest.mark.parametrize("function", [
-    mf2.borehole,
-])
-def test_8d_functions(function, x):
-    _test_single_function(function, x)
-
-
-@given(ndim_array(n=10))
-@pytest.mark.parametrize("function", [
-    mf2.adjustable.trid(0.5),
-])
-def test_10d_functions(function, x):
+@given(data())
+@pytest.mark.parametrize("function", chain(
+    mf2.bi_fidelity_functions,
+    (f(0.5) for f in mf2.adjustable.bi_fidelity_functions),
+))
+def test_functions_run_without_error(function, data):
+    x = data.draw(ndim_array(function.ndim))
     _test_single_function(function, x)
 
 
 @pytest.mark.parametrize("function", mf2.bi_fidelity_functions)
-def test_combined_functions(function, n_cases=1_000):
+def test_x_opt_is_optimum(function, n_cases=1_000):
     if function.x_opt is None:
         return
     if function.name == 'Currin':
