@@ -1,5 +1,7 @@
 since last version:
 - Added MultiFidelityFunction.x_opt attribute for known optimum of function
+- Tests:
+  * 'test_Nd_functions' tests now parameterized using hypothesis' data strategy
 -
 
 v2021.10.0
