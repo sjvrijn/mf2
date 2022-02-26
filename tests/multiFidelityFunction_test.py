@@ -3,7 +3,7 @@ from string import ascii_letters, printable
 from hypothesis import given
 from hypothesis.strategies import integers, lists, text
 from mf2 import MultiFidelityFunction
-from pytest import raises
+from pytest import raises, warns
 
 
 @given(text(alphabet=printable, min_size=1, max_size=30))
@@ -21,6 +21,12 @@ def test_unequal_bound_lenghts():
         MultiFidelityFunction('test', bounds_B, bounds_A, functions=None)
 
 
+def test_inconsistent_bounds_warning():
+    bounds_A, bounds_B = [1, 2], [2, 1]
+    with warns(RuntimeWarning):
+        MultiFidelityFunction('test', bounds_A, bounds_B, functions=None)
+
+
 def test_invalid_x_opt():
     """Test that an error is raised if len(x_opt) is incorrect"""
     l_bound, u_bound = [0, 0], [1, 1]
@@ -30,6 +36,12 @@ def test_invalid_x_opt():
     with raises(ValueError):
         MultiFidelityFunction('test', u_bound, l_bound, functions=None,
                               x_opt=[.5, .5, .5])
+
+
+def test_x_opt_out_of_bounds():
+    l_bound, u_bound = [0, 0], [2, 2]
+    with warns(RuntimeWarning):
+        MultiFidelityFunction('test', u_bound, l_bound, functions=None, x_opt=[1, 5])
 
 
 @given(integers(0, 100))
