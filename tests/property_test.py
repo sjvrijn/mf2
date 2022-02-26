@@ -137,7 +137,7 @@ def test_functions_run_without_error(function, data):
 
 
 @pytest.mark.parametrize("function", mf2.bi_fidelity_functions)
-def test_combined_functions(function, n_cases=1_000):
+def test_x_opt_is_optimum(function, n_cases=1_000):
     if function.x_opt is None:
         return
     if function.name == 'Currin':
