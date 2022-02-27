@@ -1,5 +1,6 @@
 since last version:
 - Added MultiFidelityFunction.x_opt attribute for known optimum of function
+- Added warnings in MultiFidelityFunction if not l_bound <= x_opt <= u_bound
 - Tests:
   * 'test_Nd_functions' tests now parameterized using hypothesis' data strategy
 -
@@ -15,7 +16,6 @@ v2021.2.0:
 - enabled branch coverage and -Werror flag for tests
 - updated naming of functions: no space between function and number
 - MultiFidelityFunction stores original name as _name, .name is now a property
-
 
 v2020.8.0:
 - can now install development requirements using `pip install mf2[dev]` notation
@@ -38,7 +38,6 @@ v2020.8.0:
   * figure of example-usage improved to 600dpi
   * page on performance added, script for plots added in docs/scripts, including
     original matlab source code for borehole, currin and park91a/b
-
 
 v2020.4.3:
 - Bugfix: corrected bounds for adjustable Trid function
@@ -112,4 +111,3 @@ v2019.11.1:
 
 v2019.11.0:
 - First release
-

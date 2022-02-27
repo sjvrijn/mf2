@@ -3,12 +3,12 @@ from string import ascii_letters, printable
 from hypothesis import given
 from hypothesis.strategies import integers, lists, text
 from mf2 import MultiFidelityFunction
-from pytest import raises
+from pytest import raises, warns
 
 
 @given(text(alphabet=printable, min_size=1, max_size=30))
 def test_name(name):
-    mff = MultiFidelityFunction(name, [0], [0], functions=None)
+    mff = MultiFidelityFunction(name, [1], [0], functions=None)
     assert mff._name == name
     assert mff.name == name.title()
 
@@ -21,6 +21,12 @@ def test_unequal_bound_lenghts():
         MultiFidelityFunction('test', bounds_B, bounds_A, functions=None)
 
 
+def test_inconsistent_bounds_warning():
+    bounds_A, bounds_B = [1, 2], [2, 1]
+    with warns(RuntimeWarning):
+        MultiFidelityFunction('test', bounds_A, bounds_B, functions=None)
+
+
 def test_invalid_x_opt():
     """Test that an error is raised if len(x_opt) is incorrect"""
     l_bound, u_bound = [0, 0], [1, 1]
@@ -30,6 +36,12 @@ def test_invalid_x_opt():
     with raises(ValueError):
         MultiFidelityFunction('test', u_bound, l_bound, functions=None,
                               x_opt=[.5, .5, .5])
+
+
+def test_x_opt_out_of_bounds():
+    l_bound, u_bound = [0, 0], [2, 2]
+    with warns(RuntimeWarning):
+        MultiFidelityFunction('test', u_bound, l_bound, functions=None, x_opt=[1, 5])
 
 
 @given(integers(0, 100))
@@ -47,7 +59,7 @@ def _list_of_strings(n):
 def test_access_with_fidelity_names(fidelity_names):
     functions = [lambda x: None for _ in fidelity_names]
     mff = MultiFidelityFunction(
-        'test', [0], [1],
+        'test', [1], [0],
         functions=functions,
         fidelity_names=fidelity_names
     )
@@ -59,15 +71,18 @@ def test_access_with_fidelity_names(fidelity_names):
 @given(integers(1, 100))
 def test_access_without_fidelity_names(num_fidelities):
     mff = MultiFidelityFunction(
-        'test', [0], [1],
+        'test', [1], [0],
         functions=[lambda idx=idx: idx for idx in range(num_fidelities+1)],
     )
 
     with raises(AttributeError):
         _ = mff.high()
+    with raises(AttributeError):
         _ = mff.low()
+
     with raises(IndexError):
         _ = mff['high']()
+    with raises(IndexError):
         _ = mff['low']()
 
     for idx in range(num_fidelities):

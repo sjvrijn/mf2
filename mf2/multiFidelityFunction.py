@@ -10,6 +10,8 @@ functions that are commonly used by the various mf-functions in this package.
 
 from numbers import Integral
 from typing import Callable
+from warnings import warn
+
 import numpy as np
 
 
@@ -37,17 +39,13 @@ class MultiFidelityFunction:
         """
         self._name = name
 
-        if len(u_bound) != len(l_bound):
-            raise ValueError(f"Length of upper and lower bounds are not equal: "
-                             f"{len(u_bound)} != {len(l_bound)}")
-
         self.u_bound = np.array(u_bound, dtype=float)
         self.l_bound = np.array(l_bound, dtype=float)
+        self._check_bounds()
+
         if x_opt is not None:
             self.x_opt = np.array(np.atleast_1d(x_opt), dtype=float)
-            if len(self.x_opt) != len(u_bound):
-                raise ValueError(f"Length of x_opt and bounds are not equal: "
-                                 f"{len(self.x_opt)} != {len(u_bound)}")
+            self._check_x_opt()
         else:
             self.x_opt = x_opt
 
@@ -78,6 +76,32 @@ class MultiFidelityFunction:
     def bounds(self):
         """Lower and upper bounds as a single np.array of shape (2, ndim)."""
         return np.array([self.l_bound, self.u_bound], dtype=float)
+
+
+    def _check_bounds(self):
+        """Perform sanity checks on given bounds"""
+        if len(self.u_bound) != len(self.l_bound):
+            raise ValueError(f"Length of upper and lower bounds are not equal: "
+                             f"{len(self.u_bound)} != {len(self.l_bound)}")
+
+        if not np.all(self.l_bound < self.u_bound):
+            indices = np.ravel(np.argwhere(self.u_bound < self.l_bound)).tolist()
+            warn(f"Inconsistent bounds at indices {indices}, upper bound not above lower bound.",
+                 category=RuntimeWarning)
+
+
+    def _check_x_opt(self):
+        """Perform sanity checks on given `x_opt`"""
+        if len(self.x_opt) != self.ndim:
+            raise ValueError(f"Length of x_opt and bounds are not equal: "
+                             f"{len(self.x_opt)} != {self.ndim}")
+
+        x_opt_in_bounds = np.logical_and(self.l_bound <= self.x_opt,
+                                         self.x_opt <= self.u_bound)
+        if not np.all(x_opt_in_bounds):
+            indices = np.ravel(np.argwhere(~x_opt_in_bounds)).tolist()
+            warn(f"x_opt {self.x_opt} out of bounds at indices {indices}",
+                 category=RuntimeWarning)
 
 
     def __getitem__(self, item):
