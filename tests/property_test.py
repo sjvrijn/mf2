@@ -28,7 +28,7 @@ def quadratic(xx):
     return np.sqrt(np.sum(xx**2, axis=1))
 
 
-simple_square = mf2.MultiFidelityFunction('simple_square', [-1e8], [1e8], [quadratic, quadratic], ['high', 'low'])
+simple_square = mf2.MultiFidelityFunction('simple_square', [1e8], [-1e8], [quadratic, quadratic], ['high', 'low'])
 
 # TEST HELPERS -----------------------------------------------------------------
 def ndim_array(n):
