@@ -80,4 +80,3 @@ def hartmann3(a3: float):
         [hartmann3_hf, partial(adjustable_hartmann3_lf, a3=a3)],
         fidelity_names=['high', 'low'],
     )
-
