@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-multiFidelityFunction.py:
+multi_fidelity_function.py:
 
 Defines the MultiFidelityFunction class for encapsuling all fidelities and
 parameters of a multi-fidelity function. Also contains any other utility

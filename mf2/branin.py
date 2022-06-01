@@ -9,7 +9,7 @@
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction
+from .multi_fidelity_function import MultiFidelityFunction
 
 
 _four_pi_square = 4*np.pi**2

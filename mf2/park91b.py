@@ -29,7 +29,7 @@ General Public License for more details.
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction
+from .multi_fidelity_function import MultiFidelityFunction
 
 
 def park91b_hf(xx):

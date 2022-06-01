@@ -11,7 +11,7 @@ As defined in
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction
+from .multi_fidelity_function import MultiFidelityFunction
 
 # Some constant values for the Hartmann 6d calculations
 _alpha6_low = np.array([0.5, 0.5, 2.0, 4.0])[:,np.newaxis]

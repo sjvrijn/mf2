@@ -17,7 +17,7 @@ separate dimensions.
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction
+from .multi_fidelity_function import MultiFidelityFunction
 
 
 def forrester_high(X):

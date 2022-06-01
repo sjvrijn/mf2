@@ -14,7 +14,7 @@ from functools import partial
 
 import numpy as np
 
-from mf2.multiFidelityFunction import MultiFidelityFunction
+from mf2.multi_fidelity_function import MultiFidelityFunction
 
 
 def trid_hf(xx):
