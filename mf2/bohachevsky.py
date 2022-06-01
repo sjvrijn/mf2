@@ -55,7 +55,7 @@ l_bound = [-5, -5]
 #: Upper bound for Bohachevsky function
 u_bound = [ 5,  5]
 
-x_opt = [0,0]
+x_opt = [0, 0]
 
 #: 2D Bohachevsky function with fidelities 'high' and 'low'
 bohachevsky = MultiFidelityFunction(

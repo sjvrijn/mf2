@@ -20,21 +20,21 @@ import numpy as np
 from .multi_fidelity_function import MultiFidelityFunction
 
 
-def forrester_high(X):
-    X = np.atleast_2d(X)
+def forrester_high(xx):
+    xx = np.atleast_2d(xx)
 
-    ndim = X.shape[1]
-    term1 = (6*X - 2)**2
-    term2 = np.sin(12*X - 4)
+    ndim = xx.shape[1]
+    term1 = (6 * xx - 2) ** 2
+    term2 = np.sin(12 * xx - 4)
     return np.sum(term1 * term2, axis=1) / ndim
 
 
-def forrester_low(X, *, A=0.5, B=10, C=-5):
-    X = np.atleast_2d(X)
+def forrester_low(xx, *, A=0.5, B=10, C=-5):
+    xx = np.atleast_2d(xx)
 
-    ndim = X.shape[1]
-    term1 = A*forrester_high(X)
-    term2 = B*(X - 0.5)
+    ndim = xx.shape[1]
+    term1 = A*forrester_high(xx)
+    term2 = B*(xx - 0.5)
     term3 = C
 
     return term1 + (np.sum(term2, axis=1) / ndim) + term3
@@ -46,6 +46,7 @@ l_bound = [0]
 u_bound = [1]
 
 x_opt = [0.757248757841856]
+
 
 def Forrester(ndim: int):
     """Factory method for `ndim`-dimensional multi-fidelity Forrester function

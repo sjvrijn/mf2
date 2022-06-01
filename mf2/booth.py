@@ -54,7 +54,7 @@ l_bound = [-10, -10]
 #: Upper bound for Booth function
 u_bound = [ 10,  10]
 
-x_opt = [1,3]
+x_opt = [1, 3]
 
 #: 2D Booth function with fidelities 'high' and 'low'
 booth = MultiFidelityFunction(

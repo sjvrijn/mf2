@@ -54,7 +54,7 @@ l_bound = [-4, -4]
 #: Upper bound for Himmelblau function
 u_bound = [ 4,  4]
 
-x_opt = [3,2]  # one of four
+x_opt = [3, 2]  # one of four optima
 
 #: 2D Himmelblau function with fidelities 'high' and 'low'
 himmelblau = MultiFidelityFunction(
