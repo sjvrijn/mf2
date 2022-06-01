@@ -8,6 +8,7 @@ matrix:
       sudo: true
     - python: 3.8
     - python: 3.9
+    - python: 3.10
 before_install:
   - python -m pip install --upgrade pip
 install:
