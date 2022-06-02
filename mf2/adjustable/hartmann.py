@@ -10,11 +10,9 @@ as defined in:
 """
 
 
-from functools import partial
-
 import numpy as np
 
-from mf2.multi_fidelity_function import MultiFidelityFunction
+from mf2.multi_fidelity_function import AdjustableMultiFidelityFunction
 
 
 # Some constant values
@@ -46,10 +44,10 @@ def hartmann3_hf(xx):
     return -tmp3.reshape((-1,))
 
 
-def adjustable_hartmann3_lf(xx, a3):
+def adjustable_hartmann3_lf(xx, a):
     xx = np.atleast_2d(xx)
 
-    factor = 3/4 * (a3+1)
+    factor = 3/4 * (a + 1)
 
     xx = xx[:,:,np.newaxis]
 
@@ -64,9 +62,7 @@ def adjustable_hartmann3_lf(xx, a3):
 u_bound = [1]*3
 l_bound = [0]*3
 
-
-def hartmann3(a3: float):
-    """Factory method for adjustable Hartmann3 function using parameter value `a3`
+docstring = """Factory method for adjustable Hartmann3 function using parameter value `a3`
 
     :param a3:  Parameter to tune the correlation between high- and low-fidelity
                 functions. Expected values lie in range [0, 1]. High- and low-
@@ -74,9 +70,10 @@ def hartmann3(a3: float):
     :return:    A MultiFidelityFunction instance
     """
 
-    return MultiFidelityFunction(
-        f"adjustable Hartmann3 {a3}",
-        u_bound, l_bound,
-        [hartmann3_hf, partial(adjustable_hartmann3_lf, a3=a3)],
-        fidelity_names=['high', 'low'],
-    )
+hartmann3 = AdjustableMultiFidelityFunction(
+    "Hartmann3",
+    u_bound, l_bound,
+    [hartmann3_hf],
+    [adjustable_hartmann3_lf],
+    fidelity_names=['high', 'low'],
+)

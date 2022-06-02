@@ -10,11 +10,9 @@ as defined in:
 """
 
 
-from functools import partial
-
 import numpy as np
 
-from mf2.multi_fidelity_function import MultiFidelityFunction
+from mf2.multi_fidelity_function import AdjustableMultiFidelityFunction
 
 
 def trid_hf(xx):
@@ -24,29 +22,28 @@ def trid_hf(xx):
     temp2 = np.sum(xx[:,:-1] * xx[:,1:], axis=1)
     return temp1 - temp2
 
-def adjustable_trid_lf(xx, a4):
+def adjustable_trid_lf(xx, a):
     xx = np.atleast_2d(xx)
 
-    temp1 = np.sum((xx - a4) ** 2, axis=1)
-    temp2 = np.sum((a4-0.65) * xx[:,:-1] * xx[:,1:] * np.arange(2, 11), axis=1)
+    temp1 = np.sum((xx - a) ** 2, axis=1)
+    temp2 = np.sum((a - 0.65) * xx[:, :-1] * xx[:, 1:] * np.arange(2, 11), axis=1)
     return temp1 - temp2
 
 
 u_bound = [100]*10
 l_bound = [-100]*10
 
-
-def trid(a4: float):
-    """Factory method for adjustable Trid function using parameter value `a4`
+docstring = """Factory method for adjustable Trid function using parameter value `a4`
 
     :param a4:  Parameter to tune the correlation between high- and low-fidelity
                 functions. Expected values lie in range [0, 1].
     :return:    A MultiFidelityFunction instance
     """
 
-    return MultiFidelityFunction(
-        f"adjustable Trid {a4}",
-        u_bound, l_bound,
-        [trid_hf, partial(adjustable_trid_lf, a4=a4)],
-        fidelity_names=['high', 'low'],
-    )
+trid = AdjustableMultiFidelityFunction(
+    "Trid",
+    u_bound, l_bound,
+    [trid_hf],
+    [adjustable_trid_lf],
+    fidelity_names=['high', 'low'],
+)

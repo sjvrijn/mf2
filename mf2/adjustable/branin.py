@@ -10,18 +10,16 @@ as defined in:
 """
 
 
-from functools import partial
-
 import numpy as np
 
-from mf2.multi_fidelity_function import MultiFidelityFunction
+from mf2.multi_fidelity_function import AdjustableMultiFidelityFunction
 from mf2.branin import branin_base, l_bound, u_bound
 
 
 _four_pi_square = 4*np.pi**2
 
 
-def adjustable_branin_lf(xx, a1):
+def adjustable_branin_lf(xx, a):
     xx = np.atleast_2d(xx)
 
     x1, x2 = xx.T
@@ -29,11 +27,10 @@ def adjustable_branin_lf(xx, a1):
     term1 = branin_base(xx)
     term2 = x2 - (5.1 * (x1**2 / _four_pi_square)) + ((5*x1) / np.pi) - 6
 
-    return term1 - (a1+0.5) * term2**2
+    return term1 - (a + 0.5) * term2 ** 2
 
 
-def branin(a1: float):
-    """Factory method for adjustable Branin function using parameter value `a1`
+docstring = """Factory method for adjustable Branin function using parameter value `a1`
 
     :param a1:  Parameter to tune the correlation between high- and low-fidelity
                 functions. Expected values lie in range [0, 1]. High- and low-
@@ -41,9 +38,10 @@ def branin(a1: float):
     :return:    A MultiFidelityFunction instance
     """
 
-    return MultiFidelityFunction(
-        f"adjustable Branin {a1}",
-        u_bound, l_bound,
-        [branin_base, partial(adjustable_branin_lf, a1=a1)],
-        fidelity_names=['high', 'low'],
-    )
+branin = AdjustableMultiFidelityFunction(
+    "Branin",
+    u_bound, l_bound,
+    static_functions=[branin_base],
+    adjustable_functions=[adjustable_branin_lf],
+    fidelity_names=['high', 'low'],
+)
