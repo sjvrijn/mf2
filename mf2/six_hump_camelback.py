@@ -10,7 +10,7 @@ as defined in:
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction
+from .multi_fidelity_function import MultiFidelityFunction
 
 
 def six_hump_camelback_hf(xx):

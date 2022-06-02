@@ -14,7 +14,7 @@ from functools import partial
 
 import numpy as np
 
-from mf2.multiFidelityFunction import MultiFidelityFunction
+from mf2.multi_fidelity_function import MultiFidelityFunction
 from mf2.branin import branin_base, l_bound, u_bound
 
 

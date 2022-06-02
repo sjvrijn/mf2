@@ -29,22 +29,22 @@ General Public License for more details.
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction
+from .multi_fidelity_function import MultiFidelityFunction
 
 
 _tau = 2*np.pi
 
 
-def _borehole_base(xx, A, B):
+def _borehole_base(xx, a, b):
     xx = np.atleast_2d(xx)
 
     rw, r, Tu, Hu, Tl, Hl, L, Kw = xx.T
 
-    frac1 = A * Tu * (Hu-Hl)
+    frac1 = a * Tu * (Hu - Hl)
 
     frac2a = 2*L*Tu / (np.log(r/rw) * (rw**2) * Kw)
     frac2b = Tu / Tl
-    frac2 = np.log(r/rw) * (B+frac2a+frac2b)
+    frac2 = np.log(r/rw) * (b + frac2a + frac2b)
 
     return frac1 / frac2
 
@@ -57,7 +57,7 @@ def borehole_hf(xx):
         inputs = [rw, r, Tu, Hu, Tl, Hl, L, Kw]
         output = water flow rate
     """
-    return _borehole_base(xx, A=_tau, B=1)
+    return _borehole_base(xx, a=_tau, b=1)
 
 
 def borehole_lf(xx):
@@ -70,7 +70,7 @@ def borehole_lf(xx):
         inputs = [rw, r, Tu, Hu, Tl, Hl, L, Kw]
         output = water flow rate
     """
-    return _borehole_base(xx, A=5, B=1.5)
+    return _borehole_base(xx, a=5, b=1.5)
 
 
 #: Lower bound for Borehole function

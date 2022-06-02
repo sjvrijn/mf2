@@ -14,7 +14,7 @@ from functools import partial
 
 import numpy as np
 
-from mf2.multiFidelityFunction import MultiFidelityFunction
+from mf2.multi_fidelity_function import MultiFidelityFunction
 
 
 # Some constant values
@@ -80,4 +80,3 @@ def hartmann3(a3: float):
         [hartmann3_hf, partial(adjustable_hartmann3_lf, a3=a3)],
         fidelity_names=['high', 'low'],
     )
-

@@ -9,7 +9,7 @@
 
 import numpy as np
 
-from .multiFidelityFunction import MultiFidelityFunction
+from .multi_fidelity_function import MultiFidelityFunction
 
 
 def bohachevsky_hf(xx):
@@ -55,7 +55,7 @@ l_bound = [-5, -5]
 #: Upper bound for Bohachevsky function
 u_bound = [ 5,  5]
 
-x_opt = [0,0]
+x_opt = [0, 0]
 
 #: 2D Bohachevsky function with fidelities 'high' and 'low'
 bohachevsky = MultiFidelityFunction(
