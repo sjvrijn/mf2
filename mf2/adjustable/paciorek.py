@@ -10,11 +10,9 @@ as defined in:
 """
 
 
-from functools import partial
-
 import numpy as np
 
-from mf2.multi_fidelity_function import MultiFidelityFunction
+from mf2.multi_fidelity_function import AdjustableMultiFidelityFunction
 
 
 def paciorek_hf(xx):
@@ -24,12 +22,12 @@ def paciorek_hf(xx):
     return np.sin(1/(x1*x2))
 
 
-def adjustable_paciorek_lf(xx, a2):
+def adjustable_paciorek_lf(xx, a):
     xx = np.atleast_2d(xx)
 
     x1, x2 = xx.T
     temp1 = paciorek_hf(xx)
-    temp2 = 9 * a2**2
+    temp2 = 9 * a ** 2
     temp3 = np.cos(1/(x1*x2))
     return temp1 - (temp2*temp3)
 
@@ -37,9 +35,7 @@ def adjustable_paciorek_lf(xx, a2):
 u_bound = [1]*2
 l_bound = [0.3]*2
 
-
-def paciorek(a2: float):
-    """Factory method for adjustable Paciorek function using parameter value `a2`
+docstring = """Factory method for adjustable Paciorek function using parameter value `a2`
 
     :param a2:  Parameter to tune the correlation between high- and low-fidelity
                 functions. Expected values lie in range [0, 1]. High- and low-
@@ -47,9 +43,10 @@ def paciorek(a2: float):
     :return:    A MultiFidelityFunction instance
     """
 
-    return MultiFidelityFunction(
-        f"adjustable Paciorek {a2}",
-        u_bound, l_bound,
-        [paciorek_hf, partial(adjustable_paciorek_lf, a2=a2)],
-        fidelity_names=['high', 'low'],
-    )
+paciorek = AdjustableMultiFidelityFunction(
+    "Paciorek",
+    u_bound, l_bound,
+    [paciorek_hf],
+    [adjustable_paciorek_lf],
+    fidelity_names=['high', 'low'],
+)

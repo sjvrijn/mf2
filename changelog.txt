@@ -1,6 +1,8 @@
 since last version:
 - Added MultiFidelityFunction.x_opt attribute for known optimum of function
 - Added warnings in MultiFidelityFunction if not l_bound <= x_opt <= u_bound
+- Added callable AdjustableMultiFidelityFunction class to serve as factory
+  instead of the previous 'bare' functions
 - Tests:
   * 'test_Nd_functions' tests now parameterized using hypothesis' data strategy
 -

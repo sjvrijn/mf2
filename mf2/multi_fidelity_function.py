@@ -8,6 +8,7 @@ parameters of a multi-fidelity function. Also contains any other utility
 functions that are commonly used by the various mf-functions in this package.
 """
 
+from functools import partial
 from numbers import Integral
 from typing import Callable
 from warnings import warn
@@ -38,18 +39,15 @@ class MultiFidelityFunction:
                                (if known).
         """
         self._name = name
-
         self.u_bound = np.array(u_bound, dtype=float)
         self.l_bound = np.array(l_bound, dtype=float)
         self._check_bounds()
 
-        if x_opt is not None:
-            self.x_opt = np.array(np.atleast_1d(x_opt), dtype=float)
-            self._check_x_opt()
-        else:
-            self.x_opt = x_opt
+        self.x_opt = x_opt if x_opt is None else np.array(np.atleast_1d(x_opt),
+                                                          dtype=float)
+        self._check_x_opt_in_bounds()
 
-        self.functions = functions
+        self._functions = functions
         if fidelity_names:
             # dict-style name-indexing
             self.fidelity_names = fidelity_names
@@ -60,6 +58,12 @@ class MultiFidelityFunction:
         else:
             self.fidelity_dict = None
             self.fidelity_names = None
+
+
+    @property
+    def functions(self):
+        return self._functions
+
 
     @property
     def name(self):
@@ -90,8 +94,11 @@ class MultiFidelityFunction:
                  category=RuntimeWarning)
 
 
-    def _check_x_opt(self):
-        """Perform sanity checks on given `x_opt`"""
+    def _check_x_opt_in_bounds(self):
+        """Check if `x_opt` is of correct length and lies within bounds"""
+        if self.x_opt is None:
+            return
+
         if len(self.x_opt) != self.ndim:
             raise ValueError(f"Length of x_opt and bounds are not equal: "
                              f"{len(self.x_opt)} != {self.ndim}")
@@ -115,6 +122,61 @@ class MultiFidelityFunction:
 
     def __repr__(self):
         return f"MultiFidelityFunction({self.name}, {self.u_bound}, {self.l_bound}, fidelity_names={self.fidelity_names})"
+
+
+class AdjustableMultiFidelityFunction(MultiFidelityFunction):
+
+    def __init__(self, name, u_bound, l_bound, static_functions,
+                 adjustable_functions, fidelity_names=None,
+                 *, x_opt=None):
+        """All fidelity levels and parameters of a multi-fidelity function.
+
+        :param name:                  Name of the multi-fidelity function.
+        :param u_bound:               Upper bound of the intended input range.
+                                      Length is also used to determine the
+                                      (fixed) dimensionality of the function.
+        :param l_bound:               Lower bound of the intended input range.
+                                      Must be of same length as `u_bound`.
+        :param static_functions:      Iterable of function handles for the
+                                      static, non-adjustable fidelities,
+                                      sorted in *descending* order.
+        :param adjustable_functions:  Iterable of function handles for the
+                                      adjustable fidelities, sorted in
+                                      *descending* order.
+        :param fidelity_names:        List of names for the fidelities. Must be
+                                      given to support dictionary- or attribute-
+                                      style fidelity indexing, such as
+                                      `f['high']()` and `f.high()`
+        :param x_opt:                 Location of optimum x_opt for highest
+                                      fidelity (if known).
+        """
+        name = name if name.startswith('adjustable') else f'adjustable {name}'
+        self.static_functions = static_functions
+        self.adjustable_functions = adjustable_functions
+
+        super().__init__(name, u_bound, l_bound, self.functions,
+                         fidelity_names=fidelity_names, x_opt=x_opt)
+
+
+    def __call__(self, a: float) -> MultiFidelityFunction:
+        """Fix adjustment to create a MultiFidelityFunction"""
+        return MultiFidelityFunction(
+            f'{self._name} {a}',
+            self.u_bound, self.l_bound,
+            self.static_functions + [partial(f, a=a) for f in self.adjustable_functions],
+            fidelity_names=self.fidelity_names,
+        )
+
+
+    @property
+    def functions(self):
+        """Combined static and adjustable functions"""
+        return self.static_functions + self.adjustable_functions
+
+
+    def __repr__(self):
+        return f"AdjustableMultiFidelityFunction({self.name}, {self.u_bound}," \
+               f"{self.l_bound}, fidelity_names={self.fidelity_names})"
 
 
 def invert(mff: MultiFidelityFunction) -> MultiFidelityFunction:
