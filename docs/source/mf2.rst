@@ -5,7 +5,7 @@ Fixed Functions
 ---------------
 .. toctree::
 
-   functions/multiFidelityFunction
+   functions/multi_fidelity_function
    functions/bohachevsky
    functions/booth
    functions/borehole
