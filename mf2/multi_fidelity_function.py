@@ -43,11 +43,9 @@ class MultiFidelityFunction:
         self.l_bound = np.array(l_bound, dtype=float)
         self._check_bounds()
 
-        if x_opt is not None:
-            self.x_opt = np.array(np.atleast_1d(x_opt), dtype=float)
-            self._check_x_opt()
-        else:
-            self.x_opt = x_opt
+        self.x_opt = x_opt if x_opt is None else np.array(np.atleast_1d(x_opt),
+                                                          dtype=float)
+        self._check_x_opt_in_bounds()
 
         self.functions = functions
         if fidelity_names:
@@ -90,8 +88,11 @@ class MultiFidelityFunction:
                  category=RuntimeWarning)
 
 
-    def _check_x_opt(self):
-        """Perform sanity checks on given `x_opt`"""
+    def _check_x_opt_in_bounds(self):
+        """Check if `x_opt` is of correct length and lies within bounds"""
+        if self.x_opt is None:
+            return
+
         if len(self.x_opt) != self.ndim:
             raise ValueError(f"Length of x_opt and bounds are not equal: "
                              f"{len(self.x_opt)} != {self.ndim}")
