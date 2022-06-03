@@ -40,6 +40,7 @@ release = ''
 # ones.
 extensions = [
     'sphinx.ext.autodoc',
+    'sphinx.ext.mathjax',
     'sphinx_rtd_theme',
 ]
 

@@ -10,6 +10,12 @@ example function as presented in:
     Optimization via Surrogate Modelling", Proceedings of the Royal Society A,
     vol. 463, http://doi.org/10.1098/rspa.2007.1900
 
+Function definitions:
+
+.. math::
+
+    f_h(x) = (6x-2)^2 \\sin(12x-4)
+
 This version has been adapted to be multi-dimensional, input can be arbitrarily
 many dimensions. Output value is calculated as the mean of the outcomes for all
 separate dimensions.
