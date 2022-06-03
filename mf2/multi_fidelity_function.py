@@ -47,7 +47,7 @@ class MultiFidelityFunction:
                                                           dtype=float)
         self._check_x_opt_in_bounds()
 
-        self.functions = functions
+        self._functions = functions
         if fidelity_names:
             # dict-style name-indexing
             self.fidelity_names = fidelity_names
@@ -58,6 +58,12 @@ class MultiFidelityFunction:
         else:
             self.fidelity_dict = None
             self.fidelity_names = None
+
+
+    @property
+    def functions(self):
+        return self._functions
+
 
     @property
     def name(self):
@@ -118,7 +124,7 @@ class MultiFidelityFunction:
         return f"MultiFidelityFunction({self.name}, {self.u_bound}, {self.l_bound}, fidelity_names={self.fidelity_names})"
 
 
-class AdjustableMultiFidelityFunction:
+class AdjustableMultiFidelityFunction(MultiFidelityFunction):
 
     def __init__(self, name, u_bound, l_bound, static_functions,
                  adjustable_functions, fidelity_names=None,
@@ -144,13 +150,12 @@ class AdjustableMultiFidelityFunction:
         :param x_opt:                 Location of optimum x_opt for highest
                                       fidelity (if known).
         """
-        self._name = name if name.startswith('adjustable') else f'adjustable {name}'
-        self.u_bound = np.array(u_bound, dtype=float)
-        self.l_bound = np.array(l_bound, dtype=float)
+        name = name if name.startswith('adjustable') else f'adjustable {name}'
         self.static_functions = static_functions
         self.adjustable_functions = adjustable_functions
-        self.fidelity_names = fidelity_names
-        self.x_opt = x_opt
+
+        super().__init__(name, u_bound, l_bound, self.functions,
+                         fidelity_names=fidelity_names, x_opt=x_opt)
 
 
     def __call__(self, a: float) -> MultiFidelityFunction:
@@ -161,17 +166,6 @@ class AdjustableMultiFidelityFunction:
             self.static_functions + [partial(f, a=a) for f in self.adjustable_functions],
             fidelity_names=self.fidelity_names,
         )
-
-
-    @property
-    def name(self):
-        return self._name.title()
-
-
-    @property
-    def ndim(self):
-        """Dimensionality of the function. Inferred as ``len(self.u_bound)``."""
-        return len(self.u_bound)
 
 
     @property
