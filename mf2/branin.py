@@ -1,10 +1,25 @@
 # -*- coding: utf-8 -*-
 
-"""Implementation of the bi-fidelity Branin function as defined in:
+r"""Implementation of the bi-fidelity Branin function as defined in:
 
     Dong, H., Song, B., Wang, P. et al. Multi-fidelity information
     fusion based on prediction of kriging. Struct Multidisc Optim
     51, 1267–1280 (2015) doi:10.1007/s00158-014-1213-9
+
+Function definitions:
+
+.. math::
+
+    f_b(x_1, x_2) = \Bigg(x_2 - (5.1\dfrac{x_1^2}{4\pi^2}) + \dfrac{5x_1}{\pi} -
+                    6\Bigg)^2 + \Bigg(10\cos(x_1) (1 - \dfrac{1}{8\pi}\Bigg) + 10
+
+.. math::
+
+    f_h(x_1, x_2) = f_b(x_1, x_2) - 22.5x_2
+
+.. math::
+
+    f_l(x_1, x_2) = f_b(0.7x_1, 0.7x_2) - 1.575x_2 + 2(0.9 + x_1^2) - 50
 """
 
 import numpy as np

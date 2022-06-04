@@ -1,10 +1,20 @@
 # -*- coding: utf-8 -*-
 
-"""Implementation of the bi-fidelity Park ('91) B function as defined in:
+r"""Implementation of the bi-fidelity Park ('91) B function as defined in:
 
     Shifeng Xiong, Peter Z. G. Qian & C. F. Jeff Wu (2013) Sequential
     Design and Analysis of High-Accuracy and Low-Accuracy Computer
     Codes, Technometrics, 55:1, 37-46, DOI: 10.1080/00401706.2012.723572
+
+Function definitions:
+
+.. math::
+
+    f_h(x_1, x_2, x_3, x_4) = \dfrac{2}{3}\exp(x_1 + x_2) - x_4\sin(x_3) + x_3
+
+.. math::
+
+    f_l(x_1, x_2, x_3, x_4) = 1.2f_h(x_1, x_2, x_3, x_4) - 1
 
 
 Adapted from matlab implementation at

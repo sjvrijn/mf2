@@ -5,6 +5,16 @@
     Dong, H., Song, B., Wang, P. et al. Multi-fidelity information
     fusion based on prediction of kriging. Struct Multidisc Optim
     51, 1267–1280 (2015) doi:10.1007/s00158-014-1213-9
+
+Function definitions:
+
+.. math::
+
+    f_h(x_1, x_2) = (x_1 + 2x_2 - 7)^2 + (2x_1 + x_2 - 5)^2
+
+.. math::
+
+    f_l(x_1, x_2) = f_h(0.4x_1, x_2) + 1.7x_1x_2 - x_1 + 2x_2
 """
 
 import numpy as np
