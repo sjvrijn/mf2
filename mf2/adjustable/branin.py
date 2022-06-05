@@ -1,12 +1,30 @@
 # -*- coding: utf-8 -*-
 
-"""Implementation of the adjustable bi-fidelity Branin function
+r"""Implementation of the adjustable bi-fidelity Branin function
 as defined in:
 
     Toal, D.J.J. Some considerations regarding the use of multi-
     fidelity Kriging in the construction of surrogate models.
     Struct Multidisc Optim 51, 1223–1245 (2015)
     doi:10.1007/s00158-014-1209-5
+
+Function definitions:
+
+.. math::
+
+    f_h(x_1, x_2) = \Bigg(x_2 - (5.1\dfrac{x_1^2}{4\pi^2}) + \dfrac{5x_1}{\pi} -
+                    6\Bigg)^2 + \Bigg(10\cos(x_1) (1 - \dfrac{1}{8\pi}\Bigg) + 10
+
+.. math::
+
+    f_l(x_1, x_2) = f_h(x_1, x_2) - (a+0.5)\Bigg( \Bigg(x_2 -
+                    (5.1\dfrac{x_1^2}{4\pi^2}) + \dfrac{5x_1}{\pi} -
+                    6\Bigg)^2 \Bigg)
+
+where :math:`a \in [0, 1]` is the adjustable parameter.
+
+Note that :math:`f_h` is equal to the non-adjustable :math:`f_b` defined in
+:py:mod:`mf2.branin`.
 """
 
 
