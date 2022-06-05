@@ -11,7 +11,7 @@ The Basics: What's in a MultiFidelityFunction?
 
 This package serves as a collection of functions with multiple fidelity levels.
 The number of levels is at least two, but differs by function. Each function is
-encoded as a :class:`~mf2.multiFidelityFunction.MultiFidelityFunction`
+encoded as a :class:`~mf2.multi_fidelity_function.MultiFidelityFunction`
 with the following attributes:
 
 ``.name``
