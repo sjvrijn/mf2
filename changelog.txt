@@ -5,7 +5,8 @@ since last version:
   instead of the previous 'bare' functions
 - Tests:
   * 'test_Nd_functions' tests now parameterized using hypothesis' data strategy
--
+- Docs:
+  * Added mathematical definitions in docstring of every function's file
 
 v2021.10.0
 - Added an 'invert' function to enable switching between minimization and maximization

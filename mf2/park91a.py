@@ -1,10 +1,23 @@
 # -*- coding: utf-8 -*-
 
-"""Implementation of the bi-fidelity Park ('91) A function as defined in:
+r"""Implementation of the bi-fidelity Park ('91) A function as defined in:
 
     Shifeng Xiong, Peter Z. G. Qian & C. F. Jeff Wu (2013) Sequential
     Design and Analysis of High-Accuracy and Low-Accuracy Computer
     Codes, Technometrics, 55:1, 37-46, DOI: 10.1080/00401706.2012.723572
+
+Function definitions:
+
+.. math::
+
+    f_h(x_1, x_2, x_3, x_4) = \dfrac{x_1}{2} \Bigg(\sqrt{1 + (x_2 + x_3^2) *
+                              \dfrac{x_4}{x_1^2}} - 1\Bigg) +
+                              (x_1 + 3x_4)\exp(1 + \sin(x_3))
+
+.. math::
+
+    f_l(x_1, x_2, x_3, x_4) = (1+\sin(x_1) / 10)f_h(x_1, x_2, x_3, x_4) +
+                              -2x_1 + x_2^2 + x_3^2 + 0.5
 
 
 Adapted from matlab implementation at

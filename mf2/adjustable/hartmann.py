@@ -1,12 +1,50 @@
 # -*- coding: utf-8 -*-
 
-"""Implementation of the adjustable bi-fidelity Hartmann3 function
+r"""Implementation of the adjustable bi-fidelity Hartmann3 function
 as defined in:
 
     Toal, D.J.J. Some considerations regarding the use of multi-
     fidelity Kriging in the construction of surrogate models.
     Struct Multidisc Optim 51, 1223–1245 (2015)
     doi:10.1007/s00158-014-1209-5
+
+Function definitions:
+
+.. math::
+
+    f_h(x_1, x_2, x_3) = -\sum^4_{i=1} \alpha_i \exp \Bigg(-\sum^3_{j=1} \beta_{ij}
+                         (x_j - P_{ij})^2 \Bigg)
+
+.. math::
+
+    f_l(x_1, x_2, x_3) = -\sum^4_{i=1} \alpha_i \exp \Bigg(-\sum^3_{j=1} \beta_{ij}
+                         \Big(x_j - \dfrac{3}{4}P_{ij}(a + 1)\Big)^2 \Bigg)
+
+with the following matrices and vectors:
+
+.. math::
+
+    \beta = \left( \begin{array}{cccccc}
+        3   & 10 & 30 \\
+        0.1 & 10 & 35 \\
+        3   & 10 & 30 \\
+        0.1 & 10 & 35
+        \end{array} \right)
+
+.. math::
+
+    P = 10^{-4} \left( \begin{array}{cccccc}
+        3689 & 1170 & 2673 \\
+        4699 & 4387 & 7470 \\
+        1091 & 8732 & 5547 \\
+         381 & 5743 & 8828
+        \end{array} \right)
+
+.. math::
+
+    \alpha = \{1.0, 1.2, 3.0, 3.2\}
+
+and where :math:`a \in [0, 1]` is the adjustable parameter.
 """
 
 

@@ -1,12 +1,24 @@
 # -*- coding: utf-8 -*-
 
-"""Implementation of the adjustable bi-fidelity Paciorek function
+r"""Implementation of the adjustable bi-fidelity Paciorek function
 as defined in:
 
     Toal, D.J.J. Some considerations regarding the use of multi-
     fidelity Kriging in the construction of surrogate models.
     Struct Multidisc Optim 51, 1223–1245 (2015)
     doi:10.1007/s00158-014-1209-5
+
+Function definitions:
+
+.. math::
+
+    f_h(x_1, x_2) = \sin \Big( \dfrac{1}{x_1,x_2} \Big)
+
+.. math::
+
+    f_l(x_1, x_2) = f_h(x_1, x_2) - 9a^2\cos \Big( \dfrac{1}{x_1,x_2} \Big)
+
+where :math:`a \in (0, 1]` is the adjustable parameter
 """
 
 

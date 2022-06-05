@@ -1,11 +1,21 @@
 # -*- coding: utf-8 -*-
 
-"""Implementation of the bi-fidelity Six-hump Camel-back function
+r"""Implementation of the bi-fidelity Six-hump Camel-back function
 as defined in:
 
     Dong, H., Song, B., Wang, P. et al. Multi-fidelity information
     fusion based on prediction of kriging. Struct Multidisc Optim
     51, 1267–1280 (2015) doi:10.1007/s00158-014-1213-9
+
+Function definitions:
+
+.. math::
+
+    f_h(x_1, x_2) = 4x_1^2 - 2.1x_1^4 + \dfrac{x_1^6}{3} + x_1x_2 - 4x_2^2 + 4x_2^4
+
+.. math::
+
+    f_l(x_1, x_2) = f_h(0.7x_1, 0.7x_2) + x_1x_2 - 15
 """
 
 import numpy as np

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-"""
+r"""
 forrester.py: Forrester function
 
 This file contains the definition of an adapted version of the simple 1D
@@ -9,6 +9,18 @@ example function as presented in:
     Forrester Alexander I.J, Sóbester András and Keane Andy J "Multi-fidelity
     Optimization via Surrogate Modelling", Proceedings of the Royal Society A,
     vol. 463, http://doi.org/10.1098/rspa.2007.1900
+
+Function definitions:
+
+.. math::
+
+    f_h(x) = (6x-2)^2 \sin(12x-4)
+
+.. math::
+
+    f_l(x) = A f_h(x) + B(x-0.5) + C
+
+With :math:`A=0.5, B=10` and :math:`C=-5` as recommended parameters.
 
 This version has been adapted to be multi-dimensional, input can be arbitrarily
 many dimensions. Output value is calculated as the mean of the outcomes for all

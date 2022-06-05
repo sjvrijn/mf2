@@ -1,12 +1,22 @@
 # -*- coding: utf-8 -*-
 
-"""Implementation of the adjustable bi-fidelity Trid function
+r"""Implementation of the adjustable bi-fidelity Trid function
 as defined in:
 
     Toal, D.J.J. Some considerations regarding the use of multi-
     fidelity Kriging in the construction of surrogate models.
     Struct Multidisc Optim 51, 1223–1245 (2015)
     doi:10.1007/s00158-014-1209-5
+
+.. math::
+
+    f_h(x_1, ..., x_{10}) = \sum^{10}_{i=1} (x_i = 1)^2 - \sum^{10}_{i=2} x_ix_{i-1}
+
+.. math::
+
+    f_l(x_1, ..., x_{10}) = \sum^{10}_{i=1} (x_i = a)^2 - (a - 0.65) \sum^{10}_{i=2} x_ix_{i-1}
+
+where :math:`a \in [0, 1]` is the adjustable parameter
 """
 
 

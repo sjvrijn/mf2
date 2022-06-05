@@ -1,12 +1,54 @@
 # -*- coding: utf-8 -*-
 
-"""
+r"""
 hartmann.py: contains the Hartmann6 function
 
 As defined in
 
     "Remarks on multi-fidelity surrogates" by Chanyoung Park, Raphael T. Haftka
     and Nam H. Kim (2016)
+
+Function definitions:
+
+.. math::
+
+    f_h(x_1, ..., x_6) = -\dfrac{1}{1.94}\Bigg( 2.58 + \sum^4_{i=1}\alpha_i
+    \exp\Big( -\sum^6_{j=1} A_{ij}(x_j - P_{ij})^2 \Big) \Bigg)
+
+.. math::
+
+    f_l(x_1, ..., x_6) = -\dfrac{1}{1.94}\Bigg( 2.58 + \sum^4_{i=1}\alpha^{\prime}_i
+    f_{exp}\Big( -\sum^6_{j=1} A_{ij}(x_j - P_{ij})^2 \Big) \Bigg)
+
+.. math::
+
+    f_{exp}(x) = (\exp(-4/9) + (\exp(-4/9) * (x + 4)/9)) ^ 9
+
+with the following matrices and vectors:
+
+.. math::
+
+    A = \left( \begin{array}{cccccc}
+        10    &  3   & 17    &  3.5 &  1.7 &  8 \\
+         0.05 & 10   & 17    &  0.1 &  8   & 14 \\
+         3    &  3.5 &  1.70 & 10   & 17   &  8 \\
+        17    &  8   &  0.05 & 10   &  0.1 & 14
+        \end{array} \right)
+
+.. math::
+
+    P = 10^{-4}\left( \begin{array}{cccccc}
+        1312 & 1696 & 5569 &  124 & 8283 & 5886 \\
+        2329 & 4135 & 8307 & 3736 & 1004 & 9991 \\
+        2348 & 1451 & 3522 & 2883 & 3047 & 6650 \\
+        4047 & 8828 & 8732 & 5743 & 1091 &  381 \\
+        \end{array} \right)
+
+.. math::
+
+    \alpha = \{0.5, 0.5, 2.0, 4.0\}
+
+    \alpha^{\prime} = \{1.0, 1.2, 3.0, 3.2\}
 """
 
 import numpy as np
@@ -14,7 +56,7 @@ import numpy as np
 from .multi_fidelity_function import MultiFidelityFunction
 
 # Some constant values for the Hartmann 6d calculations
-_alpha6_low = np.array([0.5, 0.5, 2.0, 4.0])[:,np.newaxis]
+_alpha6_low = np.array([0.5, 0.5, 2.0, 4.0])[:, np.newaxis]
 _alpha6_high = np.array([1.0, 1.2, 3.0, 3.2])[:, np.newaxis]
 _A6 = np.array([
     [10.00,  3.0, 17.00,  3.5,  1.7,  8],
