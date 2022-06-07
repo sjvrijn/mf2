@@ -165,6 +165,7 @@ class AdjustableMultiFidelityFunction(MultiFidelityFunction):
             self.u_bound, self.l_bound,
             self.static_functions + [partial(f, a=a) for f in self.adjustable_functions],
             fidelity_names=self.fidelity_names,
+            x_opt=self.x_opt,
         )
 
 
