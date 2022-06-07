@@ -10,11 +10,11 @@ as defined in:
 
 .. math::
 
-    f_h(x_1, ..., x_{10}) = \sum^{10}_{i=1} (x_i = 1)^2 - \sum^{10}_{i=2} x_ix_{i-1}
+    f_h(x_1, ..., x_{10}) = \sum^{10}_{i=1} (x_i - 1)^2 - \sum^{10}_{i=2} x_ix_{i-1}
 
 .. math::
 
-    f_l(x_1, ..., x_{10}) = \sum^{10}_{i=1} (x_i = a)^2 - (a - 0.65) \sum^{10}_{i=2} x_ix_{i-1}
+    f_l(x_1, ..., x_{10}) = \sum^{10}_{i=1} (x_i - a)^2 - (a - 0.65) \sum^{10}_{i=2} x_ix_{i-1}
 
 where :math:`a \in [0, 1]` is the adjustable parameter
 """
@@ -40,8 +40,11 @@ def adjustable_trid_lf(xx, a):
     return temp1 - temp2
 
 
+# u, l = [-d**2]*d, [d**2]*d
 u_bound = [100]*10
 l_bound = [-100]*10
+
+x_opt = [10, 18, 24, 28, 30, 30, 28, 24, 18, 10]  # [i*(D+1-i) for i in range(1, D+1)]
 
 docstring = """Factory method for adjustable Trid function using parameter value `a4`
 
@@ -56,4 +59,5 @@ trid = AdjustableMultiFidelityFunction(
     [trid_hf],
     [adjustable_trid_lf],
     fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )

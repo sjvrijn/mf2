@@ -12,11 +12,11 @@ Function definitions:
 
 .. math::
 
-    f_h(x_1, x_2) = \sin \Big( \dfrac{1}{x_1,x_2} \Big)
+    f_h(x_1, x_2) = \sin \Big( \dfrac{1}{x_1x_2} \Big)
 
 .. math::
 
-    f_l(x_1, x_2) = f_h(x_1, x_2) - 9a^2\cos \Big( \dfrac{1}{x_1,x_2} \Big)
+    f_l(x_1, x_2) = f_h(x_1, x_2) - 9a^2\cos \Big( \dfrac{1}{x_1x_2} \Big)
 
 where :math:`a \in (0, 1]` is the adjustable parameter
 """
@@ -47,6 +47,8 @@ def adjustable_paciorek_lf(xx, a):
 u_bound = [1]*2
 l_bound = [0.3]*2
 
+x_opt = [0.460658865961780639020326, 0.460658865961780639020326]  # sqrt(3pi/2)
+
 docstring = """Factory method for adjustable Paciorek function using parameter value `a2`
 
     :param a2:  Parameter to tune the correlation between high- and low-fidelity
@@ -61,4 +63,5 @@ paciorek = AdjustableMultiFidelityFunction(
     [paciorek_hf],
     [adjustable_paciorek_lf],
     fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )

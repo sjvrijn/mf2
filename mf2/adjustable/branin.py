@@ -48,6 +48,8 @@ def adjustable_branin_lf(xx, a):
     return term1 - (a + 0.5) * term2 ** 2
 
 
+x_opt = [np.pi, 2.275]  # one of three optima
+
 docstring = """Factory method for adjustable Branin function using parameter value `a1`
 
     :param a1:  Parameter to tune the correlation between high- and low-fidelity
@@ -62,4 +64,5 @@ branin = AdjustableMultiFidelityFunction(
     static_functions=[branin_base],
     adjustable_functions=[adjustable_branin_lf],
     fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )
