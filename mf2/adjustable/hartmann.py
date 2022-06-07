@@ -100,6 +100,8 @@ def adjustable_hartmann3_lf(xx, a):
 u_bound = [1]*3
 l_bound = [0]*3
 
+x_opt = [0.11458889011259411, 0.5556488928818787, 0.852546981666729]
+
 docstring = """Factory method for adjustable Hartmann3 function using parameter value `a3`
 
     :param a3:  Parameter to tune the correlation between high- and low-fidelity
@@ -114,4 +116,5 @@ hartmann3 = AdjustableMultiFidelityFunction(
     [hartmann3_hf],
     [adjustable_hartmann3_lf],
     fidelity_names=['high', 'low'],
+    x_opt=x_opt,
 )
