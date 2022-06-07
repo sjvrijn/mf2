@@ -19,7 +19,7 @@ Function definitions:
 
 .. math::
 
-    f_l(x_1, x_2) = f_b(0.7x_1, 0.7x_2) - 1.575x_2 + 2(0.9 + x_1^2) - 50
+    f_l(x_1, x_2) = f_b(0.7x_1, 0.7x_2) - 15.75x_2 + 20(0.9 + x_1)^2 - 50
 """
 
 import numpy as np
@@ -79,8 +79,8 @@ def branin_lf(xx):
     x1, x2 = xx.T
 
     term1 = branin_base(np.hstack([0.7*x1.reshape(-1,1), 0.7*x2.reshape(-1,1)]))
-    term2 = 1.575*x2  # 15.75
-    term3 = 2*(.9+x1**2)
+    term2 = 15.75*x2
+    term3 = 20*(.9+x1)**2
     term4 = 50
 
     return term1 - term2 + term3 - term4
