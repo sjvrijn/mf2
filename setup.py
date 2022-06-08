@@ -9,7 +9,7 @@ with open('requirements-dev.txt') as f:
 
 setuptools.setup(
     name='mf2',
-    version='2021.10.0',
+    version='2022.06.0',
     description='A collection of analytical benchmark functions in multiple fidelities',
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -22,6 +22,7 @@ setuptools.setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Intended Audience :: Science/Research",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     ],
