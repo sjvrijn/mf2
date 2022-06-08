@@ -1,4 +1,5 @@
 since last version:
+- Found and fixed further errors in the Branin function: now matches paper
 - Added MultiFidelityFunction.x_opt attribute for known optimum of function
 - Added warnings in MultiFidelityFunction if not l_bound <= x_opt <= u_bound
 - Added callable AdjustableMultiFidelityFunction class to serve as factory
