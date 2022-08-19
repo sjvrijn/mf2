@@ -10,7 +10,8 @@ matrix:
 before_install:
   - python -m pip install --upgrade pip
 install:
-  - pip install .[dev]
+  - pip install --upgrade setuptools
+  - pip install ".[dev]"
   - pip install coverage coveralls
 script:
   - pytest tests/regression_test.py
