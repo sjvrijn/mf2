@@ -42,7 +42,7 @@ Documentation is available at [mf2.readthedocs.io][docs]
 
 The recommended way to install `mf2` is with Python's `pip`:
 ```
-python3 -m pip install --user mf2
+pip install --user mf2
 ```
 or alternatively using `conda`:
 ```
@@ -51,15 +51,15 @@ conda install -c conda-forge mf2
 
 For the latest version, you can install directly from source:
 ```
-python3 -m pip install --user https://github.com/sjvrijn/mf2/archive/master.zip
+pip install --user https://github.com/sjvrijn/mf2/archive/main.zip
 ```
 
 To work in your own version locally, it is best to clone the repository first,
-and additionally install the dev-requirements:
+and additionally create an editable install that includes the dev-requirements:
 ```
 git clone https://github.com/sjvrijn/mf2.git
 cd mf2
-python3 -m pip install --user -e .[dev]
+pip install --user -e ".[dev]"
 ```
 
 ## Example Usage
@@ -121,8 +121,5 @@ appreciate it if you would cite our [JOSS paper]:
 [docs-badge]:         https://mf2.readthedocs.io/en/latest/?badge=latest
 [gitter]:             https://gitter.im/pymf2/community
 [gitter-badge]:       https://gitter.im/pymf2/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-[new-issue]:          https://github.com/sjvrijn/mf2/issues/new
-[pytest-regressions]: https://github.com/ESSS/pytest-regressions
 [JOSS paper]:         https://joss.theoj.org/papers/10.21105/joss.02049
 [refer to ``CONTRIBUTING.md``]: https://github.com/sjvrijn/mf2/blob/master/CONTRIBUTING.md
-
