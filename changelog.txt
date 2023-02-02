@@ -1,4 +1,5 @@
 since last version:
+- Switched from setup.py to pyproject.toml
 -
 
 v2022.06.0
