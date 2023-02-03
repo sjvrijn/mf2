@@ -1,0 +1,46 @@
+[project]
+name = "mf2"
+version = "2022.6.0"
+description = "A collection of analytical benchmark functions in multiple fidelities"
+readme = "README.md"
+authors = [
+    {name = "Sander van Rijn", email = "s.j.van.rijn@liacs.leidenuniv.nl"}
+]
+license = {file = "LICENSE"}
+classifiers = [
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+]
+requires-python = ">=3.7"
+dependencies = [
+    "numpy"
+]
+
+[project.urls]
+repository = "https://github.com/sjvrijn/mf2"
+documentation = "https://github.com/sjvrijn/mf2"
+github = "https://github.com/sjvrijn/mf2"
+
+[project.optional-dependencies]
+dev = [
+    "hypothesis[numpy]",
+    "matplotlib",
+    "pandas",
+    "pyprojroot",
+    "pytest",
+    "pytest-cov",
+    "pytest-regressions",
+    "sphinx",
+    "sphinx_rtd_theme"
+]
+
+[build-system]
+requires = ["setuptools>=64.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["mf2"]

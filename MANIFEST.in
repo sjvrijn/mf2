@@ -1,2 +1,2 @@
-include LICENSE requirements.txt requirements-dev.txt
+include LICENSE changelog.txt
 recursive-include docs *.rst
