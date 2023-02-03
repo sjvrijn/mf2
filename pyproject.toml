@@ -37,6 +37,12 @@ dev = [
     "sphinx",
     "sphinx_rtd_theme"
 ]
+docs = [
+    "matplotlib",
+    "pyprojroot",
+    "sphinx",
+    "sphinx_rtd_theme"
+]
 
 [build-system]
 requires = ["setuptools>=64.0.0", "wheel"]
