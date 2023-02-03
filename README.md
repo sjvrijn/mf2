@@ -1,13 +1,13 @@
 # MF2: Multi-Fidelity-Functions
 
-| Package Info | Status                                                                                                                                                                                                                                           | Support                                                                 |
-|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
-| [![PyPI version](https://badge.fury.io/py/mf2.svg)](https://badge.fury.io/py/mf2) | [![tests status][tests-badge]][actions-page] | [![Documentation Status][docs-badge]][docs-url]                         |
-| [![Conda](https://img.shields.io/conda/v/conda-forge/mf2)](https://anaconda.org/conda-forge/mf2) | [![Coverage Status](https://coveralls.io/repos/github/sjvrijn/mf2/badge.svg?branch=master)](https://coveralls.io/github/sjvrijn/mf2?branch=master)                                                                                               | [![Gitter](https://badges.gitter.im/pymf2/community.svg)][gitter-badge] |
-| ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mf2) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/54144e7d406b4558a14996b06a89adf8)](https://www.codacy.com/manual/sjvrijn/mf2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sjvrijn/mf2&amp;utm_campaign=Badge_Grade) |                                                                         |
-| [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) | [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                           |                                                                         |
-| [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4540752.svg)](https://doi.org/10.5281/zenodo.4540752) | [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4231/badge)](https://bestpractices.coreinfrastructure.org/projects/4231)                                                                                            |                                                                         |
-| [![status](https://joss.theoj.org/papers/2575e93fc693c5c3bfa8736c60c35398/status.svg)](https://joss.theoj.org/papers/2575e93fc693c5c3bfa8736c60c35398) |                                                                                                                                                                                                                                                  |                                                                         |
+| Package Info                                 | Status                                                | Support                            |
+|----------------------------------------------|-------------------------------------------------------|------------------------------------|
+| [![PyPI version][PyPI-badge]][PyPI-url]      | [![Tests status][tests-badge]][actions-page]          | [![Docs Status][docs-badge]][docs] |
+| [![Conda][conda-badge]][conda-url]           | [![Coverage Status][coveralls-badge]][coveralls]      | [![Gitter][gitter-badge]][gitter]  |
+| ![PyPI - Python Version][PyPI-python-badge]  | [![Codacy Badge][codacy-badge]][codacy-url]           |                                    |
+| [![License: GPL v3][license-badge]][license] | [![Project Status: Active][devstate-badge]][devstate] |                                    |
+| [![DOI][Zenodo-badge]][Zenodo-url]           | [![CII Best Practices][cii-badge]][cii-url]           |                                    |
+| [![status][JOSS-badge]][JOSS paper]          |                                                       |                                    |
 
 ## Introduction
 
@@ -36,7 +36,7 @@ evaluations can be performed.
 
 The only dependency of the mf2 package is the `numpy` package.
 
-Documentation is available at [mf2.readthedocs.io][docs-url]
+Documentation is available at [mf2.readthedocs.io][docs]
 
 ## Installation
 
@@ -83,12 +83,12 @@ print(mf2.branin.low(X))
 ```
 
 For more usage examples, please refer to the full documentation on
-[readthedocs][docs-url].
+[readthedocs][docs].
 
 ## Contributing
 
 Contributions to this project such as bug reports or benchmark function
-suggestions are more than welcome! Please [refer to ``CONTRIBUTING.md``] for more
+suggestions are more than welcome! Please [refer to ``CONTRIBUTING.md``][CONTRIBUTING.md] for more
 details.
 
 ## Contact
@@ -116,14 +116,35 @@ appreciate it if you would cite our [JOSS paper]:
 }
 ```
 
-[actions-page]:       https://github.com/sjvrijn/mf2/actions
-[tests-badge]:	      https://github.com/sjvrijn/mf2/workflows/tests/badge.svg
-[docs-url]:           https://mf2.readthedocs.io/en/latest/?badge=latest
-[docs-badge]:         https://readthedocs.org/projects/mf2/badge/?version=latest
-[gitter]:             https://gitter.im/pymf2/community
-[gitter-badge]:       https://gitter.im/pymf2/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
-[new-issue]:          https://github.com/sjvrijn/mf2/issues/new
-[pytest-regressions]: https://github.com/ESSS/pytest-regressions
-[JOSS paper]:         https://joss.theoj.org/papers/10.21105/joss.02049
-[refer to ``CONTRIBUTING.md``]: https://github.com/sjvrijn/mf2/blob/master/CONTRIBUTING.md
+[PyPI-url]:             https://badge.fury.io/py/mf2
+[conda-url]:            https://anaconda.org/conda-forge/mf2
+[license]:              https://www.gnu.org/licenses/gpl-3.0
+[Zenodo-url]:           https://doi.org/10.5281/zenodo.4540752
+[JOSS paper]:           https://joss.theoj.org/papers/10.21105/joss.02049
 
+[actions-page]:         https://github.com/sjvrijn/mf2/actions
+[coveralls]:            https://coveralls.io/github/sjvrijn/mf2?branch=main
+[codacy-url]:           https://www.codacy.com/manual/sjvrijn/mf2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sjvrijn/mf2&amp;utm_campaign=Badge_Grade
+[devstate]:             https://www.repostatus.org/#active
+[cii-url]:              https://bestpractices.coreinfrastructure.org/projects/4231
+
+[docs]:                 https://mf2.readthedocs.io/en/latest/?badge=latest
+[gitter]:               https://gitter.im/pymf2/community
+
+[new-issue]:            https://github.com/sjvrijn/mf2/issues/new
+[pytest-regressions]:   https://github.com/ESSS/pytest-regressions
+[CONTRIBUTING.md]:      https://github.com/sjvrijn/mf2/blob/master/CONTRIBUTING.md
+
+[PyPI-badge]:           https://badge.fury.io/py/mf2.svg
+[conda-badge]:          https://img.shields.io/conda/v/conda-forge/mf2
+[PyPI-python-badge]:    https://img.shields.io/pypi/pyversions/mf2
+[license-badge]:        https://img.shields.io/badge/License-GPLv3-blue.svg
+[Zenodo-badge]:         https://zenodo.org/badge/DOI/10.5281/zenodo.4540752.svg
+[JOSS-badge]:           https://joss.theoj.org/papers/10.21105/joss.02049/status.svg
+[tests-badge]:          https://github.com/sjvrijn/mf2/workflows/tests/badge.svg
+[coveralls-badge]:      https://coveralls.io/repos/github/sjvrijn/mf2/badge.svg?branch=main
+[codacy-badge]:         https://api.codacy.com/project/badge/Grade/54144e7d406b4558a14996b06a89adf8
+[devstate-badge]:       https://www.repostatus.org/badges/latest/active.svg
+[cii-badge]:            https://bestpractices.coreinfrastructure.org/projects/4231/badge
+[docs-badge]:           https://readthedocs.org/projects/mf2/badge/?version=latest
+[gitter-badge]:         https://badges.gitter.im/pymf2/community.svg
