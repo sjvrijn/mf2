@@ -35,4 +35,4 @@ jobs:
         pytest -Werror --cov-branch --cov=mf2 tests/property_test.py tests/multi_fidelity_function_test.py
     - name: Report coverage
       run: |
-        coveralls
+        coveralls --service=github
