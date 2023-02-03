@@ -1,13 +1,13 @@
 # MF2: Multi-Fidelity-Functions
 
-| Package Info | Status | Support |
-|--------------|--------|---------|
-| [![PyPI version](https://badge.fury.io/py/mf2.svg)](https://badge.fury.io/py/mf2) | [![Build Status](https://app.travis-ci.com/sjvrijn/mf2.svg?branch=main)](https://app.travis-ci.com/sjvrijn/mf2) | [![Documentation Status](https://readthedocs.org/projects/mf2/badge/?version=latest)][docs-badge] |
-| [![Conda](https://img.shields.io/conda/v/conda-forge/mf2)](https://anaconda.org/conda-forge/mf2) | [![Coverage Status](https://coveralls.io/repos/github/sjvrijn/mf2/badge.svg?branch=master)](https://coveralls.io/github/sjvrijn/mf2?branch=master) | [![Gitter](https://badges.gitter.im/pymf2/community.svg)][gitter-badge] |
-| ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mf2) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/54144e7d406b4558a14996b06a89adf8)](https://www.codacy.com/manual/sjvrijn/mf2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sjvrijn/mf2&amp;utm_campaign=Badge_Grade) | |
-| [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) | [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) | |
-| [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4540752.svg)](https://doi.org/10.5281/zenodo.4540752) | [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4231/badge)](https://bestpractices.coreinfrastructure.org/projects/4231) | |
-| [![status](https://joss.theoj.org/papers/2575e93fc693c5c3bfa8736c60c35398/status.svg)](https://joss.theoj.org/papers/2575e93fc693c5c3bfa8736c60c35398) | | |
+| Package Info | Status                                                                                                                                                                                                                                           | Support                                                                 |
+|--------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
+| [![PyPI version](https://badge.fury.io/py/mf2.svg)](https://badge.fury.io/py/mf2) | [![tests status][tests-badge]][actions-page] | [![Documentation Status][docs-badge]][docs-url]                         |
+| [![Conda](https://img.shields.io/conda/v/conda-forge/mf2)](https://anaconda.org/conda-forge/mf2) | [![Coverage Status](https://coveralls.io/repos/github/sjvrijn/mf2/badge.svg?branch=master)](https://coveralls.io/github/sjvrijn/mf2?branch=master)                                                                                               | [![Gitter](https://badges.gitter.im/pymf2/community.svg)][gitter-badge] |
+| ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/mf2) | [![Codacy Badge](https://api.codacy.com/project/badge/Grade/54144e7d406b4558a14996b06a89adf8)](https://www.codacy.com/manual/sjvrijn/mf2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sjvrijn/mf2&amp;utm_campaign=Badge_Grade) |                                                                         |
+| [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0) | [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)                                           |                                                                         |
+| [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.4540752.svg)](https://doi.org/10.5281/zenodo.4540752) | [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4231/badge)](https://bestpractices.coreinfrastructure.org/projects/4231)                                                                                            |                                                                         |
+| [![status](https://joss.theoj.org/papers/2575e93fc693c5c3bfa8736c60c35398/status.svg)](https://joss.theoj.org/papers/2575e93fc693c5c3bfa8736c60c35398) |                                                                                                                                                                                                                                                  |                                                                         |
 
 ## Introduction
 
@@ -36,7 +36,7 @@ evaluations can be performed.
 
 The only dependency of the mf2 package is the `numpy` package.
 
-Documentation is available at [mf2.readthedocs.io][docs]
+Documentation is available at [mf2.readthedocs.io][docs-url]
 
 ## Installation
 
@@ -83,7 +83,7 @@ print(mf2.branin.low(X))
 ```
 
 For more usage examples, please refer to the full documentation on
-[readthedocs][docs].
+[readthedocs][docs-url].
 
 ## Contributing
 
@@ -116,9 +116,10 @@ appreciate it if you would cite our [JOSS paper]:
 }
 ```
 
-
-[docs]:               https://mf2.readthedocs.io/en/latest/
-[docs-badge]:         https://mf2.readthedocs.io/en/latest/?badge=latest
+[actions-page]:       https://github.com/sjvrijn/mf2/actions
+[tests-badge]:	      https://github.com/sjvrijn/mf2/workflows/tests/badge.svg
+[docs-url]:           https://mf2.readthedocs.io/en/latest/?badge=latest
+[docs-badge]:         https://readthedocs.org/projects/mf2/badge/?version=latest
 [gitter]:             https://gitter.im/pymf2/community
 [gitter-badge]:       https://gitter.im/pymf2/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge
 [new-issue]:          https://github.com/sjvrijn/mf2/issues/new
