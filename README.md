@@ -40,9 +40,10 @@ Documentation is available at [mf2.readthedocs.io][docs]
 
 ## Installation
 
-The recommended way to install `mf2` is with Python's `pip`:
+The recommended way to install `mf2` in your (virtual) environment is with
+Python's `pip`:
 ```
-python3 -m pip install --user mf2
+pip install mf2
 ```
 or alternatively using `conda`:
 ```
@@ -51,15 +52,15 @@ conda install -c conda-forge mf2
 
 For the latest version, you can install directly from source:
 ```
-python3 -m pip install --user https://github.com/sjvrijn/mf2/archive/master.zip
+pip install https://github.com/sjvrijn/mf2/archive/main.zip
 ```
 
 To work in your own version locally, it is best to clone the repository first,
-and additionally install the dev-requirements:
+and additionally create an editable install that includes the dev-requirements:
 ```
 git clone https://github.com/sjvrijn/mf2.git
 cd mf2
-python3 -m pip install --user -e .[dev]
+pip install -e ".[dev]"
 ```
 
 ## Example Usage
@@ -88,8 +89,8 @@ For more usage examples, please refer to the full documentation on
 ## Contributing
 
 Contributions to this project such as bug reports or benchmark function
-suggestions are more than welcome! Please [refer to ``CONTRIBUTING.md``][CONTRIBUTING.md] for more
-details.
+suggestions are more than welcome! Please refer to
+[``CONTRIBUTING.md``][CONTRIBUTING.md] for more details.
 
 ## Contact
 
@@ -131,8 +132,6 @@ appreciate it if you would cite our [JOSS paper]:
 [docs]:                 https://mf2.readthedocs.io/en/latest/?badge=latest
 [gitter]:               https://gitter.im/pymf2/community
 
-[new-issue]:            https://github.com/sjvrijn/mf2/issues/new
-[pytest-regressions]:   https://github.com/ESSS/pytest-regressions
 [CONTRIBUTING.md]:      https://github.com/sjvrijn/mf2/blob/master/CONTRIBUTING.md
 
 [PyPI-badge]:           https://badge.fury.io/py/mf2.svg
