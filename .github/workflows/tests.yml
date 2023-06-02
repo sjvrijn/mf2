@@ -3,36 +3,75 @@ name: tests
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'mf2/**'
+      - 'tests/**'
   pull_request:
     branches: [ main ]
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+    paths:
+      - 'mf2/**'
+      - 'tests/**'
+  workflow_dispatch:
+
 
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
 jobs:
-  tests:
 
+  tests:
     name: Run tests
     runs-on: ubuntu-latest
+    if: github.event.pull_request.draft == false
     strategy:
       fail-fast: false
       matrix:
         python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+
+    - name: Cache installed dependencies
+      uses: actions/cache@v3
+      id: cache-python-env
+      with:
+        path: ${{ env.pythonLocation }}
+        key: ${{ env.pythonLocation }}-${{ hashFiles('pyproject.toml') }}-${{ matrix.python-version }}
+
     - name: Install dependencies
+      if: steps.cache-python-env.outputs.cache-hit != 'true'
       run: |
         python3 -m pip install --upgrade pip setuptools
         pip install ".[dev]"
         pip install coverage coveralls
-    - name: Run pytest
-      run: |
-        pytest tests/regression_test.py
-        pytest -Werror --cov-branch --cov=mf2 tests/property_test.py tests/multi_fidelity_function_test.py
+
+    - name: Run tests with coverage on newest Python
+      if: matrix.python-version == '3.11'
+      uses: sjvrijn/pytest-last-failed@v1
+      with:
+        pytest-args: '-Werror --cov-branch --cov=mf2 tests/property_test.py tests/multi_fidelity_function_test.py'
+
+    - name: Run tests without coverage on older Python
+      if: matrix.python-version != '3.11'
+      uses: sjvrijn/pytest-last-failed@v1
+      with:
+        pytest-args: '-Werror tests/property_test.py tests/multi_fidelity_function_test.py'
+
+    - name: Run regression tests
+      uses: sjvrijn/pytest-last-failed@v1
+      with:
+        pytest-args: 'tests/regression_test.py'
+
     - name: Report coverage
+      if: matrix.python-version == '3.11'
       run: |
         coveralls --service=github
