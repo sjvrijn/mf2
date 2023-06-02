@@ -1,6 +1,6 @@
 [project]
 name = "mf2"
-version = "2022.6.0"
+dynamic = ["version"]
 description = "A collection of analytical benchmark functions in multiple fidelities"
 readme = "README.md"
 authors = [
@@ -51,3 +51,6 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 packages = ["mf2"]
+
+[tool.setuptools.dynamic]
+version = {attr = "mf2.__version__"}

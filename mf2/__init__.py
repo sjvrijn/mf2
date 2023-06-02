@@ -5,8 +5,6 @@ mf2
 
 A collection of analytical functions with 2 or more available fidelities.
 """
-import pkg_resources
-
 from .multi_fidelity_function import MultiFidelityFunction, invert
 from .borehole import borehole
 from .currin import currin
@@ -24,7 +22,7 @@ import mf2.adjustable
 
 __author__ = 'Sander van Rijn'
 __email__ = 's.j.van.rijn@liacs.leidenuniv.nl'
-__version__ = pkg_resources.get_distribution('mf2').version
+__version__ = '2022.06.0'
 
 
 bi_fidelity_functions = (
