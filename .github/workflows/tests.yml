@@ -53,11 +53,24 @@ jobs:
         pip install ".[dev]"
         pip install coverage coveralls
 
-    - name: Run pytest
-      run: |
-        pytest tests/regression_test.py
-        pytest -Werror --cov-branch --cov=mf2 tests/property_test.py tests/multi_fidelity_function_test.py
+    - name: Run tests with coverage on newest Python
+      if: matrix.python-version == '3.11'
+      uses: sjvrijn/pytest-last-failed@v1
+      with:
+        pytest-args: '-Werror --cov-branch --cov=mf2 tests/property_test.py tests/multi_fidelity_function_test.py'
+
+    - name: Run tests without coverage on older Python
+      if: matrix.python-version != '3.11'
+      uses: sjvrijn/pytest-last-failed@v1
+      with:
+        pytest-args: '-Werror tests/property_test.py tests/multi_fidelity_function_test.py'
+
+    - name: Run regression tests
+      uses: sjvrijn/pytest-last-failed@v1
+      with:
+        pytest-args: 'tests/regression_test.py'
 
     - name: Report coverage
+      if: matrix.python-version == '3.11'
       run: |
         coveralls --service=github
