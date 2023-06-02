@@ -3,6 +3,9 @@ name: tests
 on:
   push:
     branches: [ main ]
+    paths:
+      - 'mf2/**'
+      - 'tests/**'
   pull_request:
     branches: [ main ]
     types:
@@ -10,6 +13,10 @@ on:
       - reopened
       - synchronize
       - ready_for_review
+    paths:
+      - 'mf2/**'
+      - 'tests/**'
+
 
 env:
   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
