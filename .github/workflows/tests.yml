@@ -16,6 +16,7 @@ on:
     paths:
       - 'mf2/**'
       - 'tests/**'
+  workflow_dispatch:
 
 
 env:
