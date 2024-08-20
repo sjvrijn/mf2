@@ -125,7 +125,7 @@ appreciate it if you would cite our [JOSS paper]:
 
 [actions-page]:         https://github.com/sjvrijn/mf2/actions
 [coveralls]:            https://coveralls.io/github/sjvrijn/mf2?branch=main
-[codacy-url]:           https://www.codacy.com/manual/sjvrijn/mf2?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=sjvrijn/mf2&amp;utm_campaign=Badge_Grade
+[codacy-url]:           https://app.codacy.com/gh/sjvrijn/mf2/dashboard
 [devstate]:             https://www.repostatus.org/#active
 [cii-url]:              https://bestpractices.coreinfrastructure.org/projects/4231
 
