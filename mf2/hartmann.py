@@ -46,9 +46,9 @@ with the following matrices and vectors:
 
 .. math::
 
-    \alpha = \{0.5, 0.5, 2.0, 4.0\}
+    \alpha^{\prime} = \{0.5, 0.5, 2.0, 4.0\}
 
-    \alpha^{\prime} = \{1.0, 1.2, 3.0, 3.2\}
+    \alpha = \{1.0, 1.2, 3.0, 3.2\}
 """
 
 import numpy as np
