@@ -52,7 +52,7 @@ jobs:
       run: |
         python3 -m pip install --upgrade pip setuptools
         python3 -m pip install ".[dev]"
-        python3 -m pip install coveralls
+        python3 -m pip install coveralls>=4
 
     - name: Run tests with coverage on newest Python
       if: matrix.python-version == '3.13'
