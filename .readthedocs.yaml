@@ -1,7 +1,10 @@
-# Required
+# Required keys
 version: 2
 
-# Optionally declare the Python requirements required to build your docs
+build:
+  os: "ubuntu-lts-latest"
+
+# Optional keys
 python:
    install:
    - method: pip
