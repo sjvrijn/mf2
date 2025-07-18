@@ -31,17 +31,17 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python-version: ['3.7', '3.8', '3.9', '3.10', '3.11']
+        python-version: ['3.9', '3.10', '3.11', '3.12', '3.13']
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v3
+      uses: actions/setup-python@v5
       with:
         python-version: ${{ matrix.python-version }}
 
     - name: Cache installed dependencies
-      uses: actions/cache@v3
+      uses: actions/cache@v4
       id: cache-python-env
       with:
         path: ${{ env.pythonLocation }}
@@ -55,13 +55,13 @@ jobs:
         pip install coverage coveralls
 
     - name: Run tests with coverage on newest Python
-      if: matrix.python-version == '3.11'
+      if: matrix.python-version == '3.13'
       uses: sjvrijn/pytest-last-failed@v1
       with:
         pytest-args: '-Werror --cov-branch --cov=mf2 tests/property_test.py tests/multi_fidelity_function_test.py'
 
     - name: Run tests without coverage on older Python
-      if: matrix.python-version != '3.11'
+      if: matrix.python-version != '3.13'
       uses: sjvrijn/pytest-last-failed@v1
       with:
         pytest-args: '-Werror tests/property_test.py tests/multi_fidelity_function_test.py'
@@ -72,6 +72,6 @@ jobs:
         pytest-args: 'tests/regression_test.py'
 
     - name: Report coverage
-      if: matrix.python-version == '3.11'
+      if: matrix.python-version == '3.13'
       run: |
         coveralls --service=github
