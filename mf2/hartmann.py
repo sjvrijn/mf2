@@ -46,9 +46,10 @@ with the following matrices and vectors:
 
 .. math::
 
-    \alpha = \{0.5, 0.5, 2.0, 4.0\}
+    \alpha = \{1.0, 1.2, 3.0, 3.2\}
 
-    \alpha^{\prime} = \{1.0, 1.2, 3.0, 3.2\}
+    \alpha^{\prime} = \{0.5, 0.5, 2.0, 4.0\}
+
 """
 
 import numpy as np
@@ -56,8 +57,8 @@ import numpy as np
 from .multi_fidelity_function import MultiFidelityFunction
 
 # Some constant values for the Hartmann 6d calculations
-_alpha6_low = np.array([0.5, 0.5, 2.0, 4.0])[:, np.newaxis]
 _alpha6_high = np.array([1.0, 1.2, 3.0, 3.2])[:, np.newaxis]
+_alpha6_low = np.array([0.5, 0.5, 2.0, 4.0])[:, np.newaxis]
 _A6 = np.array([
     [10.00,  3.0, 17.00,  3.5,  1.7,  8],
     [ 0.05, 10.0, 17.00,  0.1,  8.0, 14],
