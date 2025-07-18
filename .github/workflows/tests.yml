@@ -51,8 +51,8 @@ jobs:
       if: steps.cache-python-env.outputs.cache-hit != 'true'
       run: |
         python3 -m pip install --upgrade pip setuptools
-        pip install ".[dev]"
-        pip install coverage coveralls
+        python3 -m pip install ".[dev]"
+        python3 -m pip install coveralls
 
     - name: Run tests with coverage on newest Python
       if: matrix.python-version == '3.13'
