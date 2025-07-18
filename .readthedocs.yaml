@@ -3,6 +3,8 @@ version: 2
 
 build:
   os: "ubuntu-lts-latest"
+  tools:
+    python: "3.13"
 
 # Optional keys
 python:
@@ -11,3 +13,6 @@ python:
      path: .
      extra_requirements:
        - docs
+
+sphinx:
+  configuration: docs/source/conf.py
