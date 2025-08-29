@@ -126,7 +126,7 @@ appreciate it if you would cite our [JOSS paper]:
 [actions-page]:         https://github.com/sjvrijn/mf2/actions
 [coveralls]:            https://coveralls.io/github/sjvrijn/mf2?branch=main
 [codacy-url]:           https://app.codacy.com/gh/sjvrijn/mf2/dashboard
-[devstate]:             https://www.repostatus.org/#active
+[devstate]:             https://www.repostatus.org/#inactive
 [cii-url]:              https://bestpractices.coreinfrastructure.org/projects/4231
 
 [docs]:                 https://mf2.readthedocs.io/en/latest/?badge=latest
@@ -143,7 +143,7 @@ appreciate it if you would cite our [JOSS paper]:
 [tests-badge]:          https://github.com/sjvrijn/mf2/workflows/tests/badge.svg
 [coveralls-badge]:      https://coveralls.io/repos/github/sjvrijn/mf2/badge.svg?branch=main
 [codacy-badge]:         https://api.codacy.com/project/badge/Grade/54144e7d406b4558a14996b06a89adf8
-[devstate-badge]:       https://www.repostatus.org/badges/latest/active.svg
+[devstate-badge]:       https://www.repostatus.org/badges/latest/inactive.svg
 [cii-badge]:            https://bestpractices.coreinfrastructure.org/projects/4231/badge
 [docs-badge]:           https://readthedocs.org/projects/mf2/badge/?version=latest
 [gitter-badge]:         https://badges.gitter.im/pymf2/community.svg
