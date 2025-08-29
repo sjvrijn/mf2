@@ -55,13 +55,13 @@ jobs:
         python3 -m pip install coveralls>=4
 
     - name: Run tests with coverage on newest Python
-      if: matrix.python-version == '3.13'
+      if: matrix.python-version == '3.12'
       uses: sjvrijn/pytest-last-failed@v1
       with:
         pytest-args: '-Werror --cov-branch --cov=mf2 tests/property_test.py tests/multi_fidelity_function_test.py'
 
     - name: Run tests without coverage on older Python
-      if: matrix.python-version != '3.13'
+      if: matrix.python-version != '3.12'
       uses: sjvrijn/pytest-last-failed@v1
       with:
         pytest-args: '-Werror tests/property_test.py tests/multi_fidelity_function_test.py'
@@ -72,6 +72,6 @@ jobs:
         pytest-args: 'tests/regression_test.py'
 
     - name: Report coverage
-      if: matrix.python-version == '3.13'
+      if: matrix.python-version == '3.12'
       run: |
         coveralls --service=github
